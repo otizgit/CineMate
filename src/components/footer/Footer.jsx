@@ -19,9 +19,12 @@ export default function Footer() {
 
   return (
     <footer className="z-20 relative padding py-14 xl:py-12 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-20">
-      <Link to="/home" className="basis-full">
-        <img className="w-[5rem]" src={Logo} alt="Logo" />
-      </Link>
+      <div className="basis-full">
+        <Link to="/home">
+          <img className="w-[5rem]" src={Logo} alt="Logo" />
+        </Link>
+      </div>
+
       <div className="basis-full">
         <div>
           <nav>

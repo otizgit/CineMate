@@ -11,7 +11,7 @@ export default function AllCastAndCrew() {
   useEffect(() => {
     document.title = `${movieTitle} | All Cast and Crew`;
     window.scrollTo(0, 0);
-  }, []);
+  });
 
   const castElements = allCast.map((cast) => {
     return (

@@ -39,11 +39,8 @@ export default function PersonPage() {
 
   useEffect(() => {
     document.title = `Cinemate | ${personData.name}`;
-  });
-
-  useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  });
 
   useEffect(() => {
     fetchPersonData();
@@ -54,21 +51,19 @@ export default function PersonPage() {
   }
 
   return (
-    <div className="pt-[120px]">
+    <div className="pt-[110px]">
       <div className="padding lg:hidden">
         <PersonPersonalInfo personData={personData} />
       </div>
 
-      <div className="px-6 hidden lg:block side-bar fixed w-[27%] top-[80px] bottom-0 overflow-y-scroll">
+      <div className="px-6 hidden lg:block side-bar absolute w-[27%] top-[80px] pb-10 bottom-0 overflow-y-scroll">
         <PersonPersonalInfo personData={personData} />
       </div>
 
       <div className="lg:w-[73%] lg:ml-auto">
         {personData.biography ? (
-          <div className="text-center border-b-2 border-primary pb-6 mb-6 padding">
-            <p className="text-[1.2rem] font-bold text-primary mb-2">
-              Biography
-            </p>
+          <div className="text-center lg:text-left border-b-2 border-primary pb-6 mb-6 padding">
+            <p className="text-primary font-bold mb-2 text-[1.2rem]">Biography</p>
             <p className="custom-fz text-priText-300">{personData.biography}</p>
           </div>
         ) : null}

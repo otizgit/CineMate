@@ -51,7 +51,7 @@ export default function ResultsFilter(props) {
                         props.category === links.keyword
                           ? "bg-primary text-white"
                           : ""
-                      } tracking-wider w-[100%] hover:bg-primary font-semibold hover:text-white text-[.8rem] text-priText-300 py-5 pl-4 text-left`}
+                      } tracking-wider w-[100%] hover:bg-primary font-bold hover:text-white text-[.8rem] text-priText-300 py-5 pl-4 text-left`}
                     >
                       {links.link}
                     </button>

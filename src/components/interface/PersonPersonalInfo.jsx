@@ -4,6 +4,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function PersonPersonalInfo(props) {
+  function calculateAge(birthdate) {
+    const today = new Date();
+    const birthDate = new Date(birthdate);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  }
+  const birthdate = props.personData.birthday;
+  const age = calculateAge(birthdate);
+
   return (
     <div>
       {props.personData.profile_path ? (
@@ -12,11 +28,11 @@ export default function PersonPersonalInfo(props) {
           src={`https://image.tmdb.org/t/p/w500${props.personData.profile_path}`}
           alt={`${props.personData.name}'s image`}
         />
-      ) : 
-      <div className="mb-6 grid place-items-center lg:pt-[40px]">
-        <FontAwesomeIcon icon={faUser} className="text-primary text-[7rem]"/>
-      </div>
-      }
+      ) : (
+        <div className="mb-6 grid place-items-center lg:pt-[40px]">
+          <FontAwesomeIcon icon={faUser} className="text-primary text-[7rem]" />
+        </div>
+      )}
       <div className="text-center">
         <h2 className="font-sans text-white text-[2.1rem] mb-4">
           {props.personData.name}
@@ -37,7 +53,7 @@ export default function PersonPersonalInfo(props) {
           <p className="custom-fz font-bold text-primary mb-4">
             Birthdate:{" "}
             <span className="text-priText-300 font-normal">
-              {props.personData.birthday}
+              {props.personData.birthday} ({age} years old)
             </span>
           </p>
         ) : null}

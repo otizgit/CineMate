@@ -20,14 +20,17 @@ export default function CompanyPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  });
 
+  useEffect(() => {
     fetchCompanyData();
   }, []);
 
   return (
-    <div className="padding pt-[100px] flex gap-10 flex-col">
+    <div className="padding pt-[140px] margin flex gap-16 flex-col items-center">
       {companyDetails.logo_path ? (
         <img
+          className="lg:w-[20rem]"
           src={`https://image.tmdb.org/t/p/w500${companyDetails.logo_path}`}
           alt="company image"
         />
@@ -62,8 +65,13 @@ export default function CompanyPage() {
         {companyDetails.homepage ? (
           <p className="custom-fz font-bold text-primary mb-4">
             Homepage:{" "}
-            <span className="text-priText-300 font-normal">
-              {companyDetails.homepage}
+            <span>
+              <a
+                className="text-priText-300 font-normal hover:text-blue-600"
+                href={companyDetails.homepage}
+              >
+                {companyDetails.homepage}
+              </a>
             </span>
           </p>
         ) : null}

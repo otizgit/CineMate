@@ -10,7 +10,7 @@ export default function AllSeasons() {
   useEffect(() => {
     document.title = `${title} | Seasons`;
     window.scrollTo(0, 0);
-  }, []);
+  });
 
   return (
     <div className="pt-[140px] margin padding flex flex-col gap-14">

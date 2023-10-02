@@ -76,21 +76,21 @@ export default function Card(props) {
           {props.data.poster_path && (
             <img
               className="group-hover:scale-110 display-img transition-all w-full"
-              src={`https://image.tmdb.org/t/p/w300${photo}`}
+              src={`https://image.tmdb.org/t/p/w780${photo}`}
               alt="Movie Poster"
             />
           )}
           {props.data.logo_path && (
             <img
               className="display-img group-hover:scale-110 transition-all w-full"
-              src={`https://image.tmdb.org/t/p/w300${photo}`}
+              src={`https://image.tmdb.org/t/p/w780${photo}`}
               alt="logo image"
             />
           )}
           {props.data.profile_path && (
             <img
               className="display-img group-hover:scale-110 h-[300px] w-full mx-auto object-cover transition-all"
-              src={`https://image.tmdb.org/t/p/w300${photo}`}
+              src={`https://image.tmdb.org/t/p/w780${photo}`}
               alt="Profile Image"
             />
           )}

@@ -6,6 +6,7 @@ export default function Seasons(props) {
   const seasonOne = props.seasons.filter((season) => {
     return season.season_number === 1;
   });
+
   return (
     <div>
       <h2 className="font-sans text-white text-[1.5rem] mb-2 tracking-wider">

@@ -5,12 +5,12 @@ import bgImage from "../assets/images/bg.avif";
 import { useParams } from "react-router-dom";
 import apiKey from "../assets/data/key";
 import { searchToggleContext } from "../components/layout/Layout";
-import MovieDetails from "../components/interface/MovieDetails";
+import MovieDetails from "../components/interface/Movie/MovieDetails";
 import { useWindowSize } from "@uidotdev/usehooks";
 import CategoryResults from "../components/interface/CategoryResults";
-import MovieInfo from "../components/interface/MovieInfo";
-import MovieExtraLinks from "../components/interface/MovieExtraLinks";
-import MovieReviews from "../components/interface/MovieReviews";
+import MovieInfo from "../components/interface/Movie/MovieInfo";
+import MovieExtraLinks from "../components/interface/Movie/MovieExtraLinks";
+import MovieReviews from "../components/interface/Movie/MovieReviews";
 import Networks from "../components/interface/Networks";
 import Seasons from "../components/interface/Seasons";
 import SeasonsCard from "../components/interface/Cards/SeasonsCard";
@@ -84,12 +84,12 @@ export default function SelectedMovie() {
 
   useEffect(() => {
     document.title = `Cinemate | ${title}`;
+    window.scrollTo(0, 0);
   });
 
   useEffect(() => {
     fetchData();
     setSearchOpen(false);
-    window.scrollTo(0, 0);
   }, [trigger]);
 
   const backdropStyle = {
@@ -117,14 +117,14 @@ export default function SelectedMovie() {
   return (
     <div className="pt-[80px]">
       <div
-        className="h-[350px] lg:h-[600px] padding relative mb-5 lg:mb-16"
+        className="h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16"
         style={results.backdrop_path ? backdropStyle : backdropStyleTwo}
       >
         <div className="lg:flex lg:py-[5rem] lg:items-center">
           {results.poster_path && (
             <img
-              className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[10px] custom-shadow"
-              src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
+              className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow"
+              src={`https://image.tmdb.org/t/p/w780${results.poster_path}`}
               alt="Movie Poster"
             />
           )}

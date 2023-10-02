@@ -22,7 +22,7 @@ export default function CategoryPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Cinemate | Categories";
-  }, [])
+  });
 
   const fetchMovies = () => {
     axios

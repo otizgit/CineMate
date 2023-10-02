@@ -13,7 +13,7 @@ export default function AllReviews() {
   useEffect(() => {
     document.title = `${movieTitle} | Reviews`;
     window.scrollTo(0, 0);
-  }, []);
+  });
 
   return (
     <div className="pt-[100px] padding margin">

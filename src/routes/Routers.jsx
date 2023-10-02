@@ -9,6 +9,8 @@ import AllCastAndCrew from "../pages/AllCastAndCrew";
 import AllReviews from "../pages/AllReviews";
 import PersonPage from "../pages/PersonPage";
 import CompanyPage from "../pages/CompanyPage";
+import CollectionPage from "../pages/CollectionPage";
+import SelectedSeason from "../pages/SelectedSeason";
 
 export default function Routers() {
   return (
@@ -24,6 +26,8 @@ export default function Routers() {
         <Route path="/:title/all-reviews" element={<AllReviews />} />
         <Route path="/person/:title/:id" element={<PersonPage />} />
         <Route path="/company/:name/:id" element={<CompanyPage />} />
+        <Route path="/collection/:name/:id" element={<CollectionPage />} />
+        <Route path="seasons/:season/:title/:id" element={<SelectedSeason />} />
       </Routes>
     </div>
   );

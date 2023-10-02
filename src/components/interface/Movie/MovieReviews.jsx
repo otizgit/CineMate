@@ -1,5 +1,5 @@
 import React from "react";
-import ReviewsCard from "./Cards/ReviewsCard";
+import ReviewsCard from "../Cards/ReviewsCard";
 
 export default function MovieReviews(props) {
   return props.reviews.length ? (
