@@ -1,0 +1,65 @@
+const images = [
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/john-wick.jpg?updatedAt=1695051543391",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/john-wick-mobile.jpg?updatedAt=1695051541460",
+  },
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/captain-america.webp?updatedAt=1695051543069",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/captain-america-mobile.jpg?updatedAt=1695051542967",
+  },
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/batman.jpg?updatedAt=1695051542414",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/batman-mobile.jpg?updatedAt=1695051542088",
+  },
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/the-flash.jpg?updatedAt=1695051556116",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/the-flash-mobile.jpg?updatedAt=1695051551544",
+  },
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/superman.jpg?updatedAt=1695051556633",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/superman-mobile.jpg?updatedAt=1695051553345",
+  },
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/black-panther.jpg?updatedAt=1695051540208",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/black-panther-mobile.jpg?updatedAt=1695051541697",
+  },
+
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/spiderman.jpg?updatedAt=1695051551186",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/spider-man-mobile.jpg?updatedAt=1695051548959",
+  },
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/thor.jpg?updatedAt=1695051550501",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/thor-mobile.jpg?updatedAt=1695051554065",
+  },
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/wolverine.jpg?updatedAt=1695051550840",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/wolverine-mobile.jpg?updatedAt=1695051551767",
+  },
+  {
+    desktopUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/iron-man.jpg?updatedAt=1695051542060",
+    mobileUrl:
+      "https://ik.imagekit.io/zusxqcpbw/tr:w-600/iron-man-mobile.jpg?updatedAt=1695051540693",
+  },
+];
+
+export default images;

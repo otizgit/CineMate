@@ -1,0 +1,35 @@
+const movieTitle = "The Nun";
+const personName = "Tom Holland";
+const encodedTitle = encodeURIComponent(movieTitle);
+const encodedName = encodeURIComponent(personName);
+
+const collection = `https://api.themoviedb.org/3/search/collection?api_key=${apiKey}&query=${encodedName}`;
+const company = `https://api.themoviedb.org/3/search/company?api_key=${apiKey}&query=${encodedName}`;
+
+const genres = `https://api.themoviedb.org/3/genre/movie/list/439079?api_key=${apiKey}`;
+
+const credits = `https://api.themoviedb.org/3/credit/{credit_id}/439079?api_key=${apiKey}`; //credit_ID is the movie or TV ID
+
+const imagesLink =
+  "https://image.tmdb.org/t/p/w400/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg";
+// const popularLink = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+const topRated = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
+const upComing = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
+const airingToday = `https://api.themoviedb.org/3/movie/airing_today?api_key=${apiKey}`;
+const multiSearch = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${encodedName}`; //For Name and movie
+const discoverPopular = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`;
+const trending = `https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}`;
+const movieSearch = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodedTitle}`;
+const personSearch = `https://api.themoviedb.org/3/search/person?api_key=${apiKey}&query=${encodedName}`;
+const tvSearch = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${encodedTitle}`;
+
+const detailedSearch = `https://api.themoviedb.org/3/movie/439079?api_key=${apiKey}`; //Where 439079 is the id of the movie
+// when we click to see more of a movie, we should fetch the above data and also the real reviews of the movies
+const realReviews = `https://api.themoviedb.org/3/movie/372058/reviews?api_key=${apiKey}`; //Maybe
+const similarMovies = `https://api.themoviedb.org/3/movie/439079/similar?api_key=${apiKey}`;
+// Also get the similar movies based on this movie id and genre
+
+const upcoming = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
+const alternativeTitle = `https://api.themoviedb.org/3/movie/372058/alternative_titles?api_key=${apiKey}`; //get an alternative title of a movie
+
+const findById = `https://api.themoviedb.org/3/find/439079?api_key=${apiKey}`;

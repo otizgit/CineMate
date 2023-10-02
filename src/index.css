@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@font-face {
+  font-family: Comic;
+  src: url(./fonts/mantee.ttf);
+}
+@font-face {
+  font-family: Cheeky;
+  src: url(./fonts/Cheesecake.ttf);
+}
+@font-face {
+  font-family: Handy;
+  src: url(./fonts/handmade.ttf);
+}
+
+* {
+  font-family:
+    "Nunito",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #29ab87 black;
+}
+
+html::-webkit-scrollbar {
+  width: 0.5vw;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: #29ab87;
+  border-radius: 30px;
+}
+html::-webkit-scrollbar-track {
+  background-color: hsl(0, 0%, 0%);
+}
+
+.side-bar {
+  scrollbar-width: thin;
+  scrollbar-color: #29ab87 black;
+}
+
+.side-bar::-webkit-scrollbar {
+  width: 0.5vw;
+}
+.side-bar::-webkit-scrollbar-thumb {
+  background-color: #29ab87;
+  border-radius: 30px;
+}
+.side-bar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.header-style {
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+.no-focus:focus {
+  outline: none;
+}
+
+.custom-shadow {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+.list-style {
+  position: relative;
+  margin-right: 0.5em;
+}
+.list-style:not(:last-child)::after {
+  content: ",";
+  position: absolute;
+}
+
+.background-style {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.8) 60%,
+      hsla(163, 82%, 49%, 0.18)
+    ),
+    url("./assets//images/watchingTv.jpg");
+}
+
+@media (max-width: 768px) {
+  .background-style {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.93) 50%,
+        hsla(162, 71%, 11%, 0.867)
+      ),
+      url("./assets//images/watching-tv-mobile.jpg");
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .image {
+    @apply w-full block h-[100dvh] object-cover;
+  }
+  .font {
+    @apply text-[1.35rem] xl:text-[1.1rem];
+  }
+  .font-weight {
+    @apply font-light;
+  }
+  .button {
+    @apply text-white border-primary border-solid py-1 hover:scale-105 transition border-2 rounded-md;
+  }
+  .padding {
+    @apply px-6 md:px-14;
+  }
+  .margin {
+    @apply mb-24;
+  }
+  .padding-top {
+    @apply pt-[10rem];
+  }
+  .spacing {
+    @apply tracking-wider;
+  }
+  .custom-fz {
+    @apply text-[.95rem];
+  }
+  .movie-margin {
+    @apply mb-16 lg:mb-20;
+  }
+}
