@@ -16,20 +16,12 @@ export default {
         },
       },
       fontFamily: {
-        custom: [
-          "Open Sans", 
-          "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-        ],
-        comic: ["Comic", "Arial, Helvetica", "sans-serif"],
-        boldFont: ["Lilita One", "Arial, Helvetica", "sans-serif"],
-        serif: [
-          "Handy",
-          "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-        ],
         sans: [
-          "Cheeky",
+          "Exo",
           "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
         ],
+        heading: ["Bebas Neue", "Arial, Helvetica", "sans-serif"],
+        cinzel: ["Cinzel", "Arial, Helvetica", "sans-serif"],
       },
     },
   },

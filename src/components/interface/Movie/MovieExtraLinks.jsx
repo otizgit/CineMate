@@ -7,7 +7,7 @@ export default function MovieExtraLinks(props) {
       {props.results.production_companies ? (
         <div className="flex-1">
           {props.results.production_companies.length ? (
-            <h2 className="font-sans text-white text-[1.5rem] mb-2 tracking-wider">
+            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-2">
               Production Companies
             </h2>
           ) : null}
@@ -32,7 +32,7 @@ export default function MovieExtraLinks(props) {
       {props.keywords ? (
         <div className="flex-1">
           {props.keywords.length ? (
-            <h2 className="font-sans text-white text-[1.5rem] mb-6 tracking-wider">
+            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary  mb-2">
               Keywords
             </h2>
           ) : null}
@@ -40,6 +40,7 @@ export default function MovieExtraLinks(props) {
             {props.keywords.map((movieKeyword) => {
               return (
                 <Link
+                to={`/keyword/${movieKeyword.name}/${movieKeyword.id}`}
                   key={movieKeyword.id}
                   className="py-1 px-3 rounded-lg border-2 border-primary w-[fit-content] flex"
                 >

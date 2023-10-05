@@ -9,7 +9,6 @@ import {
   faInstagram,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
-import SearchBox from "../interface/SearchBox";
 
 export default function Footer() {
   const [apiState, setApiState] = useState(false);
@@ -18,7 +17,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="z-20 relative padding py-14 xl:py-12 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-20">
+    <footer className="relative padding py-14 xl:py-12 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-20">
       <div className="basis-full">
         <Link to="/home">
           <img className="w-[5rem]" src={Logo} alt="Logo" />
@@ -32,7 +31,7 @@ export default function Footer() {
               {links.map((navLink) => {
                 return (
                   <div key={navLink.id}>
-                    <li className="font font-sans text-center text-white cursor-pointer lg:hover:scale-110 md:transition tracking-widest">
+                    <li className="text-[1.2rem] font-heading text-center text-white cursor-pointer tracking-widest">
                       {navLink.link}
                     </li>
                     <div>
@@ -49,7 +48,7 @@ export default function Footer() {
                                 searchWord: navLink.searchWord,
                               }}
                             >
-                              <li className="text-center font-custom text-[0.9rem] text-priText-300 leading-[2.5rem] lg:hover:scale-110 md:transition lg:hover:underline lg:hover:text-primary lg:text-[0.8rem]">
+                              <li className="text-center font-sans text-[0.9rem] text-priText-300 leading-[2.5rem] lg:hover:scale-110 md:transition lg:hover:underline lg:hover:text-primary lg:text-[0.8rem]">
                                 {extraLink.content}
                               </li>
                             </NavLink>
@@ -65,9 +64,6 @@ export default function Footer() {
         </div>
       </div>
       <div className="basis-full w-full">
-        <div className="mb-7">
-          <SearchBox searchWord={"Movies, TV Shows, Cast, Crew..."} />
-        </div>
         <div className="flex flex-wrap justify-center gap-4">
           <a
             className="w-[3rem] h-[3rem] rounded-[50%] grid place-items-center bg-primary hover:scale-110 transition"

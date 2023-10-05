@@ -24,11 +24,11 @@ export default function Trending(props) {
   return (
     <div className="margin">
       <div className="padding">
-        <div className="mb-8">
-          <h1 className="text-[1.75rem] font-sans text-white text-center md:text-left">
+        <div className="mb-6">
+          <h1 className="text-[1.7rem] font-heading tracking-wider text-primary text-center md:text-left">
             {props.title}
           </h1>
-          <p className="font-custom text-priText-300 text-center md:text-left">
+          <p className="custom-fz text-priText-300 text-center md:text-left">
             <FontAwesomeIcon
               icon={faCaretRight}
               className="text-primary mr-2"

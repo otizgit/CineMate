@@ -33,7 +33,7 @@ export default function SearchResultsPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `Cinemate | ${id} Search Results`;
+    document.title = `Cinemate | "${id}" Search Results`;
   });
 
   return (

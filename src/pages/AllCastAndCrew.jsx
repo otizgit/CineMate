@@ -23,7 +23,7 @@ export default function AllCastAndCrew() {
         <div className="flex items-center gap-6">
           {cast.profile_path ? (
             <img
-              className="w-[8rem] rounded-xl border-2 border-primary group-hover:scale-110 transition-all"
+              className="w-[10rem] rounded-xl border-2 border-primary group-hover:scale-110 transition-all"
               src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
               alt="cast profile image"
             />
@@ -40,7 +40,7 @@ export default function AllCastAndCrew() {
               {cast.name}
             </p>
             <p className="text-[1rem] lg:text-[.8rem] text-priText-300 font-custom md:text-sm text-center">
-              {cast.character}
+              as {cast.character}
             </p>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function AllCastAndCrew() {
         <div className="flex items-center gap-6">
           {crew.profile_path ? (
             <img
-              className="w-[8rem] rounded-xl border-2 border-primary group-hover:scale-110 transition-all"
+              className="w-[10rem] rounded-xl border-2 border-primary group-hover:scale-110 transition-all"
               src={`https://image.tmdb.org/t/p/w500${crew.profile_path}`}
               alt="crew profile image"
             />
@@ -84,9 +84,9 @@ export default function AllCastAndCrew() {
   });
 
   return (
-    <div className="pt-[100px] padding margin">
-      <div className="movie-margin border-b-2 border-primary pb-[6rem]">
-        <h2 className="font-sans text-white text-[1.6rem] mb-4 tracking-wider">
+    <div className="pt-[110px] padding margin">
+      <div className="movie-margin border-b-2 border-primary pb-[5rem]">
+        <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6">
           Cast
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-12">
@@ -95,7 +95,7 @@ export default function AllCastAndCrew() {
       </div>
 
       <div>
-        <h2 className="font-sans text-white text-[1.6rem] mb-4 tracking-wider">
+        <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6">
           Crew
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-12">

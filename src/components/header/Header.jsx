@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import links from "../../assets/data/navLinks";
 import Logo from "../../assets/images/Logos/Logo.png";
 import { Link, NavLink } from "react-router-dom";
@@ -10,14 +10,14 @@ import {
   faXmark,
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { searchToggleContext } from "../layout/Layout";
+import SearchBox from "../interface/SearchBox";
 
 export default function Header() {
   const [navState, setNavState] = useState(false);
   const [clickedNav, setClickedNav] = useState(null);
   const [apiState, setApiState] = useState(false);
-  const { setSearchOpen } = useContext(searchToggleContext);
   const windowWidthSize = useWindowSize().width;
+  const [isSearchOpen, setSearchOpen] = useState(false)
 
   function toggleNavClick(index) {
     if (clickedNav === index && windowWidthSize < 1024) {
@@ -36,8 +36,8 @@ export default function Header() {
     setApiState((prevState) => !prevState);
   }
 
-  function toggleSearch() {
-    setSearchOpen((prevSearch) => !prevSearch);
+  function handleSearchClick() {
+    setSearchOpen(prevSearch => !prevSearch)
   }
 
   return (
@@ -65,12 +65,12 @@ export default function Header() {
       </Link>
       <nav className="flex">
         <ul
-          className={`fixed inset-0 bg-black h-[100vh] w-[75%] flex flex-col z-[8] ${
+          className={`fixed z-50 inset-0 bg-black h-[100vh] w-[75%] flex flex-col ${
             navState ? "translate-x-[0%]" : "translate-x-[-100%]"
           } items-left padding pt-28 gap-10 text-white transition-all lg:static lg:flex-row lg:w-[unset] lg:h-[unset] lg:bg-[unset] lg:pt-0 lg:translate-x-[unset]`}
         >
           <NavLink onClick={handleLinkClick} to="/home">
-            <li className="font font-sans hover:scale-110 transition tracking-widest">
+            <li className="font-heading font hover:scale-110 transition tracking-widest">
               Home
             </li>
           </NavLink>
@@ -79,13 +79,13 @@ export default function Header() {
               <div key={navLink.id} className="lg:relative group">
                 <li
                   onClick={() => toggleNavClick(index)}
-                  className="font font-sans mb-2 lg:m-0 flex cursor-pointer items-center gap-2 lg:hover:scale-110 md:transition tracking-widest"
+                  className="font-heading font mb-2 lg:m-0 flex cursor-pointer items-center gap-2 lg:hover:scale-110 md:transition tracking-widest"
                 >
                   {navLink.link}
                   <span>
                     <FontAwesomeIcon
                       icon={faCaretDown}
-                      className={`text-primary transition-all mt-1 lg:group-hover:rotate-180 ${
+                      className={`text-primary transition-all pb-[.15rem] lg:group-hover:rotate-180 ${
                         clickedNav === index ? "rotate-180" : "rotate-0"
                       }`}
                     />
@@ -109,7 +109,7 @@ export default function Header() {
                             searchWord: navLink.searchWord,
                           }}
                         >
-                          <li className="font-custom font-semibold text-[0.9rem] text-priText-300 leading-[2.5rem] lg:hover:scale-110 md:transition lg:hover:underline lg:text-[0.8rem]">
+                          <li className="font-sans font-semibold text-[0.9rem] text-priText-300 leading-[2.5rem] lg:hover:scale-110 md:transition lg:hover:underline lg:text-[0.8rem]">
                             {extraLink.content}
                           </li>
                         </NavLink>
@@ -121,10 +121,7 @@ export default function Header() {
             );
           })}
         </ul>
-        <button
-          onClick={toggleSearch}
-          className="flex items-center gap-10 cursor-pointer"
-        >
+        <button onClick={handleSearchClick} className="flex items-center gap-10 cursor-pointer">
           <label className="cursor-pointer" htmlFor="search-input">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
@@ -135,12 +132,18 @@ export default function Header() {
       </nav>
       <div
         onClick={handleNavStateChange}
-        className={`overflow fixed lg:hidden inset-0 h-[100vh] w-full bg-opaque transition-all ${
+        className={`overflow fixed z-[40] lg:hidden inset-0 h-[100vh] w-full bg-opaque transition-all ${
           navState
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       ></div>
+
+      <SearchBox
+        searchWord={"Movies, TV Shows, Cast, Crew..."}
+        isSearchOpen={isSearchOpen}
+        setSearchOpen={setSearchOpen}
+      />
     </header>
   );
 }

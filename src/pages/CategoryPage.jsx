@@ -4,7 +4,6 @@ import axios from "axios";
 import apiKey from "../assets/data/key";
 import CategoryResults from "../components/interface/CategoryResults";
 import Explore from "../components/interface/Explore";
-import { searchToggleContext } from "../components/layout/Layout";
 
 export default function CategoryPage() {
   const keyword = useParams().id;
@@ -12,11 +11,9 @@ export default function CategoryPage() {
   const location = useLocation();
   const { apiKeyword, apistate } = location.state;
   const [title, setTitle] = useState("");
-  const { setSearchOpen } = useContext(searchToggleContext);
 
   useEffect(() => {
     setTitle(location.state.title);
-    setSearchOpen(false);
   }, [apistate]);
 
   useEffect(() => {
@@ -45,8 +42,8 @@ export default function CategoryPage() {
 
   return (
     <div className="padding-top md:pt-[10rem]">
-      <div className="flex padding flex-col-reverse gap-10 md:flex-row items-center justify-between mb-10">
-        <p className="uppercase font-sans text-center text-white text-[1.75rem]">
+      <div className="flex padding flex-col-reverse gap-10 md:flex-row items-center justify-between mb-6">
+        <p className="text-[1.7rem] font-heading tracking-wider text-primary">
           {title}
         </p>
       </div>

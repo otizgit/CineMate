@@ -11,6 +11,8 @@ import PersonPage from "../pages/PersonPage";
 import CompanyPage from "../pages/CompanyPage";
 import CollectionPage from "../pages/CollectionPage";
 import SelectedSeason from "../pages/SelectedSeason";
+import EpisodePage from "../pages/EpisodePage";
+import KeywordPage from "../pages/KeywordPage";
 
 export default function Routers() {
   return (
@@ -27,7 +29,9 @@ export default function Routers() {
         <Route path="/person/:title/:id" element={<PersonPage />} />
         <Route path="/company/:name/:id" element={<CompanyPage />} />
         <Route path="/collection/:name/:id" element={<CollectionPage />} />
-        <Route path="seasons/:season/:title/:id" element={<SelectedSeason />} />
+        <Route path="/seasons/:season/season/:title/:id" element={<SelectedSeason />} />
+        <Route path="/seasons/:season/:episode/:title/:id" element={<EpisodePage />} />
+        <Route path="/keyword/:name/:id" element={<KeywordPage />} />
       </Routes>
     </div>
   );

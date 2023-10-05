@@ -3,13 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
-import { searchToggleContext } from "../layout/Layout";
 
 export default function SearchBox(props) {
   const inputRef = useRef(null);
   const btnRef = useRef(null);
   const navigate = useNavigate();
-  const { isSearchOpen, setSearchOpen } = useContext(searchToggleContext);
   const [triggerSearch, setTrigger] = useState(false);
 
   function handleSubmitClick() {
@@ -24,7 +22,7 @@ export default function SearchBox(props) {
         theme: "dark",
       });
     } else {
-      setSearchOpen(false);
+      props.setSearchOpen(false);
       inputRef.current.value = "";
       setTrigger((prevTrigger) => !prevTrigger);
       navigate(`/results/${value}`, { state: { trigger: triggerSearch } });
@@ -32,7 +30,7 @@ export default function SearchBox(props) {
   }
 
   function toggleSearch() {
-    setSearchOpen(false);
+    props.setSearchOpen(false);
     inputRef.current.value = "";
   }
 
@@ -44,32 +42,41 @@ export default function SearchBox(props) {
   };
 
   return (
-    <div className="text-primary w-full flex items-center custom-shadow">
-      <input
-        onKeyDown={(e) => handleEnterClick(e)}
-        autoFocus={isSearchOpen}
-        ref={inputRef}
-        className="no-focus font-custom h-[3rem] px-4 text-black custom-fz w-full rounded-l-lg"
-        type="text"
-        id="search-input"
-        maxLength={35}
-        placeholder={`Search for ${props.searchWord}`}
-      />
-      {props.isHeaderSearch && (
+    <div
+      className={`fixed top-[95px] w-full left-0 z-[5] padding ${
+        props.isSearchOpen ? "scale-y-100" : "scale-y-0"
+      } transition-all origin-top`}
+    >
+      <div className=" w-full flex items-center custom-shadow">
+        <input
+          onKeyDown={(e) => handleEnterClick(e)}
+          autoFocus={props.isSearchOpen}
+          ref={inputRef}
+          className="focus:outline-none font-sans font-medium h-[3rem] px-4 text-black custom-fz w-full rounded-l-lg"
+          type="text"
+          id="search-input"
+          maxLength={35}
+          placeholder={`Search for ${props.searchWord}`}
+        />
+        {props.isSearchOpen && (
+          <button
+            onClick={toggleSearch}
+            className="h-[3rem] w-16 md:w-14 bg-[white]"
+          >
+            <FontAwesomeIcon icon={faXmark} className="text-red-600 text-xl" />
+          </button>
+        )}
         <button
-          onClick={toggleSearch}
-          className="h-[3rem] w-16 md:w-14 bg-[white]"
+          onClick={handleSubmitClick}
+          ref={btnRef}
+          className="bg-primary h-[3rem] w-16 md:w-14 rounded-r-lg"
         >
-          <FontAwesomeIcon icon={faXmark} className="text-red-600 text-xl" />
+          <FontAwesomeIcon
+            icon={faSearch}
+            className="text-white text-[1.2rem]"
+          />
         </button>
-      )}
-      <button
-        onClick={handleSubmitClick}
-        ref={btnRef}
-        className="bg-primary h-[3rem] w-16 md:w-14 rounded-r-lg"
-      >
-        <FontAwesomeIcon icon={faSearch} className="text-white" />
-      </button>
+      </div>
     </div>
   );
 }

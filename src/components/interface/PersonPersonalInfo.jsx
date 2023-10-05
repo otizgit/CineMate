@@ -34,41 +34,41 @@ export default function PersonPersonalInfo(props) {
         </div>
       )}
       <div className="text-center">
-        <h2 className="font-sans text-white text-[2.1rem] mb-4">
+        <h2 className="font-heading tracking-wider text-white text-[2.1rem] mb-2">
           {props.personData.name}
         </h2>
-        <p className="custom-fz font-bold text-primary mb-4">
+        <p className="custom-fz font-semibold text-primary mb-4">
           Known For:{" "}
-          <span className="text-priText-300 font-normal">
+          <span className="text-white font-normal">
             {props.personData.known_for_department}
           </span>
         </p>
-        <p className="custom-fz font-bold text-primary mb-4">
+        <p className="custom-fz font-semibold text-primary mb-4">
           Gender:{" "}
-          <span className="text-priText-300 font-normal">
+          <span className="text-white font-normal">
             {props.personData.gender == 2 ? "Male" : "Female"}
           </span>
         </p>
         {props.personData.birthday ? (
-          <p className="custom-fz font-bold text-primary mb-4">
+          <p className="custom-fz font-semibold text-primary mb-4">
             Birthdate:{" "}
-            <span className="text-priText-300 font-normal">
+            <span className="text-white font-normal">
               {props.personData.birthday} ({age} years old)
             </span>
           </p>
         ) : null}
         {props.personData.deathday ? (
-          <p className="custom-fz font-bold text-primary mb-4">
+          <p className="custom-fz font-semibold text-primary mb-4">
             Deathdate:{" "}
-            <span className="text-priText-300 font-normal">
+            <span className="text-white font-normal">
               {props.personData.deathday}
             </span>
           </p>
         ) : null}
         {props.personData.place_of_birth ? (
-          <p className="custom-fz font-bold text-primary mb-4">
+          <p className="custom-fz font-semibold text-primary mb-4">
             Place Of Birth:{" "}
-            <span className="text-priText-300 font-normal">
+            <span className="text-white font-normal">
               {props.personData.place_of_birth}
             </span>
           </p>
@@ -76,11 +76,11 @@ export default function PersonPersonalInfo(props) {
         {props.personData.also_known_as &&
         props.personData.also_known_as.length ? (
           <div className="hidden lg:block">
-            <p className="custom-fz font-bold text-primary">Also Known As: </p>
+            <p className="custom-fz font-semibold text-primary">Also Known As: </p>
             <div className="mb-6">
               {props.personData.also_known_as.map((names) => {
                 return (
-                  <p key={nanoid()} className="custom-fz text-priText-300">
+                  <p key={nanoid()} className="custom-fz text-white">
                     {names}
                   </p>
                 );

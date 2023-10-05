@@ -4,7 +4,6 @@ import axios from "axios";
 import bgImage from "../assets/images/bg.avif";
 import { useParams } from "react-router-dom";
 import apiKey from "../assets/data/key";
-import { searchToggleContext } from "../components/layout/Layout";
 import MovieDetails from "../components/interface/Movie/MovieDetails";
 import { useWindowSize } from "@uidotdev/usehooks";
 import CategoryResults from "../components/interface/CategoryResults";
@@ -26,8 +25,6 @@ export default function SelectedMovie() {
   const [recommendations, setRecommendations] = useState([]);
 
   const windowWidth = useWindowSize().width;
-
-  const { setSearchOpen } = useContext(searchToggleContext);
 
   const location = useLocation();
   const { releaseYear, trigger } = location.state;
@@ -89,7 +86,6 @@ export default function SelectedMovie() {
 
   useEffect(() => {
     fetchData();
-    setSearchOpen(false);
   }, [trigger]);
 
   const backdropStyle = {
@@ -149,7 +145,7 @@ export default function SelectedMovie() {
 
       {results.last_episode_to_air && (
         <div className="movie-margin padding">
-          <h2 className="font-sans text-white text-[1.5rem] mb-2 tracking-wider">
+          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6">
             Last Episode To Air
           </h2>
           <SeasonsCard seasonArray={results.last_episode_to_air} />
@@ -158,7 +154,7 @@ export default function SelectedMovie() {
 
       {cast.length && (
         <div className="movie-margin">
-          <h2 className="padding font-sans text-white text-[1.6rem] mb-2 tracking-wider">
+          <h2 className="padding text-[1.7rem] font-heading tracking-wider text-primary mb-6">
             Cast
           </h2>
           <CategoryResults apiKeyword="person" feedback={cast.slice(0, 20)} />
@@ -195,7 +191,7 @@ export default function SelectedMovie() {
 
       {recommendations && (
         <div className="margin">
-          <h2 className="padding font-sans text-white text-[1.6rem] mb-2 tracking-wider">
+          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6">
             You May Also Like
           </h2>
           <CategoryResults apiKeyword={keyword} feedback={recommendations} />

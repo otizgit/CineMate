@@ -27,10 +27,10 @@ export default function CompanyPage() {
   }, []);
 
   return (
-    <div className="padding pt-[140px] margin flex gap-16 flex-col items-center">
+    <div className="padding pt-[120px] margin flex gap-16 flex-col items-center">
       {companyDetails.logo_path ? (
         <img
-          className="lg:w-[20rem]"
+          className="w-full lg:w-[20rem]"
           src={`https://image.tmdb.org/t/p/w500${companyDetails.logo_path}`}
           alt="company image"
         />
@@ -41,7 +41,7 @@ export default function CompanyPage() {
       )}
 
       <div className="text-center">
-        <h2 className="font-sans text-white text-[2.1rem] mb-4">
+        <h2 className="text-[1.7rem] font-heading tracking-wider text-white mb-4">
           {companyDetails.name}
         </h2>
         {companyDetails.origin_country ? (
@@ -77,11 +77,8 @@ export default function CompanyPage() {
         ) : null}
 
         {companyDetails.description ? (
-          <p className="custom-fz font-bold text-primary mb-4">
-            Description:{" "}
-            <span className="text-priText-300 font-normal">
+          <p className="custom-fz text-priText-300 font-normal">
               {companyDetails.description}
-            </span>
           </p>
         ) : null}
       </div>

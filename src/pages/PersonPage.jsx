@@ -51,30 +51,30 @@ export default function PersonPage() {
   }
 
   return (
-    <div className="pt-[110px]">
+    <div className="pt-[120px]">
       <div className="padding lg:hidden">
         <PersonPersonalInfo personData={personData} />
       </div>
 
-      <div className="px-6 hidden lg:block side-bar absolute w-[27%] top-[80px] pb-10 bottom-0 overflow-y-scroll">
+      <div className="px-6 hidden lg:block absolute w-[27%] top-[80px] pb-10 border-r-2 border-b-2 border-primary">
         <PersonPersonalInfo personData={personData} />
       </div>
 
       <div className="lg:w-[73%] lg:ml-auto">
         {personData.biography ? (
-          <div className="text-center lg:text-left border-b-2 border-primary pb-6 mb-6 padding">
-            <p className="text-primary font-bold mb-2 text-[1.2rem]">Biography</p>
+          <div className="text-center lg:text-left border-b-2 border-primary pb-10 mb-6 padding">
+            <p className="font-heading tracking-wider text-primary mb-2 text-[1.5rem]">Biography</p>
             <p className="custom-fz text-priText-300">{personData.biography}</p>
           </div>
         ) : null}
         <div className="flex justify-between items-center mb-4 padding">
-          <h2 className="font-sans text-white text-[1.5rem] mb-2">Features</h2>
+          <h2 className="text-[1.7rem] font-heading tracking-wider text-white mb-2">Features</h2>
           <button
             onClick={toggleFilter}
             className="bg-black px-5 rounded-sm py-2 relative"
           >
             <div className="flex items-center gap-6">
-              <p className="custom-fz text-white font-bold">{category}</p>
+              <p className="custom-fz text-white font-semibold">{category}</p>
               <FontAwesomeIcon
                 icon={faCaretDown}
                 className="text-primary custom-fz"
@@ -90,7 +90,7 @@ export default function PersonPage() {
                   setCredit("movie");
                   setCategory("Movies");
                 }}
-                className="custom-fz text-white font-bold mb-3"
+                className="custom-fz text-white font-medium mb-3"
               >
                 Movies
               </div>
@@ -99,7 +99,7 @@ export default function PersonPage() {
                   setCredit("tv");
                   setCategory("TV Shows");
                 }}
-                className="custom-fz text-white font-bold"
+                className="custom-fz text-white font-medium"
               >
                 TV Shows
               </div>

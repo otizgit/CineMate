@@ -13,7 +13,7 @@ export default function AllSeasons() {
   });
 
   return (
-    <div className="pt-[140px] margin padding flex flex-col gap-14">
+    <div className="pt-[140px] margin padding flex flex-col gap-10">
       {seasons.map((season) => {
         return <SeasonsCard key={season.id} seasonArray={season} />;
       })}

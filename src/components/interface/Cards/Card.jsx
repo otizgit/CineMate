@@ -67,7 +67,7 @@ export default function Card(props) {
         releaseYear: props.data.release_year
           ? props.data.release_date.slice(0, 4)
           : null,
-        trigger: {searchTrigger}
+        trigger: { searchTrigger },
       }}
       className="cursor-pointer border-0 w-full group"
     >
@@ -89,7 +89,7 @@ export default function Card(props) {
           )}
           {props.data.profile_path && (
             <img
-              className="display-img group-hover:scale-110 h-[300px] w-full mx-auto object-cover transition-all"
+              className="display-img group-hover:scale-110 h-[280px] w-full mx-auto object-cover transition-all"
               src={`https://image.tmdb.org/t/p/w780${photo}`}
               alt="Profile Image"
             />
@@ -101,7 +101,7 @@ export default function Card(props) {
             icon={errorPhoto}
             className="text-primary text-[5rem]"
           />
-          <p className="text-red-600 text-[.85rem] font-semibold font-custom">
+          <p className="text-red-600 text-[.85rem] font-semibold">
             No Image Found
           </p>
         </div>
@@ -114,28 +114,26 @@ export default function Card(props) {
                 width: `${ratingPercentage}%`,
                 background: percentageColor,
               }}
-              className="h-full font-custom text-[.4rem] text-white font-extrabold text-center"
+              className="h-full text-[.4rem] text-white font-extrabold text-center"
             ></div>
           </div>
         )}
       </div>
-      <p
-        className="mb-[3px] text-white text-[1.2rem] font-custom md:text-base font-medium text-center"
-      >
+      <p className="text-white text-[1.2rem] md:text-[1rem] font-medium text-center">
         {cardTitle}
       </p>
-      <p className="custom-fz lg:text-[.8rem] text-primary font-custom font-bold text-center">
+      <p className="custom-fz lg:text-[.8rem] text-primary font-semibold text-center">
         {cardDate}
         {cardRole}
-        {(originCountry && !cardDate) && `Origin Country: ${originCountry}`}
+        {originCountry && !cardDate && `Origin Country: ${originCountry}`}
       </p>
       {props.data.character && (
-        <p className="custom-fz lg:text-[.8rem] text-priText-300 font-custom font-semibold text-center">
+        <p className="custom-fz lg:text-[.8rem] text-priText-300 font-semibold text-center">
           as {props.data.character}
         </p>
       )}
       {props.data.department && (
-        <p className="custom-fz lg:text-[.8rem] text-priText-300 font-custom font-semibold text-center">
+        <p className="custom-fz lg:text-[.8rem] text-priText-300 font-semibold text-center">
           as {props.data.job}
         </p>
       )}

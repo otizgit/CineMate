@@ -9,18 +9,18 @@ export default function Explore() {
   return (
     <div className="background-style h-[35rem] md:h-[33rem] relative">
       <div className="padding pt-14 lg:absolute lg:top-[50%] lg:translate-y-[-50%] lg:pt-0">
-        <h1 className="text-white text-center lg:text-left font-comic md:text-[3.5rem] text-[2.3rem] leading-[1.3]">
+        <h1 className="text-white text-center lg:text-left font-bold font-heading md:text-[4rem] tracking-wide text-[2.3rem] leading-[1.3]">
           Explore Your <br /> Favorite
           <span>
             <Swiper
-              className="h-[3rem] md:h-[3.7rem] md:inline-block ml-4 xl:ml-4"
+              className="h-[3rem] md:h-[4rem] md:inline-block ml-4 xl:ml-4"
               direction={"vertical"}
               modules={[Autoplay]}
               autoplay={{ delay: 3000 }}
             >
-              <SwiperSlide className="text-primary font-comic">Movies</SwiperSlide>
-              <SwiperSlide className="text-primary font-comic">TV Shows</SwiperSlide>
-              <SwiperSlide className="text-primary font-comic">Cast/Crew</SwiperSlide>
+              <SwiperSlide className="text-primary font-heading md:text-[4rem] font-bold tracking-wide">Movies</SwiperSlide>
+              <SwiperSlide className="text-primary font-heading md:text-[4rem] font-bold tracking-wide">TV Shows</SwiperSlide>
+              <SwiperSlide className="text-primary font-heading md:text-[4rem] font-bold tracking-wide">Cast/Crew</SwiperSlide>
             </Swiper>
           </span>
         </h1>

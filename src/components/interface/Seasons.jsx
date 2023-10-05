@@ -9,7 +9,7 @@ export default function Seasons(props) {
 
   return (
     <div>
-      <h2 className="font-sans text-white text-[1.5rem] mb-2 tracking-wider">
+      <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6">
         Seasons
       </h2>
       {seasonOne.map((seasonArray) => {

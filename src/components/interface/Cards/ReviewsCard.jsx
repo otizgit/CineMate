@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function ReviewsCard(props) {
   return (
@@ -25,9 +25,13 @@ export default function ReviewsCard(props) {
           )}
           {props.review.author_details.rating && (
             <div className="flex items-center gap-2">
-              <p className="text-primary custom-fz font-medium">Rating:</p>
+              <p className="text-priText-300 custom-fz font-medium">Rating:</p>
               {props.review.author_details.rating && (
-                <p className="custom-fz text-white font-bold">{`${props.review.author_details.rating}/10`}</p>
+                <div className="flex gap-1">
+                  <FontAwesomeIcon icon={faStar} className="text-[gold] custom-fz pt-[.1rem]"/>
+                  <p className="custom-fz text-primary font-medium">{`${props.review.author_details.rating}/10`}</p>
+
+                </div>
               )}
             </div>
           )}

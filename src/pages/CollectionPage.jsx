@@ -85,7 +85,7 @@ export default function CollectionPage() {
 
       {collectionData.parts ? (
         <div className="margin">
-          <h2 className="padding font-sans text-[1.5rem] mb-4 text-white">
+          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 padding">
             Movies
           </h2>
           <CategoryResults apiKeyword="movie" feedback={collectionData.parts} />

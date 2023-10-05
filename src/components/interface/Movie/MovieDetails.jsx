@@ -5,19 +5,19 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 export default function MovieDetails(props) {
   return (
     <div className="padding text-white mb-5 lg:mb-0">
-      <div className="flex items-center mb-2 lg:mb-0 flex-wrap gap-2">
+      <div className="flex items-center mb-2 lg:mb-1 flex-wrap gap-2">
         {props.results.title && (
-          <p className="text-[2.1rem] font-sans text-white">
+          <p className="text-[2.1rem] font-heading tracking-wider text-white">
             {`${props.results.title}`}
           </p>
         )}
         {props.results.name && (
-          <p className="text-[2.1rem] font-sans text-white">
+          <p className="text-[2.1rem] font-heading tracking-wider text-white">
             {`${props.results.name}`}
           </p>
         )}
         {props.results.release_date ? (
-          <p className="custom-fz font-bold font-custom text-primary">{`(${props.results.release_date.slice(
+          <p className="custom-fz font-bold text-primary">{`(${props.results.release_date.slice(
             0,
             4
           )})`}</p>
@@ -32,7 +32,7 @@ export default function MovieDetails(props) {
         ) : null}
         {props.results.runtime ? (
           <div className="lg:border-r-2 lg:border-primary lg:pr-4">
-            <p className="custom-fz text-white-300">
+            <p className="custom-fz text-white-300 font-medium">
               {props.results.runtime}mins
             </p>
           </div>
@@ -44,7 +44,7 @@ export default function MovieDetails(props) {
                 return (
                   <p
                     key={genre.id}
-                    className="list-style text-center custom-fz text-white-300"
+                    className="list-style text-center custom-fz text-white-300 font-medium"
                   >
                     {genre.name}
                   </p>
@@ -55,7 +55,7 @@ export default function MovieDetails(props) {
         ) : null}
         {props.results.release_date ? (
           <div className="lg:border-r-2 lg:border-primary lg:pr-4">
-            <p className="custom-fz text-white-300">
+            <p className="custom-fz text-white-300 font-medium">
               {props.results.release_date}
             </p>
           </div>
@@ -64,7 +64,7 @@ export default function MovieDetails(props) {
           <div className="flex">
             {props.results.production_countries.map((country, index) => {
               return (
-                <p key={index} className="list-style custom-fz text-white-300">
+                <p key={index} className="list-style custom-fz text-white-300 font-medium">
                   {country.name}
                 </p>
               );
@@ -84,16 +84,16 @@ export default function MovieDetails(props) {
             return (
               <div key={index}>
                 {rating.Source === "Internet Movie Database" ? (
-                  <p className="custom-fz tracking-wide text-center font-extrabold">
+                  <p className="custom-fz tracking-wider text-center font-semibold">
                     IMDb
                   </p>
                 ) : (
-                  <p className="custom-fz tracking-wide text-center font-extrabold">
+                  <p className="custom-fz tracking-wider text-center font-semibold">
                     {rating.Source}
                   </p>
                 )}
                 <div className="flex justify-center items-center gap-1">
-                  <FontAwesomeIcon icon={faStar} className="text-[gold]" />
+                  <FontAwesomeIcon icon={faStar} className="text-[gold] custom-fz pb-1" />
                   <p className="custom-fz text-primary font-bold">
                     {rating.Value}
                   </p>
@@ -106,7 +106,7 @@ export default function MovieDetails(props) {
 
       {props.results.tagline ? (
         <div className="mb-2">
-          <p className="custom-fz italic custom-fz font-bold text-priText-300">
+          <p className="custom-fz italic custom-fz font-medium text-priText-300">
             {props.results.tagline}
           </p>
         </div>
@@ -123,14 +123,14 @@ export default function MovieDetails(props) {
       <div className="lg:flex gap-10 border-primary border-b-2 lg:border-none lg:pb-0 pb-5">
         {props.imdbResults.Writer !== "N/A" && props.imdbResults.Writer ? (
           <div className="mb-5">
-            <p className="custom-fz font-bold">{props.imdbResults.Writer}</p>
-            <p className="custom-fz text-primary font-semibold">Writer(s)</p>
+            <p className="custom-fz font-semibold">{props.imdbResults.Writer}</p>
+            <p className="custom-fz text-primary font-medium">Writer(s)</p>
           </div>
         ) : null}
         {props.imdbResults.Director !== "N/A" && props.imdbResults.Writer ? (
           <div>
-            <p className="custom-fz font-bold">{props.imdbResults.Director}</p>
-            <p className="custom-fz text-primary font-semibold">Director</p>
+            <p className="custom-fz font-semibold">{props.imdbResults.Director}</p>
+            <p className="custom-fz text-primary font-medium">Director</p>
           </div>
         ) : null}
       </div>

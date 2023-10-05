@@ -16,8 +16,8 @@ export default function AllReviews() {
   });
 
   return (
-    <div className="pt-[100px] padding margin">
-      <h2 className="font-sans text-white text-[1.6rem] mb-6 tracking-wider">
+    <div className="pt-[120px] padding margin">
+      <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6">
         Reviews
       </h2>
       <div className="flex flex-col gap-14">

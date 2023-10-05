@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import apiKey from "../assets/data/key";
 import { useParams } from "react-router-dom";
+import SeasonsCard from "../components/interface/Cards/SeasonsCard";
 
 export default function SelectedSeason() {
   const { season, title, id } = useParams();
@@ -22,19 +23,54 @@ export default function SelectedSeason() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `${title} | ${
-      season !== "Specials" ? "Season " + season : season
-    }`;
+    document.title = `${title} | ${`Season${season}`}`;
   });
 
   useEffect(() => {
     fetchSeasonData();
-    console.log(seasonData);
   }, []);
 
   return (
-    <div>
-      <p></p>
+    <div className="lg:pt-[80px]">
+      <div className="flex flex-col gap-2 lg:flex-row border-b-2 border-primary pb-10 lg:pb-0  mb-14">
+        <img
+          className="w-full lg:w-[11rem] object-cover"
+          src={`https://image.tmdb.org/t/p/w780${seasonData.poster_path}`}
+          alt="season poster"
+        />
+        <div className="text-center lg:text-left lg:pt-10">
+          {seasonData.name ? (
+            <div className="flex items-center gap-2 justify-center">
+              <h2 className="text-[1.7rem] font-heading tracking-wider text-white">
+                {seasonData.name}
+              </h2>
+              <p className="custom-fz text-primary font-semibold">
+                ({seasonData.air_date.slice(0, 4)})
+              </p>
+            </div>
+          ) : null}
+          {seasonData.overview ? (
+            <p className="custom-fz padding text-priText-300 lg:pb-10">
+              {seasonData.overview}
+            </p>
+          ) : null}
+        </div>
+      </div>
+
+      {seasonData.episodes ? (
+        <div>
+          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 padding">
+            Episodes{" "}
+          </h2>
+          <div className="padding flex flex-col gap-14 margin">
+            {seasonData.episodes
+              ? seasonData.episodes.map((episode) => {
+                  return <SeasonsCard key={episode.id} seasonArray={episode} />;
+                })
+              : null}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
