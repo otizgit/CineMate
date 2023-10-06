@@ -30,7 +30,7 @@ export default function CollectionPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = `Cinemate | ${name}`;
-  });
+  }, []);
 
   useEffect(() => {
     fetchCollectionData();

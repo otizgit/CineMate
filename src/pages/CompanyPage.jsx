@@ -4,7 +4,7 @@ import axios from "axios";
 import apiKey from "../assets/data/key";
 
 export default function CompanyPage() {
-  const { id } = useParams();
+  const { name, id } = useParams();
   const [companyDetails, setCompanyDetails] = useState([]);
 
   const fetchCompanyData = () => {
@@ -19,8 +19,9 @@ export default function CompanyPage() {
   };
 
   useEffect(() => {
+    document.title = `Cinemate | ${name.toUpperCase()}`;
     window.scrollTo(0, 0);
-  });
+  }, []);
 
   useEffect(() => {
     fetchCompanyData();

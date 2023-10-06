@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import bgImage from "../assets/images/bg.avif";
@@ -13,6 +13,7 @@ import MovieReviews from "../components/interface/Movie/MovieReviews";
 import Networks from "../components/interface/Networks";
 import Seasons from "../components/interface/Seasons";
 import SeasonsCard from "../components/interface/Cards/SeasonsCard";
+import ImageOverlay from "../components/interface/ImageOverlay";
 
 export default function SelectedMovie() {
   const { keyword, title, id } = useParams();
@@ -23,6 +24,8 @@ export default function SelectedMovie() {
   const [keywords, setKeywords] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
+  const [images, setImages] = useState([]);
+  const [overlay, setOverlay] = useState(false);
 
   const windowWidth = useWindowSize().width;
 
@@ -52,6 +55,11 @@ export default function SelectedMovie() {
     const getRecommendations = axios.get(
       `https://api.themoviedb.org/3/${keyword}/${id}/recommendations?api_key=${apiKey}`
     );
+
+    const getImages = axios.get(
+      `https://api.themoviedb.org/3/${keyword}/${id}/images?api_key=${apiKey}`
+    );
+
     axios
       .all([
         getResults,
@@ -60,6 +68,7 @@ export default function SelectedMovie() {
         getKeywords,
         getReviews,
         getRecommendations,
+        getImages,
       ])
       .then(
         axios.spread((...allData) => {
@@ -70,6 +79,7 @@ export default function SelectedMovie() {
           setKeywords(allData[3].data.keywords);
           setReviews(allData[4].data.results);
           setRecommendations(allData[5].data.results);
+          setImages(allData[6].data);
         })
       )
       .catch(() => {
@@ -87,6 +97,9 @@ export default function SelectedMovie() {
   useEffect(() => {
     fetchData();
   }, [trigger]);
+
+  function toggleImageOverlay () {
+  }
 
   const backdropStyle = {
     backgroundImage: `${
@@ -111,7 +124,7 @@ export default function SelectedMovie() {
   };
 
   return (
-    <div className="pt-[80px]">
+    <div className="pt-[72px]">
       <div
         className="h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16"
         style={results.backdrop_path ? backdropStyle : backdropStyleTwo}
@@ -119,7 +132,7 @@ export default function SelectedMovie() {
         <div className="lg:flex lg:py-[5rem] lg:items-center">
           {results.poster_path && (
             <img
-              className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow"
+              className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-move hover:scale-105 transition-all"
               src={`https://image.tmdb.org/t/p/w780${results.poster_path}`}
               alt="Movie Poster"
             />
@@ -159,10 +172,10 @@ export default function SelectedMovie() {
           </h2>
           <CategoryResults apiKeyword="person" feedback={cast.slice(0, 20)} />
           <Link
-            to={`/${title}/all-cast`}
+            to={`/${title}/all-cast-and-crew`}
             state={{ allCast: cast, movieTitle: title, allCrew: crew }}
           >
-            <p className="text-primary padding mt-4 font-bold text-center md:text-left">
+            <p className="text-primary padding mt-4 font-bold text-center md:text-left w-[fit-content]">
               View All Cast and Crew
             </p>
           </Link>
@@ -179,7 +192,7 @@ export default function SelectedMovie() {
               to={`/${title}/all-reviews`}
               state={{ allReviews: reviews, movieTitle: title }}
             >
-              <p className="text-primary padding mt-4 font-bold text-center md:text-left">
+              <p className="text-primary padding mt-4 font-bold text-center md:text-left w-[fit-content]">
                 View All Reviews
               </p>
             </Link>
@@ -197,6 +210,8 @@ export default function SelectedMovie() {
           <CategoryResults apiKeyword={keyword} feedback={recommendations} />
         </div>
       )}
+
+      <ImageOverlay images={images} overlay={overlay} />
     </div>
   );
 }

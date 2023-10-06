@@ -17,7 +17,7 @@ export default function Header() {
   const [clickedNav, setClickedNav] = useState(null);
   const [apiState, setApiState] = useState(false);
   const windowWidthSize = useWindowSize().width;
-  const [isSearchOpen, setSearchOpen] = useState(false)
+  const [isSearchOpen, setSearchOpen] = useState(false);
 
   function toggleNavClick(index) {
     if (clickedNav === index && windowWidthSize < 1024) {
@@ -37,7 +37,7 @@ export default function Header() {
   }
 
   function handleSearchClick() {
-    setSearchOpen(prevSearch => !prevSearch)
+    setSearchOpen((prevSearch) => !prevSearch);
   }
 
   return (
@@ -61,7 +61,7 @@ export default function Header() {
         )}
       </div>
       <Link to="/home">
-        <img className="w-[5rem]" src={Logo} alt="Logo" />
+        <img className="w-[4rem]" src={Logo} alt="Logo" />
       </Link>
       <nav className="flex">
         <ul
@@ -121,7 +121,10 @@ export default function Header() {
             );
           })}
         </ul>
-        <button onClick={handleSearchClick} className="flex items-center gap-10 cursor-pointer">
+        <button
+          onClick={handleSearchClick}
+          className="flex items-center gap-10 cursor-pointer"
+        >
           <label className="cursor-pointer" htmlFor="search-input">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}

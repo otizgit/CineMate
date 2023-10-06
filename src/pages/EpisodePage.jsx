@@ -31,7 +31,7 @@ export default function EpisodePage() {
   }, []);
 
   return (
-    <div className="pt-[80px] margin">
+    <div className="pt-[72px] margin">
       <div className="flex flex-col gap-2 lg:flex-row border-b-2 border-primary pb-10 lg:pb-0 mb-14">
         <img
           className="w-full lg:w-[19rem] object-cover"

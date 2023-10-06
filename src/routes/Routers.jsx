@@ -24,7 +24,7 @@ export default function Routers() {
         <Route path="/results/:id" element={<SearchResultsPage />} />
         <Route path="/:keyword/:title/:id" element={<SelectedMovie />} />
         <Route path="/seasons/:title/:id" element={<AllSeasons />} />
-        <Route path="/:title/all-cast" element={<AllCastAndCrew />} />
+        <Route path="/:title/all-cast-and-crew" element={<AllCastAndCrew />} />
         <Route path="/:title/all-reviews" element={<AllReviews />} />
         <Route path="/person/:title/:id" element={<PersonPage />} />
         <Route path="/company/:name/:id" element={<CompanyPage />} />

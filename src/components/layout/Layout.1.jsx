@@ -3,7 +3,7 @@ import Routers from "../../routes/Routers";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import ImageOverlay from "../interface/ImageOverlay";
 
 export default function Layout() {
   return (
@@ -11,6 +11,7 @@ export default function Layout() {
       <Header />
       <Routers />
       <Footer />
+      <ImageOverlay />
       <ToastContainer
         position="top-right"
         autoClose={3000}

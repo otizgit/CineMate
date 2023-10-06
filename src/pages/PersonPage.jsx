@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import apiKey from "../assets/data/key";
 import { useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import PersonFeatures from "../components/interface/PersonFeatures";
 import PersonPersonalInfo from "../components/interface/PersonPersonalInfo";
+import PersonFeaturesFilter from "../components/interface/PersonFeaturesFilter";
 
 export default function PersonPage() {
   const [personData, setPersonData] = useState([]);
   const [personCredits, setPersonCredits] = useState([]);
-  const [isFilterOpen, setFilter] = useState(false);
   const [credit, setCredit] = useState("movie");
-  const [category, setCategory] = useState("Movies");
 
   const { id } = useParams();
   const fetchPersonData = () => {
@@ -38,17 +35,16 @@ export default function PersonPage() {
   };
 
   useEffect(() => {
-    document.title = `Cinemate | ${personData.name}`;
     window.scrollTo(0, 0);
+  }, []);
+  
+  useEffect(() => {
+    document.title = `Cinemate | ${personData.name}`;
   });
 
   useEffect(() => {
     fetchPersonData();
   }, [credit]);
-
-  function toggleFilter() {
-    setFilter((prevFilter) => !prevFilter);
-  }
 
   return (
     <div className="pt-[120px]">
@@ -56,56 +52,21 @@ export default function PersonPage() {
         <PersonPersonalInfo personData={personData} />
       </div>
 
-      <div className="px-6 hidden lg:block absolute w-[27%] top-[80px] pb-10 border-r-2 border-b-2 border-primary">
+      <div className="px-6 hidden lg:block absolute w-[27%] top-[80px] bottom-0 pb-10 overflow-y-auto side-bar border-primary">
         <PersonPersonalInfo personData={personData} />
       </div>
 
       <div className="lg:w-[73%] lg:ml-auto">
         {personData.biography ? (
           <div className="text-center lg:text-left border-b-2 border-primary pb-10 mb-6 padding">
-            <p className="font-heading tracking-wider text-primary mb-2 text-[1.5rem]">Biography</p>
+            <p className="font-heading tracking-wider text-primary mb-2 text-[1.5rem]">
+              Biography
+            </p>
             <p className="custom-fz text-priText-300">{personData.biography}</p>
           </div>
         ) : null}
-        <div className="flex justify-between items-center mb-4 padding">
-          <h2 className="text-[1.7rem] font-heading tracking-wider text-white mb-2">Features</h2>
-          <button
-            onClick={toggleFilter}
-            className="bg-black px-5 rounded-sm py-2 relative"
-          >
-            <div className="flex items-center gap-6">
-              <p className="custom-fz text-white font-semibold">{category}</p>
-              <FontAwesomeIcon
-                icon={faCaretDown}
-                className="text-primary custom-fz"
-              />
-            </div>
-            <div
-              className={`absolute z-10 top-[100%] bg-black border-2 border-primary left-0 py-3 right-0 ${
-                isFilterOpen ? "block" : "hidden"
-              }`}
-            >
-              <div
-                onClick={() => {
-                  setCredit("movie");
-                  setCategory("Movies");
-                }}
-                className="custom-fz text-white font-medium mb-3"
-              >
-                Movies
-              </div>
-              <div
-                onClick={() => {
-                  setCredit("tv");
-                  setCategory("TV Shows");
-                }}
-                className="custom-fz text-white font-medium"
-              >
-                TV Shows
-              </div>
-            </div>
-          </button>
-        </div>
+
+        <PersonFeaturesFilter setCredit={setCredit}/>
 
         <PersonFeatures credits={personCredits} creditKeyword={credit} />
       </div>

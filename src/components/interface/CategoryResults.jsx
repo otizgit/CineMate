@@ -47,7 +47,7 @@ export default function CategoryResults(props) {
         </div>
       ) : (
         <div className="margin">
-          <h1 className="text-center text-red-600 font-extrabold">
+          <h1 className="text-center text-red-600 font-bold tracking-wide">
             Oops, No Match Found.
           </h1>
         </div>

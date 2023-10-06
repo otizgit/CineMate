@@ -22,25 +22,22 @@ export default function SelectedSeason() {
   };
 
   useEffect(() => {
+    fetchSeasonData();
     window.scrollTo(0, 0);
     document.title = `${title} | ${`Season${season}`}`;
-  });
-
-  useEffect(() => {
-    fetchSeasonData();
   }, []);
 
   return (
-    <div className="lg:pt-[80px]">
+    <div className="lg:pt-[72px]">
       <div className="flex flex-col gap-2 lg:flex-row border-b-2 border-primary pb-10 lg:pb-0  mb-14">
         <img
-          className="w-full lg:w-[11rem] object-cover"
+          className="w-full mb-4 lg:mb-0 lg:w-[13rem] object-cover"
           src={`https://image.tmdb.org/t/p/w780${seasonData.poster_path}`}
           alt="season poster"
         />
         <div className="text-center lg:text-left lg:pt-10">
           {seasonData.name ? (
-            <div className="flex items-center gap-2 justify-center">
+            <div className="flex flex-wrap padding lg:p-0 mb-4 items-center gap-2 justify-center">
               <h2 className="text-[1.7rem] font-heading tracking-wider text-white">
                 {seasonData.name}
               </h2>

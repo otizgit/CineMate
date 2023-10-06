@@ -11,7 +11,6 @@ export default function MovieExtraLinks(props) {
               Production Companies
             </h2>
           ) : null}
-          {/*!THIS SHOULD LINK TO THE COMPANIES */}
           <div className="flex gap-4 flex-wrap">
             {props.results.production_companies.map((company) => {
               return (
@@ -20,7 +19,7 @@ export default function MovieExtraLinks(props) {
                   key={company.id}
                   className="py-1 px-3 rounded-lg border-2 border-primary w-[fit-content] flex"
                 >
-                  <p className="custom-fz text-priText-300 font-medium">
+                  <p className="custom-fz text-white">
                     {company.name}
                   </p>
                 </Link>
@@ -32,7 +31,7 @@ export default function MovieExtraLinks(props) {
       {props.keywords ? (
         <div className="flex-1">
           {props.keywords.length ? (
-            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary  mb-2">
+            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-2">
               Keywords
             </h2>
           ) : null}
@@ -44,7 +43,7 @@ export default function MovieExtraLinks(props) {
                   key={movieKeyword.id}
                   className="py-1 px-3 rounded-lg border-2 border-primary w-[fit-content] flex"
                 >
-                  <p className="custom-fz text-priText-300 font-medium">
+                  <p className="custom-fz text-white">
                     {movieKeyword.name}
                   </p>
                 </Link>

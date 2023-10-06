@@ -27,8 +27,8 @@ export default function KeywordPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `"${name}" keyword`;
-  });
+    document.title = `Cinemate | "${name}"`;
+  }, []);
 
   return (
     <div className="pt-[120px] margin">

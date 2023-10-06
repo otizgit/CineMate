@@ -66,43 +66,43 @@ export default function Footer() {
       <div className="basis-full w-full">
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            className="w-[3rem] h-[3rem] rounded-[50%] grid place-items-center bg-primary hover:scale-110 transition"
+            className="w-[3rem] h-[3rem] rounded-xl grid place-items-center bg-black border-2 border-primary hover:scale-110 transition"
             href="https://github.com/otizgit"
             target="_blank"
           >
             <FontAwesomeIcon
               icon={faGithub}
-              className="text-[1.2rem] text-black"
+              className="text-[1.2rem] text-priText-300"
             />
           </a>
           <a
-            className="w-[3rem] h-[3rem] rounded-[50%] grid place-items-center bg-primary hover:scale-110 transition"
+            className="w-[3rem] h-[3rem] rounded-xl grid place-items-center bg-black border-2 border-primary hover:scale-110 transition"
             href="https://twitter.com/dev_otiz"
             target="_blank"
           >
             <FontAwesomeIcon
               icon={faXTwitter}
-              className="text-[1.2rem] text-black"
+              className="text-[1.2rem] text-priText-300"
             />
           </a>
           <a
-            className="w-[3rem] h-[3rem] rounded-[50%] grid place-items-center bg-primary hover:scale-110 transition"
+            className="w-[3rem] h-[3rem] rounded-xl grid place-items-center bg-black border-2 border-primary hover:scale-110 transition"
             href="https://www.linkedin.com/in/emmanuel-oj/"
             target="_blank"
           >
             <FontAwesomeIcon
               icon={faLinkedinIn}
-              className="text-[1.2rem] text-black"
+              className="text-[1.2rem] text-priText-300"
             />
           </a>
           <a
-            className="w-[3rem] h-[3rem] rounded-[50%] grid place-items-center bg-primary hover:scale-110 transition"
+            className="w-[3rem] h-[3rem] rounded-xl grid place-items-center bg-black border-2 border-primary hover:scale-110 transition"
             href="https://www.instagram.com/_.otiz._/"
             target="_blank"
           >
             <FontAwesomeIcon
               icon={faInstagram}
-              className="text-[1.2rem] text-black"
+              className="text-[1.2rem] text-priText-300"
             />
           </a>
         </div>
