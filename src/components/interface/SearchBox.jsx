@@ -13,7 +13,7 @@ export default function SearchBox(props) {
   function handleSubmitClick() {
     const value = inputRef.current.value.trim();
     if (value === "") {
-      toast.error("Please enter a TV show title", {
+      toast.error("Please enter a value to search", {
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -43,7 +43,7 @@ export default function SearchBox(props) {
 
   return (
     <div
-      className={`fixed top-[95px] w-full left-0 z-[5] padding ${
+      className={`fixed top-[90px] w-full left-0 z-[5] padding ${
         props.isSearchOpen ? "scale-y-100" : "scale-y-0"
       } transition-all origin-top`}
     >

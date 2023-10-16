@@ -50,12 +50,12 @@ export default function SeasonsCard({ seasonArray }) {
 
         {seasonArray.still_path ? (
           <div className="mb-4">
-            <p className="custom-fz text-primary inline-block mr-1 font-semisemibold">
+            <p className="custom-fz text-primary font-medium  inline-block mr-1 font-semisemibold">
               {seasonArray.season_number
-                ? "Season" + seasonArray.season_number + ","
+                ? "Season" + seasonArray.season_number + "-"
                 : "Specials,"}
             </p>
-            <p className="custom-fz text-primary inline-block font-semisemibold">
+            <p className="custom-fz text-priText-300 font-medium inline-block font-semisemibold">
               Episode {seasonArray.episode_number}
             </p>
           </div>

@@ -98,7 +98,9 @@ export default function SelectedMovie() {
     fetchData();
   }, [trigger]);
 
-  function toggleImageOverlay () {
+  function toggleImageOverlay() {
+    document.body.style.overflow = "hidden";
+    setOverlay(true);
   }
 
   const backdropStyle = {
@@ -132,7 +134,8 @@ export default function SelectedMovie() {
         <div className="lg:flex lg:py-[5rem] lg:items-center">
           {results.poster_path && (
             <img
-              className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-move hover:scale-105 transition-all"
+              onClick={toggleImageOverlay}
+              className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-pointer hover:scale-105 transition-all"
               src={`https://image.tmdb.org/t/p/w780${results.poster_path}`}
               alt="Movie Poster"
             />
@@ -158,7 +161,7 @@ export default function SelectedMovie() {
 
       {results.last_episode_to_air && (
         <div className="movie-margin padding">
-          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6">
+          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
             Last Episode To Air
           </h2>
           <SeasonsCard seasonArray={results.last_episode_to_air} />
@@ -167,7 +170,7 @@ export default function SelectedMovie() {
 
       {cast.length && (
         <div className="movie-margin">
-          <h2 className="padding text-[1.7rem] font-heading tracking-wider text-primary mb-6">
+          <h2 className="padding text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
             Cast
           </h2>
           <CategoryResults apiKeyword="person" feedback={cast.slice(0, 20)} />
@@ -175,7 +178,7 @@ export default function SelectedMovie() {
             to={`/${title}/all-cast-and-crew`}
             state={{ allCast: cast, movieTitle: title, allCrew: crew }}
           >
-            <p className="text-primary padding mt-4 font-bold text-center md:text-left w-[fit-content]">
+            <p className="text-primary padding mt-6 font-medium text-center md:text-left">
               View All Cast and Crew
             </p>
           </Link>
@@ -204,14 +207,19 @@ export default function SelectedMovie() {
 
       {recommendations && (
         <div className="margin">
-          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6">
+          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6 text-center md:text-left">
             You May Also Like
           </h2>
           <CategoryResults apiKeyword={keyword} feedback={recommendations} />
         </div>
       )}
 
-      <ImageOverlay images={images} overlay={overlay} />
+      {overlay && (
+        <ImageOverlay
+          images={images.posters.slice(0, 20)}
+          setOverlay={setOverlay}
+        />
+      )}
     </div>
   );
 }

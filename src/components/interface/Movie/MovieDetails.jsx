@@ -7,17 +7,17 @@ export default function MovieDetails(props) {
     <div className="padding text-white mb-5 lg:mb-0">
       <div className="flex items-center mb-2 lg:mb-1 flex-wrap gap-2">
         {props.results.title && (
-          <p className="text-[2.1rem] font-heading tracking-wider text-white">
+          <p className="text-[2.1rem] font-heading tracking-wider text-primary">
             {`${props.results.title}`}
           </p>
         )}
         {props.results.name && (
-          <p className="text-[2.1rem] font-heading tracking-wider text-white">
+          <p className="text-[2.1rem] font-heading tracking-wider text-primary">
             {`${props.results.name}`}
           </p>
         )}
         {props.results.release_date ? (
-          <p className="custom-fz font-bold text-primary">{`(${props.results.release_date.slice(
+          <p className="custom-fz font-bold text-white">{`(${props.results.release_date.slice(
             0,
             4
           )})`}</p>

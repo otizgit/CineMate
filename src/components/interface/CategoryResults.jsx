@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Card from "./Cards/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { useWindowSize } from "@uidotdev/usehooks";
 import "swiper/css";
 import "swiper/css/navigation";
 import { nanoid } from "nanoid";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 export default function CategoryResults(props) {
   const [innerWidth, setInnerWidth] = useState(null);

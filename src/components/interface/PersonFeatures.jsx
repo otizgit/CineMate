@@ -6,7 +6,7 @@ export default function PersonFeatures(props) {
     <div className="margin">
       {props.credits.cast  ? (
         <div className="mb-4">
-          <h2 className="text-[1.5rem] font-heading tracking-wider text-primary padding mb-6">
+          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6 text-center md:text-left">
             Cast
           </h2>
           <CategoryResults
@@ -18,7 +18,7 @@ export default function PersonFeatures(props) {
       {props.credits.crew && props.credits.crew.length ? (
         <div>
           <div>
-            <h2 className="text-[1.5rem] font-heading tracking-wider text-primary padding mb-6">
+            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6 text-center md:text-left">
               Crew
             </h2>
           </div>

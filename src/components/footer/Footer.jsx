@@ -20,7 +20,7 @@ export default function Footer() {
     <footer className="relative padding py-14 xl:py-12 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-20">
       <div className="basis-full">
         <Link to="/home">
-          <img className="w-[5rem]" src={Logo} alt="Logo" />
+          <img className="w-[4.5rem]" src={Logo} alt="Logo" />
         </Link>
       </div>
 
@@ -31,7 +31,7 @@ export default function Footer() {
               {links.map((navLink) => {
                 return (
                   <div key={navLink.id}>
-                    <li className="text-[1.2rem] font-heading text-center text-white cursor-pointer tracking-widest">
+                    <li className="text-[1.2rem] font-heading text-center text-primary cursor-pointer tracking-widest">
                       {navLink.link}
                     </li>
                     <div>
@@ -48,7 +48,7 @@ export default function Footer() {
                                 searchWord: navLink.searchWord,
                               }}
                             >
-                              <li className="text-center font-sans text-[0.9rem] text-priText-300 leading-[2.5rem] lg:hover:scale-110 md:transition lg:hover:underline lg:hover:text-primary lg:text-[0.8rem]">
+                              <li className="text-center font-sans text-[0.9rem] text-white leading-[2.5rem] lg:hover:scale-110 md:transition lg:hover:underline lg:hover:text-primary lg:text-[0.8rem]">
                                 {extraLink.content}
                               </li>
                             </NavLink>

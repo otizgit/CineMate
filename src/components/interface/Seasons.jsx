@@ -9,7 +9,7 @@ export default function Seasons(props) {
 
   return (
     <div>
-      <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6">
+      <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
         Seasons
       </h2>
       {seasonOne.map((seasonArray) => {
@@ -20,7 +20,7 @@ export default function Seasons(props) {
           to={`/seasons/${props.title}/${props.id}`}
           state={{ seasons: props.seasons }}
         >
-          <p className="text-primary mt-4 font-bold text-center md:text-left">
+          <p className="text-primary mt-6 font-medium text-center md:text-left">
             View All Seasons
           </p>
         </Link>

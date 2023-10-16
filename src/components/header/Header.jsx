@@ -61,7 +61,7 @@ export default function Header() {
         )}
       </div>
       <Link to="/home">
-        <img className="w-[4rem]" src={Logo} alt="Logo" />
+        <img className="w-[4.5rem]" src={Logo} alt="Logo" />
       </Link>
       <nav className="flex">
         <ul

@@ -3,7 +3,7 @@ import React from "react";
 export default function Networks(props) {
   return (
     <div className="padding movie-margin">
-      <h2 className="font-sans text-white text-[1.5rem] mb-2 tracking-wider">
+      <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
         Networks
       </h2>
       <div className="flex gap-12 items-center flex-wrap">

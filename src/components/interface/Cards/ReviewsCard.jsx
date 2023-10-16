@@ -38,7 +38,7 @@ export default function ReviewsCard(props) {
         </div>
       </div>
       {props.review.content && (
-        <p className="custom-fz mb-5 text-priText-300 leading-7">
+        <p className="custom-fz mb-5 text-priText-300 leading-7 break-words">
           {props.review.content}
         </p>
       )}

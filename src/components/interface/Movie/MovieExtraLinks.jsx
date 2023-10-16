@@ -7,7 +7,7 @@ export default function MovieExtraLinks(props) {
       {props.results.production_companies ? (
         <div className="flex-1">
           {props.results.production_companies.length ? (
-            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-2">
+            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
               Production Companies
             </h2>
           ) : null}
@@ -31,7 +31,7 @@ export default function MovieExtraLinks(props) {
       {props.keywords ? (
         <div className="flex-1">
           {props.keywords.length ? (
-            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-2">
+            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
               Keywords
             </h2>
           ) : null}
