@@ -69,6 +69,10 @@ export default function Header() {
             type: "spring",
             delay: 0.1,
             bounce: 0.5,
+            stiffness: 500,
+          }}
+          whileHover={{
+            scale: 1.15,
           }}
           className="w-[4.5rem]"
           src={Logo}
@@ -91,6 +95,9 @@ export default function Header() {
                 delay: 0.1,
                 bounce: 0.5,
               }}
+              whileHover={{
+                scale: 1.15,
+              }}
               className="font-heading font tracking-widest"
             >
               Home
@@ -105,7 +112,7 @@ export default function Header() {
                   transition={{
                     type: "spring",
                     stiffness: 500,
-                    delay: (0.1 * index) + 0.2,
+                    delay: 0.1 * index + 0.2,
                     bounce: 0.5,
                   }}
                   onClick={() => toggleNavClick(index)}
@@ -139,9 +146,18 @@ export default function Header() {
                             searchWord: navLink.searchWord,
                           }}
                         >
-                          <li className="font-sans font-semibold text-[0.9rem] text-priText-300 leading-[2.5rem] lg:hover:scale-110 md:transition lg:hover:underline lg:text-[0.8rem]">
+                          <motion.li
+                            transition={{
+                              type: "spring",
+                              stiffness: 500,
+                            }}
+                            whileHover={{
+                              scale: 1.15,
+                            }}
+                            className="font-sans font-semibold text-[0.9rem] text-priText-300 leading-[2.5rem] lg:text-[0.8rem]"
+                          >
                             {extraLink.content}
-                          </li>
+                          </motion.li>
                         </NavLink>
                       </ul>
                     );
@@ -155,12 +171,22 @@ export default function Header() {
           onClick={handleSearchClick}
           className="flex items-center gap-10 cursor-pointer"
         >
-          <label className="cursor-pointer" htmlFor="search-input">
+          <motion.label
+            whileHover={{
+              scale: 1.15,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 500,
+            }}
+            className="cursor-pointer"
+            htmlFor="search-input"
+          >
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
-              className="text-primary text-[1.5rem] hover:scale-110 transition"
+              className="text-primary text-[1.5rem]"
             />
-          </label>
+          </motion.label>
         </button>
       </nav>
       <div
