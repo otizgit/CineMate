@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TrendingTexts from "../../TrendingTexts";
 
 export default function MovieExtraLinks(props) {
   return props.results.production_companies || props.keywords ? (
@@ -7,9 +8,7 @@ export default function MovieExtraLinks(props) {
       {props.results.production_companies ? (
         <div className="flex-1">
           {props.results.production_companies.length ? (
-            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
-              Production Companies
-            </h2>
+            <TrendingTexts title="Production companies" />
           ) : null}
           <div className="flex gap-4 flex-wrap">
             {props.results.production_companies.map((company) => {
@@ -31,9 +30,7 @@ export default function MovieExtraLinks(props) {
       {props.keywords ? (
         <div className="flex-1">
           {props.keywords.length ? (
-            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
-              Keywords
-            </h2>
+            <TrendingTexts title="Keywords" />
           ) : null}
           <div className="flex gap-4 flex-wrap">
             {props.keywords.map((movieKeyword) => {

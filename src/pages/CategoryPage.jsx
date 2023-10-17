@@ -4,6 +4,7 @@ import axios from "axios";
 import apiKey from "../assets/data/key";
 import CategoryResults from "../components/interface/CategoryResults";
 import Explore from "../components/interface/Explore";
+import TrendingTexts from "../components/TrendingTexts";
 
 export default function CategoryPage() {
   const keyword = useParams().id;
@@ -42,10 +43,8 @@ export default function CategoryPage() {
 
   return (
     <div className="padding-top md:pt-[10rem]">
-      <div className="flex padding flex-col-reverse gap-10 md:flex-row items-center justify-between mb-6">
-        <p className="text-[1.7rem] font-heading tracking-wider text-primary">
-          {title}
-        </p>
+      <div className="padding">
+        <TrendingTexts title={title} />
       </div>
       <div className="margin">
         <CategoryResults apiKeyword={apiKeyword} feedback={feedback} />

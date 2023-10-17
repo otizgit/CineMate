@@ -32,7 +32,7 @@ export default function KeywordPage() {
 
   return (
     <div className="pt-[120px] margin">
-      <h1 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6">
+      <h1 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6 text-center md:text-left">
         {name.toUpperCase()}
       </h1>
       <CategoryResults apiKeyword="movie" feedback={keywordData} />

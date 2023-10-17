@@ -11,6 +11,7 @@ import {
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 import SearchBox from "../interface/SearchBox";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const [navState, setNavState] = useState(false);
@@ -61,7 +62,18 @@ export default function Header() {
         )}
       </div>
       <Link to="/home">
-        <img className="w-[4.5rem]" src={Logo} alt="Logo" />
+        <motion.img
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: "spring",
+            delay: 0.1,
+            bounce: 0.5,
+          }}
+          className="w-[4.5rem]"
+          src={Logo}
+          alt="Logo"
+        />
       </Link>
       <nav className="flex">
         <ul
@@ -70,16 +82,34 @@ export default function Header() {
           } items-left padding pt-28 gap-10 text-white transition-all lg:static lg:flex-row lg:w-[unset] lg:h-[unset] lg:bg-[unset] lg:pt-0 lg:translate-x-[unset]`}
         >
           <NavLink onClick={handleLinkClick} to="/home">
-            <li className="font-heading font hover:scale-110 transition tracking-widest">
+            <motion.li
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                delay: 0.1,
+                bounce: 0.5,
+              }}
+              className="font-heading font tracking-widest"
+            >
               Home
-            </li>
+            </motion.li>
           </NavLink>
           {links.map((navLink, index) => {
             return (
               <div key={navLink.id} className="lg:relative group">
-                <li
+                <motion.li
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 500,
+                    delay: (0.1 * index) + 0.2,
+                    bounce: 0.5,
+                  }}
                   onClick={() => toggleNavClick(index)}
-                  className="font-heading font mb-2 lg:m-0 flex cursor-pointer items-center gap-2 lg:hover:scale-110 md:transition tracking-widest"
+                  className="font-heading font mb-2 lg:m-0 flex cursor-pointer items-center gap-2 tracking-widest"
                 >
                   {navLink.link}
                   <span>
@@ -90,7 +120,7 @@ export default function Header() {
                       }`}
                     />
                   </span>
-                </li>
+                </motion.li>
                 <div
                   className={`static ${
                     clickedNav === index ? "block" : "hidden"

@@ -1,11 +1,10 @@
 import React from "react";
+import TrendingTexts from "../TrendingTexts";
 
 export default function Networks(props) {
   return (
     <div className="padding movie-margin">
-      <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
-        Networks
-      </h2>
+      <TrendingTexts title="Networks" />
       <div className="flex gap-12 items-center flex-wrap">
         {props.networks.map((network) => {
           return (

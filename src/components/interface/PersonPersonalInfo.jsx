@@ -30,7 +30,7 @@ export default function PersonPersonalInfo({personData, setOverlay}) {
       {personData.profile_path ? (
         <img
           onClick={toggleImageOverlay}
-          className="w-full mx-auto rounded-xl lg:rounded-tr-none lg:rounded-tl-none mb-6 cursor-pointer hover:scale-105 transition-all"
+          className="w-[13rem] lg:w-[16rem] mx-auto rounded-xl lg:rounded-tr-none lg:rounded-tl-none mb-6 cursor-pointer hover:scale-105 transition-all"
           src={`https://image.tmdb.org/t/p/w500${personData.profile_path}`}
           alt={`${personData.name}'s image`}
         />
@@ -40,7 +40,7 @@ export default function PersonPersonalInfo({personData, setOverlay}) {
         </div>
       )}
       <div className="text-center">
-        <h2 className="font-heading tracking-wider text-white text-[2rem] mb-2">
+        <h2 className="font-heading tracking-wider text-white text-[1.7rem] mb-2">
           {personData.name}
         </h2>
         <p className="custom-fz font-semibold text-primary mb-4">

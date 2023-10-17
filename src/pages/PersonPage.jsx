@@ -55,12 +55,12 @@ export default function PersonPage() {
   }, [credit]);
 
   return (
-    <div className="pt-[77px] lg:pt-[120px]">
+    <div className="pt-[120px]">
       <div className="padding lg:hidden">
         <PersonPersonalInfo personData={personData} setOverlay={setOverlay} />
       </div>
 
-      <div className="px-6 hidden lg:block absolute w-[27%] top-[77px] bottom-0 pb-10 overflow-y-auto side-bar border-primary">
+      <div className="px-6 hidden lg:block fixed w-[27%] top-[77px] bottom-0 pb-10 overflow-y-auto side-bar border-primary">
         <PersonPersonalInfo personData={personData} setOverlay={setOverlay} />
       </div>
 
@@ -70,7 +70,7 @@ export default function PersonPage() {
             <p className="font-heading tracking-wider text-primary mb-2 text-[1.5rem]">
               Biography
             </p>
-            <p className="custom-fz text-priText-300">{personData.biography}</p>
+            <p className="custom-fz text-priText-300 leading-7">{personData.biography}</p>
           </div>
         ) : null}
 

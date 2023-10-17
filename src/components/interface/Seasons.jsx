@@ -1,6 +1,7 @@
 import React from "react";
 import SeasonsCard from "./Cards/SeasonsCard";
 import { Link } from "react-router-dom";
+import TrendingTexts from "../TrendingTexts";
 
 export default function Seasons(props) {
   const seasonOne = props.seasons.filter((season) => {
@@ -9,9 +10,7 @@ export default function Seasons(props) {
 
   return (
     <div>
-      <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
-        Seasons
-      </h2>
+      <TrendingTexts title="Seasons" />
       {seasonOne.map((seasonArray) => {
         return <SeasonsCard key={seasonArray.id} seasonArray={seasonArray} />;
       })}

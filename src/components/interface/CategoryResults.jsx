@@ -27,7 +27,7 @@ export default function CategoryResults(props) {
     return (
       <SwiperSlide key={nanoid()}>
         <Card keyword={props.apiKeyword} data={data} />
-        {/* <div className="swiper-lazy-  preloader swiper-lazy-prelroader-white"></div> */}
+        <div className="swiper-lazy-  preloader swiper-lazy-prelroader-white"></div>
       </SwiperSlide>
     );
   });

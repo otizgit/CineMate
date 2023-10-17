@@ -1,26 +1,60 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function MovieDetails(props) {
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+  });
+  const movieTitleAnimation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      movieTitleAnimation.start({
+        y: 0,
+        opacity: 1,
+        transition: {
+          type: "spring",
+          duration: 1.2,
+          bounce: 0.5,
+          stiffness: 400
+        },
+      });
+    }
+    if (!inView) {
+      movieTitleAnimation.start({
+        y: 40,
+        opacity: 0,
+      });
+    }
+  }, [inView]);
+
   return (
     <div className="padding text-white mb-5 lg:mb-0">
-      <div className="flex items-center mb-2 lg:mb-1 flex-wrap gap-2">
+      <div ref={ref} className="flex items-center mb-2 lg:mb-1 flex-wrap gap-2">
         {props.results.title && (
-          <p className="text-[2.1rem] font-heading tracking-wider text-primary">
+          <motion.p
+            animate={movieTitleAnimation}
+            className="text-[2.1rem] font-heading tracking-wider text-primary"
+          >
             {`${props.results.title}`}
-          </p>
+          </motion.p>
         )}
         {props.results.name && (
-          <p className="text-[2.1rem] font-heading tracking-wider text-primary">
+          <motion.p
+            animate={movieTitleAnimation}
+            className="text-[2.1rem] font-heading tracking-wider text-primary"
+          >
             {`${props.results.name}`}
-          </p>
+          </motion.p>
         )}
         {props.results.release_date ? (
-          <p className="custom-fz font-bold text-white">{`(${props.results.release_date.slice(
-            0,
-            4
-          )})`}</p>
+          <motion.p
+            animate={movieTitleAnimation}
+            className="custom-fz font-medium text-white"
+          >{`(${props.results.release_date.slice(0, 4)})`}</motion.p>
         ) : null}
       </div>
 
@@ -38,7 +72,7 @@ export default function MovieDetails(props) {
           </div>
         ) : null}
         {props.results.genres ? (
-          <div className="lg:border-r-2 lg:border-primary lg:pr-4"> 
+          <div className="lg:border-r-2 lg:border-primary lg:pr-4">
             <div className="flex">
               {props.results.genres.map((genre) => {
                 return (
@@ -64,7 +98,10 @@ export default function MovieDetails(props) {
           <div className="flex">
             {props.results.production_countries.map((country, index) => {
               return (
-                <p key={index} className="list-style custom-fz text-white-300 font-medium">
+                <p
+                  key={index}
+                  className="list-style custom-fz text-white-300 font-medium"
+                >
                   {country.name}
                 </p>
               );
@@ -93,7 +130,10 @@ export default function MovieDetails(props) {
                   </p>
                 )}
                 <div className="flex justify-center items-center gap-1">
-                  <FontAwesomeIcon icon={faStar} className="text-[gold] custom-fz pb-1" />
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    className="text-[gold] custom-fz pb-1"
+                  />
                   <p className="custom-fz text-primary font-bold">
                     {rating.Value}
                   </p>
@@ -123,13 +163,17 @@ export default function MovieDetails(props) {
       <div className="lg:flex gap-10 border-primary border-b-2 lg:border-none lg:pb-0 pb-5">
         {props.imdbResults.Writer !== "N/A" && props.imdbResults.Writer ? (
           <div className="mb-5">
-            <p className="custom-fz font-semibold">{props.imdbResults.Writer}</p>
+            <p className="custom-fz font-semibold">
+              {props.imdbResults.Writer}
+            </p>
             <p className="custom-fz text-primary font-medium">Writer(s)</p>
           </div>
         ) : null}
         {props.imdbResults.Director !== "N/A" && props.imdbResults.Writer ? (
           <div>
-            <p className="custom-fz font-semibold">{props.imdbResults.Director}</p>
+            <p className="custom-fz font-semibold">
+              {props.imdbResults.Director}
+            </p>
             <p className="custom-fz text-primary font-medium">Director</p>
           </div>
         ) : null}

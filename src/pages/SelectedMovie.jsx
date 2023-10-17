@@ -14,6 +14,7 @@ import Networks from "../components/interface/Networks";
 import Seasons from "../components/interface/Seasons";
 import SeasonsCard from "../components/interface/Cards/SeasonsCard";
 import ImageOverlay from "../components/interface/ImageOverlay";
+import TrendingTexts from "../components/TrendingTexts";
 
 export default function SelectedMovie() {
   const { keyword, title, id } = useParams();
@@ -126,7 +127,7 @@ export default function SelectedMovie() {
   };
 
   return (
-    <div className="pt-[72px]">
+    <div className="pt-[76px]">
       <div
         className="h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16"
         style={results.backdrop_path ? backdropStyle : backdropStyleTwo}
@@ -161,18 +162,16 @@ export default function SelectedMovie() {
 
       {results.last_episode_to_air && (
         <div className="movie-margin padding">
-          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
-            Last Episode To Air
-          </h2>
+          <TrendingTexts title="Last Episode To Air" />
           <SeasonsCard seasonArray={results.last_episode_to_air} />
         </div>
       )}
 
       {cast.length && (
         <div className="movie-margin">
-          <h2 className="padding text-[1.7rem] font-heading tracking-wider text-primary mb-6 text-center md:text-left">
-            Cast
-          </h2>
+          <div className="padding">
+            <TrendingTexts title="Cast" />
+          </div>
           <CategoryResults apiKeyword="person" feedback={cast.slice(0, 20)} />
           <Link
             to={`/${title}/all-cast-and-crew`}
@@ -207,9 +206,9 @@ export default function SelectedMovie() {
 
       {recommendations && (
         <div className="margin">
-          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6 text-center md:text-left">
-            You May Also Like
-          </h2>
+          <div className="padding">
+            <TrendingTexts title="you may also like" />
+          </div>
           <CategoryResults apiKeyword={keyword} feedback={recommendations} />
         </div>
       )}

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ReviewsCard from "../components/interface/Cards/ReviewsCard";
 
@@ -17,12 +17,8 @@ export default function AllReviews() {
 
   return (
     <div className="pt-[120px] padding margin">
-      <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6">
-        Reviews
-      </h2>
-      <div className="flex flex-col gap-14">
-        {reviewsEl}
-      </div>
+      <TrendingTexts title="Reviews" />
+      <div className="flex flex-col gap-14">{reviewsEl}</div>
     </div>
   );
 }
