@@ -26,7 +26,11 @@ export default function CategoryResults(props) {
   const renderedResults = props.feedback.map((data) => {
     return (
       <SwiperSlide key={nanoid()}>
-        <Card keyword={props.apiKeyword} data={data} />
+        <Card
+          setResultsLoad={props.setResultsLoad}
+          keyword={props.apiKeyword}
+          data={data}
+        />
         <div className="swiper-lazy-  preloader swiper-lazy-prelroader-white"></div>
       </SwiperSlide>
     );

@@ -1,8 +1,16 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { fadeAnimation } from "../../../animations/Animations";
 
 export default function MovieInfo(props) {
   return (
-    <div className="border-primary border-b-2 lg:border-0 pb-5 custom-fz flex flex-wrap lg:gap-y-7 mb-10 gap-x-10 gap-y-4">
+    <motion.div
+      variants={fadeAnimation}
+      initial="init"
+      whileInView="fade"
+      custom={0}
+      className="border-primary border-b-2 lg:border-0 pb-5 custom-fz flex flex-wrap lg:gap-y-7 mb-10 gap-x-10 gap-y-4"
+    >
       {props.results.status ? (
         <div className="flex items-center">
           <div className="w-[8px] hidden md:block rounded-full mr-1 h-[8px] bg-primary"></div>
@@ -141,6 +149,6 @@ export default function MovieInfo(props) {
           </p>
         </div>
       ) : null}
-    </div>
+    </motion.div>
   );
 }

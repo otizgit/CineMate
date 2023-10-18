@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="relative padding py-7 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-10">
+    <footer className="relative padding py-4 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-10">
       <div>
         <Link to="/home">
           <motion.img

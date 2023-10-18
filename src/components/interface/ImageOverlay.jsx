@@ -26,10 +26,10 @@ export default function ImageOverlay({ images, setOverlay }) {
         <FontAwesomeIcon
           onClick={hideOverlay}
           icon={faX}
-          className="text-[red] text-[1.5rem] cursor-pointer"
+          className="text-[red] text-[1.5rem] cursor-pointer hover:scale-110 transition-all"
         />
       </div>
-      
+
       <div
         onClick={hideOverlay}
         className="absolute w-full h-full left-0 header-style"

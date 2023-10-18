@@ -62,7 +62,7 @@ export const opacityAnimation = {
   opacity: {
     opacity: 1,
     transition: {
-      delay: 0.3,
+      delay: 0.2,
     },
   },
 };

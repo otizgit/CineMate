@@ -1,10 +1,26 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 export default function ReviewsCard(props) {
   return (
-    <div className="border-2 border-primary px-4 lg:px-9 py-6 rounded-xl custom-shadow">
+    <motion.div
+      initial={{
+        opacity: 0,
+        translateX: props.index % 2 === 0 ? 50 : -50,
+      }}
+      whileInView={{
+        opacity: 1,
+        translateX: 0,
+      }}
+      transition={{
+        duration: 0.5,
+        type: 'spring',
+        stiffness: 200,
+      }}
+      className="border-2 border-primary px-4 lg:px-9 py-6 rounded-xl custom-shadow"
+    >
       <div className="flex mb-5 items-center gap-4">
         {props.review.author_details.avatar_path ? (
           <img
@@ -28,9 +44,11 @@ export default function ReviewsCard(props) {
               <p className="text-priText-300 custom-fz font-medium">Rating:</p>
               {props.review.author_details.rating && (
                 <div className="flex gap-1">
-                  <FontAwesomeIcon icon={faStar} className="text-[gold] custom-fz pt-[.1rem]"/>
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    className="text-[gold] custom-fz pt-[.1rem]"
+                  />
                   <p className="custom-fz text-primary font-medium">{`${props.review.author_details.rating}/10`}</p>
-
                 </div>
               )}
             </div>
@@ -60,6 +78,6 @@ export default function ReviewsCard(props) {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

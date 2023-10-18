@@ -13,9 +13,11 @@ export default function AllSeasons() {
   }, []);
 
   return (
-    <div className="pt-[140px] margin padding flex flex-col gap-10">
-      {seasons.map((season) => {
-        return <SeasonsCard key={season.id} seasonArray={season} />;
+    <div className="pt-[140px] margin padding flex flex-col gap-10 overflow-x-hidden">
+      {seasons.map((season, index) => {
+        return (
+          <SeasonsCard index={index} key={season.id} seasonArray={season} />
+        );
       })}
     </div>
   );

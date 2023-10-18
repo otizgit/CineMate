@@ -13,7 +13,15 @@ export default function Trending(props) {
       .get(
         `https://api.themoviedb.org/3/discover/${props.apiWord}?api_key=${apiKey}`
       )
-      .then((res) => setFeedback(res.data.results))
+      .then((res) => {
+        setFeedback(res.data.results);
+        if (props.setMovieLoad) {
+          props.setMovieLoad(true);
+        }
+        if (props.setTvShowLoad) {
+          props.setTvShowLoad(true);
+        }
+      })
       .catch(() => {
         alert(
           "Oops, an error occured, please check your internet connection and try again."

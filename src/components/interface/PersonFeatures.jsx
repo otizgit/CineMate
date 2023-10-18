@@ -1,14 +1,15 @@
 import React from "react";
 import CategoryResults from "./CategoryResults";
+import TrendingTexts from "../TrendingTexts";
 
 export default function PersonFeatures(props) {
   return (
     <div className="margin">
-      {props.credits.cast  ? (
+      {props.credits.cast ? (
         <div className="mb-4">
-          <h2 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6 text-center md:text-left">
-            Cast
-          </h2>
+          <div className="padding">
+            <TrendingTexts title="Cast" />
+          </div>
           <CategoryResults
             apiKeyword={props.creditKeyword}
             feedback={props.credits.cast}
@@ -17,10 +18,8 @@ export default function PersonFeatures(props) {
       ) : null}
       {props.credits.crew && props.credits.crew.length ? (
         <div>
-          <div>
-            <h2 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6 text-center md:text-left">
-              Crew
-            </h2>
+          <div className="padding">
+            <TrendingTexts title="Crew" />
           </div>
           <CategoryResults
             apiKeyword={props.creditKeyword}

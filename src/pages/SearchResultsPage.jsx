@@ -5,6 +5,7 @@ import apiKey from "../assets/data/key";
 import ResultsFilter from "../components/interface/ResultsFilter";
 import Explore from "../components/interface/Explore";
 import CategoryResults from "../components/interface/CategoryResults";
+import Preloader from "../components/interface/Preloader";
 
 export default function SearchResultsPage() {
   const [searchData, setSearchData] = useState([]);
@@ -13,6 +14,13 @@ export default function SearchResultsPage() {
   const location = useLocation();
   const { trigger } = location.state;
   const [category, setCategory] = useState("movie");
+  const [searchResultsLoad, setSearchResultsLoad] = useState(false);
+
+  if (!searchResultsLoad) {
+    document.body.style.overflowY = "hidden";
+  } else {
+    document.body.style.overflowY = "scroll";
+  }
 
   const fetchData = () => {
     axios
@@ -21,6 +29,7 @@ export default function SearchResultsPage() {
       )
       .then((res) => {
         setSearchData(res.data.results);
+        setSearchResultsLoad(true);
       })
       .catch(() => {
         "Oops, an error occured, please check your internet connection and try again.";
@@ -37,16 +46,20 @@ export default function SearchResultsPage() {
   }, []);
 
   return (
-    <div className="padding-top text-white">
-      <ResultsFilter category={category} setCategory={setCategory} />
-      <div className="margin">
-        <CategoryResults
-          apiKeyword={category}
-          feedback={searchData}
-          searchWord={`${category}`}
-        />
+    <>
+      {!searchResultsLoad ? <Preloader /> : null}
+
+      <div className="padding-top text-white">
+        <ResultsFilter category={category} setCategory={setCategory} />
+        <div className="margin">
+          <CategoryResults
+            apiKeyword={category}
+            feedback={searchData}
+            searchWord={`${category}`}
+          />
+        </div>
+        <Explore />
       </div>
-      <Explore />
-    </div>
+    </>
   );
 }

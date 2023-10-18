@@ -11,7 +11,6 @@ export default function Card(props) {
   const [photo, setPhoto] = useState(null);
   const [originCountry, setOriginCountry] = useState(null);
   const [errorPhoto, setErrorPhoto] = useState(faClapperboard);
-  const [searchTrigger, setSearchTrigger] = useState(false);
 
   let percentageColor;
   if (ratingPercentage >= 70) {
@@ -23,7 +22,9 @@ export default function Card(props) {
   }
 
   function toggleSearchTrigger() {
-    setSearchTrigger((prevTrigger) => !prevTrigger);
+    if (props.setResultsLoad) {
+      props.setResultsLoad(false);
+    }
   }
 
   function HandleCardDisplay() {
@@ -67,7 +68,6 @@ export default function Card(props) {
         releaseYear: props.data.release_year
           ? props.data.release_date.slice(0, 4)
           : null,
-        trigger: { searchTrigger },
       }}
       className="cursor-pointer border-0 w-full group"
     >

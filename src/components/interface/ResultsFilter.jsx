@@ -49,7 +49,7 @@ export default function ResultsFilter(props) {
                       onClick={() => handleFilterClick(links.keyword)}
                       className={`${
                         props.category === links.keyword
-                          ? "bg-primary text-white"
+                          ? "bg-primary"
                           : ""
                       } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
                     >

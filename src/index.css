@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;500;600;700;800;900&family=Exo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;500;600;700;800;900&family=Exo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   font-family:
@@ -16,24 +16,32 @@
     sans-serif;
 }
 
-::selection{
-  background-color: #29AB87;
+::selection {
+  background-color: #29ab87;
   color: white;
 }
 
-html, .side-bar {
+body {
+  background-color: black;
+}
+
+html,
+.side-bar {
   scrollbar-width: thin;
   scrollbar-color: #29ab87 black;
 }
 
-html::-webkit-scrollbar, .side-bar::-webkit-scrollbar {
+html::-webkit-scrollbar,
+.side-bar::-webkit-scrollbar {
   width: 0.5vw;
 }
-html::-webkit-scrollbar-thumb, .side-bar::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb,
+.side-bar::-webkit-scrollbar-thumb {
   background-color: #29ab87;
   border-radius: 30px;
 }
-html::-webkit-scrollbar-track, .side-bar::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track,
+.side-bar::-webkit-scrollbar-track {
   background-color: hsl(0, 0%, 0%);
 }
 

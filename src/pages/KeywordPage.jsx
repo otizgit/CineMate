@@ -3,17 +3,29 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import apiKey from "../assets/data/key";
 import CategoryResults from "../components/interface/CategoryResults";
+import TrendingTexts from "../components/TrendingTexts";
+import Preloader from "../components/interface/Preloader";
 
 export default function KeywordPage() {
   const { name, id } = useParams();
   const [keywordData, setKeywordData] = useState([]);
+  const [resultsLoad, setResultsLoad] = useState(false);
+
+  if (!resultsLoad) {
+    document.body.style.overflowY = "hidden";
+  } else {
+    document.body.style.overflowY = "scroll";
+  }
 
   const fetchKeywordData = () => {
     axios
       .get(
         `https://api.themoviedb.org/3/keyword/${id}/movies?api_key=${apiKey}`
       )
-      .then((res) => setKeywordData(res.data.results))
+      .then((res) => {
+        setKeywordData(res.data.results);
+        setResultsLoad(true);
+      })
       .catch(() => {
         alert(
           "Oops, an error occured, please check your internet connection and try again."
@@ -31,11 +43,16 @@ export default function KeywordPage() {
   }, []);
 
   return (
-    <div className="pt-[120px] margin">
-      <h1 className="text-[1.7rem] font-heading tracking-wider text-primary padding mb-6 text-center md:text-left">
-        {name.toUpperCase()}
-      </h1>
-      <CategoryResults apiKeyword="movie" feedback={keywordData} />
-    </div>
+    <>
+      {!resultsLoad ? <Preloader /> : null}
+
+      <div className="pt-[120px] margin">
+        <div className="padding">
+          <TrendingTexts title={name.toUpperCase() + ' related'} />
+        </div>
+
+        <CategoryResults apiKeyword="movie" feedback={keywordData} />
+      </div>
+    </>
   );
 }

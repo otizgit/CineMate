@@ -1,6 +1,7 @@
 import React from "react";
 import SeasonsCard from "./Cards/SeasonsCard";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import TrendingTexts from "../TrendingTexts";
 
 export default function Seasons(props) {
@@ -11,17 +12,35 @@ export default function Seasons(props) {
   return (
     <div>
       <TrendingTexts title="Seasons" />
-      {seasonOne.map((seasonArray) => {
-        return <SeasonsCard key={seasonArray.id} seasonArray={seasonArray} />;
+      {seasonOne.map((seasonArray, index) => {
+        return (
+          <SeasonsCard
+            index={index}
+            key={seasonArray.id}
+            seasonArray={seasonArray}
+          />
+        );
       })}
       {props.seasons.length > 1 && (
         <Link
           to={`/seasons/${props.title}/${props.id}`}
           state={{ seasons: props.seasons }}
         >
-          <p className="text-primary mt-6 font-medium text-center md:text-left">
+          <motion.p
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 500,
+              bounce: 0.5,
+            }}
+            whileHover={{
+              scale: 1.15,
+            }}
+            className="text-primary mt-4 font-medium inline-block"
+          >
             View All Seasons
-          </p>
+          </motion.p>
         </Link>
       )}
     </div>

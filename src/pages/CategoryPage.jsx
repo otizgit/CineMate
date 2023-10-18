@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import apiKey from "../assets/data/key";
 import CategoryResults from "../components/interface/CategoryResults";
 import Explore from "../components/interface/Explore";
 import TrendingTexts from "../components/TrendingTexts";
+import Preloader from "../components/interface/Preloader";
 
 export default function CategoryPage() {
   const keyword = useParams().id;
@@ -12,6 +13,13 @@ export default function CategoryPage() {
   const location = useLocation();
   const { apiKeyword, apistate } = location.state;
   const [title, setTitle] = useState("");
+  const [resultsLoad, setResultsLoad] = useState(false);
+
+  if (!resultsLoad) {
+    document.body.style.overflowY = "hidden";
+  } else {
+    document.body.style.overflowY = "scroll";
+  }
 
   useEffect(() => {
     setTitle(location.state.title);
@@ -29,6 +37,7 @@ export default function CategoryPage() {
       )
       .then((res) => {
         setFeedback(res.data.results);
+        setResultsLoad(true);
       })
       .catch(() => {
         alert(
@@ -42,14 +51,18 @@ export default function CategoryPage() {
   }, [apistate]);
 
   return (
-    <div className="padding-top md:pt-[10rem]">
-      <div className="padding">
-        <TrendingTexts title={title} />
+    <>
+      {!resultsLoad ? <Preloader /> : null}
+
+      <div className="padding-top md:pt-[10rem]">
+        <div className="padding">
+          <TrendingTexts title={title} />
+        </div>
+        <div className="margin">
+          <CategoryResults apiKeyword={apiKeyword} feedback={feedback} />
+        </div>
+        <Explore />
       </div>
-      <div className="margin">
-        <CategoryResults apiKeyword={apiKeyword} feedback={feedback} />
-      </div>
-      <Explore />
-    </div>
+    </>
   );
 }
