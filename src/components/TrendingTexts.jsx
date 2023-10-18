@@ -1,62 +1,32 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import { headingAnimation, opacityAnimation } from "../animations/Animations";
 
 export default function TrendingTexts({ title, subTitle }) {
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-  });
-  const trendingHeadingAnimation = useAnimation();
-  const trendingSubtitleAnimation = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      trendingHeadingAnimation.start({
-        y: 0,
-        opacity: 1,
-        transition: {
-          type: "spring",
-          stiffness: 400,
-          duration: 1.2,
-          bounce: 0.5,
-        },
-      });
-      trendingSubtitleAnimation.start({
-        opacity: 1,
-        transition: {
-          type: "spring",
-          stiffness: 200,
-          duration: 1.2,
-          bounce: 0.5,
-          delay: 0.2,
-        },
-      });
-    }
-    if (!inView) {
-      trendingHeadingAnimation.start({
-        y: 40,
-        opacity: 0,
-      });
-      trendingSubtitleAnimation.start({
-        opacity: 0,
-      });
-    }
-  }, [inView]);
-
   return (
     <div>
-      <div ref={ref} className="mb-6">
+      <div className="mb-6">
         <motion.h1
-          animate={trendingHeadingAnimation}
+          variants={headingAnimation}
+          initial="init"
+          whileInView="animate"
+          viewport={{
+            once: true,
+          }}
           className="text-[1.7rem] font-heading tracking-wider text-primary text-center md:text-left"
         >
           {title}
         </motion.h1>
         {subTitle && (
           <motion.p
-            animate={trendingSubtitleAnimation}
+            variants={opacityAnimation}
+            initial="init"
+            whileInView="opacity"
+            viewport={{
+              once: true,
+            }}
             className="custom-fz text-priText-300 text-center md:text-left"
           >
             <FontAwesomeIcon

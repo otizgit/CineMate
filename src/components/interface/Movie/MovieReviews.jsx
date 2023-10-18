@@ -1,6 +1,7 @@
 import React from "react";
 import ReviewsCard from "../Cards/ReviewsCard";
 import TrendingTexts from "../../TrendingTexts";
+import { motion } from "framer-motion";
 
 export default function MovieReviews(props) {
   return props.reviews.length ? (

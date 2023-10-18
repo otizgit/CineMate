@@ -101,7 +101,7 @@ export default function Card(props) {
             icon={errorPhoto}
             className="text-primary text-[5rem]"
           />
-          <p className="text-red-600 text-[.85rem] font-semibold">
+          <p className="text-[red] text-[.85rem] font-semibold">
             No Image Found
           </p>
         </div>

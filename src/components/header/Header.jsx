@@ -67,7 +67,6 @@ export default function Header() {
           animate={{ scale: 1 }}
           transition={{
             type: "spring",
-            delay: 0.1,
             bounce: 0.5,
             stiffness: 500,
           }}
@@ -92,7 +91,6 @@ export default function Header() {
               transition={{
                 type: "spring",
                 stiffness: 500,
-                delay: 0.1,
                 bounce: 0.5,
               }}
               whileHover={{
@@ -174,6 +172,7 @@ export default function Header() {
           <motion.label
             whileHover={{
               scale: 1.15,
+              rotate: -10
             }}
             transition={{
               type: "spring",

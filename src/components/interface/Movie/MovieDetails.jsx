@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 export default function MovieDetails(props) {
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-  });
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+
   const movieTitleAnimation = useAnimation();
 
   useEffect(() => {
@@ -19,14 +18,8 @@ export default function MovieDetails(props) {
           type: "spring",
           duration: 1.2,
           bounce: 0.5,
-          stiffness: 400
+          stiffness: 400,
         },
-      });
-    }
-    if (!inView) {
-      movieTitleAnimation.start({
-        y: 40,
-        opacity: 0,
       });
     }
   }, [inView]);

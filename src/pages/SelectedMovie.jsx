@@ -15,6 +15,8 @@ import Seasons from "../components/interface/Seasons";
 import SeasonsCard from "../components/interface/Cards/SeasonsCard";
 import ImageOverlay from "../components/interface/ImageOverlay";
 import TrendingTexts from "../components/TrendingTexts";
+import { motion } from "framer-motion";
+import { slideAnimation } from "../animations/Animations";
 
 export default function SelectedMovie() {
   const { keyword, title, id } = useParams();
@@ -134,9 +136,19 @@ export default function SelectedMovie() {
       >
         <div className="lg:flex lg:py-[5rem] lg:items-center">
           {results.poster_path && (
-            <img
+            <motion.img
+              variants={slideAnimation}
+              initial="init"
+              animate="slide"
+              transition={{
+                type: "spring",
+                stiffness: 500,
+              }}
+              whileHover={{
+                scale: 1.07,
+              }}
               onClick={toggleImageOverlay}
-              className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-pointer hover:scale-105 transition-all"
+              className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-pointer"
               src={`https://image.tmdb.org/t/p/w780${results.poster_path}`}
               alt="Movie Poster"
             />

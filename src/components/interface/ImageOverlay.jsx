@@ -4,6 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { motion } from "framer-motion";
+import { bopAnimation } from "../../animations/Animations";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 export default function ImageOverlay({ images, setOverlay }) {
   function hideOverlay() {
@@ -12,7 +16,20 @@ export default function ImageOverlay({ images, setOverlay }) {
   }
 
   return (
-    <div className="fixed inset-0 w-full h-full z-[10000] padding overflow-y-auto pb-10">
+    <motion.div
+      variants={bopAnimation}
+      initial="init"
+      animate="bop"
+      className="fixed inset-0 w-full h-full z-[10000] padding overflow-y-auto pb-10"
+    >
+      <div className="padding absolute z-[12000] pt-7 w-full right-0 flex justify-end">
+        <FontAwesomeIcon
+          onClick={hideOverlay}
+          icon={faX}
+          className="text-[red] text-[1.5rem] cursor-pointer"
+        />
+      </div>
+      
       <div
         onClick={hideOverlay}
         className="absolute w-full h-full left-0 header-style"
@@ -39,6 +56,6 @@ export default function ImageOverlay({ images, setOverlay }) {
           );
         })}
       </Swiper>
-    </div>
+    </motion.div>
   );
 }

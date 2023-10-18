@@ -63,7 +63,7 @@ export default function SearchBox(props) {
             onClick={toggleSearch}
             className="h-[3rem] w-16 md:w-14 bg-[white]"
           >
-            <FontAwesomeIcon icon={faXmark} className="text-red-600 text-xl" />
+            <FontAwesomeIcon icon={faXmark} className="text-[red] text-xl" />
           </button>
         )}
         <button
