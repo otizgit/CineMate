@@ -14,6 +14,9 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={0}
+            viewport={{
+              once: true,
+            }}
             className="text-[2.1rem] font-heading tracking-wider text-primary"
           >
             {`${props.results.title}`}
@@ -25,6 +28,9 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={0}
+            viewport={{
+              once: true,
+            }}
             className="text-[2.1rem] font-heading tracking-wider text-primary"
           >
             {`${props.results.name}`}
@@ -36,18 +42,24 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={0}
-            className="custom-fz font-medium text-white"
+            viewport={{
+              once: true,
+            }}
+            className="hidden md:block custom-fz font-medium text-white"
           >{`(${props.results.release_date.slice(0, 4)})`}</motion.p>
         ) : null}
       </div>
 
-      <div className="flex mb-4 items-start md:justify-between lg:justify-start lg:w-[fit-content] flex-wrap gap-x-4 gap-y-4">
+      <div className="flex flex-col md:flex-row mb-4 items-start md:justify-between lg:justify-start lg:w-[fit-content] flex-wrap gap-x-4 gap-y-4">
         {props.imdbResults.Rated !== "N/A" && props.imdbResults.Rated ? (
           <motion.div
             variants={fadeAnimation}
             initial="init"
             whileInView="fade"
             custom={1}
+            viewport={{
+              once: true,
+            }}
             className="border-2 bg-black px-2 w-[fit-content] border-priText-300 font-bold text-primary rounded-md custom-fz"
           >
             {props.imdbResults.Rated}
@@ -59,9 +71,15 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={1}
+            viewport={{
+              once: true,
+            }}
             className="lg:border-r-2 lg:border-primary lg:pr-4"
           >
             <p className="custom-fz text-white-300 font-medium">
+              <span className="md:hidden custom-fz text-primary font-medium tracking-wide">
+                Runtime:
+              </span>{" "}
               {props.results.runtime}mins
             </p>
           </motion.div>
@@ -72,9 +90,15 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={1}
+            viewport={{
+              once: true,
+            }}
             className="lg:border-r-2 lg:border-primary lg:pr-4"
           >
-            <div className="flex">
+            <div className="flex flex-wrap">
+              <span className="md:hidden custom-fz text-primary font-medium tracking-wide mr-1">
+                Genre(s):
+              </span>{" "}
               {props.results.genres.map((genre) => {
                 return (
                   <p
@@ -94,9 +118,15 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={1}
+            viewport={{
+              once: true,
+            }}
             className="lg:border-r-2 lg:border-primary lg:pr-4"
           >
             <p className="custom-fz text-white-300 font-medium">
+              <span className="md:hidden custom-fz text-primary font-medium tracking-wide mr-1">
+                Release Date:
+              </span>
               {props.results.release_date}
             </p>
           </motion.div>
@@ -107,8 +137,14 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={1}
+            viewport={{
+              once: true,
+            }}
             className="flex"
           >
+            <span className="md:hidden custom-fz text-primary font-medium tracking-wide mr-1">
+              Country:
+            </span>{" "}
             {props.results.production_countries.map((country, index) => {
               return (
                 <p
@@ -137,6 +173,9 @@ export default function MovieDetails(props) {
                 initial="init"
                 whileInView="fade"
                 custom={index + 2}
+                viewport={{
+                  once: true,
+                }}
                 key={index}
               >
                 {rating.Source === "Internet Movie Database" ? (
@@ -169,6 +208,9 @@ export default function MovieDetails(props) {
           initial="init"
           whileInView="fade"
           custom={4}
+          viewport={{
+            once: true,
+          }}
           className="mb-2"
         >
           <p className="custom-fz italic custom-fz font-medium text-priText-300">
@@ -184,6 +226,9 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={5}
+            viewport={{
+              once: true,
+            }}
             className="custom-fz text-white leading-7"
           >
             {props.results.overview}
@@ -198,6 +243,9 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={6}
+            viewport={{
+              once: true,
+            }}
             className="mb-5"
           >
             <p className="custom-fz font-semibold">
@@ -212,6 +260,9 @@ export default function MovieDetails(props) {
             initial="init"
             whileInView="fade"
             custom={7}
+            viewport={{
+              once: true,
+            }}
           >
             <p className="custom-fz font-semibold">
               {props.imdbResults.Director}

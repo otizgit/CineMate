@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import bgImage from "../assets/images/bg.avif";
-import { useParams } from "react-router-dom";
 import apiKey from "../assets/data/key";
 import MovieDetails from "../components/interface/Movie/MovieDetails";
 import { useWindowSize } from "@uidotdev/usehooks";
@@ -29,13 +28,14 @@ export default function SelectedMovie() {
   const [reviews, setReviews] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
   const [images, setImages] = useState([]);
+  const [videos, setVideos] = useState([]);
+
   const [overlay, setOverlay] = useState(false);
 
   const windowWidth = useWindowSize().width;
 
   const location = useLocation();
   const { releaseYear } = location.state;
-
   const [resultsLoad, setResultsLoad] = useState(false);
 
   if (!resultsLoad) {
@@ -72,6 +72,10 @@ export default function SelectedMovie() {
       `https://api.themoviedb.org/3/${keyword}/${id}/images?api_key=${apiKey}`
     );
 
+    const getVideos = axios.get(
+      `https://api.themoviedb.org/3/${keyword}/${id}/videos?api_key=${apiKey}`
+    );
+
     axios
       .all([
         getResults,
@@ -81,6 +85,7 @@ export default function SelectedMovie() {
         getReviews,
         getRecommendations,
         getImages,
+        getVideos,
       ])
       .then(
         axios.spread((...allData) => {
@@ -92,6 +97,8 @@ export default function SelectedMovie() {
           setReviews(allData[4].data.results);
           setRecommendations(allData[5].data.results);
           setImages(allData[6].data);
+          setVideos(allData[7].data);
+
           setResultsLoad(true);
         })
       )
@@ -108,8 +115,11 @@ export default function SelectedMovie() {
   });
 
   useEffect(() => {
+    setResultsLoad(false);
     fetchData();
-  }, [resultsLoad]);
+
+    console.log(videos);
+  }, [id]);
 
   function toggleImageOverlay() {
     document.body.style.overflow = "hidden";
@@ -140,96 +150,69 @@ export default function SelectedMovie() {
 
   return (
     <>
-      {!resultsLoad ? <Preloader /> : null}
-
-      <div className="pt-[76px] overflow-x-hidden">
-        <div
-          className="h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16"
-          style={results.backdrop_path ? backdropStyle : backdropStyleTwo}
-        >
-          <div className="lg:flex lg:py-[5rem] lg:items-center">
-            {results.poster_path && (
-              <motion.img
-                variants={slideAnimation}
-                initial="init"
-                animate="slide"
-                transition={{
-                  type: "spring",
-                  stiffness: 500,
-                }}
-                whileHover={{
-                  scale: 1.07,
-                }}
-                onClick={toggleImageOverlay}
-                className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-pointer"
-                src={`https://image.tmdb.org/t/p/w780${results.poster_path}`}
-                alt="Movie Poster"
-              />
-            )}
-            {windowWidth > 1023 && (
-              <MovieDetails imdbResults={imdbResults} results={results} />
-            )}
-          </div>
-        </div>
-        {windowWidth < 1024 && (
-          <MovieDetails imdbResults={imdbResults} results={results} />
-        )}
-
-        <div className="padding">
-          <MovieInfo results={results} imdbResults={imdbResults} />
-        </div>
-
-        {results.seasons && (
-          <div className="movie-margin padding">
-            <Seasons seasons={results.seasons} title={title} id={id} />
-          </div>
-        )}
-
-        {results.last_episode_to_air && (
-          <div className="movie-margin padding">
-            <TrendingTexts title="Last Episode To Air" />
-            <SeasonsCard seasonArray={results.last_episode_to_air} />
-          </div>
-        )}
-
-        {cast.length && (
-          <div className="movie-margin">
-            <div className="padding">
-              <TrendingTexts title="Cast" />
+      {resultsLoad ? (
+        <div className="pt-[76px] overflow-x-hidden">
+          <div
+            className="h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16"
+            style={results.backdrop_path ? backdropStyle : backdropStyleTwo}
+          >
+            <div className="lg:flex lg:py-[5rem] lg:items-center">
+              {results.poster_path && (
+                <motion.img
+                  variants={slideAnimation}
+                  initial="init"
+                  animate="slide"
+                  transition={{
+                    type: "spring",
+                    stiffness: 500,
+                  }}
+                  whileHover={{
+                    scale: 1.07,
+                  }}
+                  onClick={toggleImageOverlay}
+                  className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-pointer"
+                  src={`https://image.tmdb.org/t/p/w780${results.poster_path}`}
+                  alt="Movie Poster"
+                />
+              )}
+              {windowWidth > 1023 && (
+                <MovieDetails imdbResults={imdbResults} results={results} />
+              )}
             </div>
-            <CategoryResults apiKeyword="person" feedback={cast.slice(0, 20)} />
-            <Link
-              to={`/${title}/all-cast-and-crew`}
-              state={{ allCast: cast, movieTitle: title, allCrew: crew }}
-            >
-              <motion.p
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 500,
-                  bounce: 0.5,
-                }}
-                whileHover={{
-                  scale: 1.15,
-                }}
-                className="text-primary ml-6 md:ml-14 mt-4 font-medium inline-block"
-              >
-                View All Cast and Crew
-              </motion.p>
-            </Link>
           </div>
-        )}
+          {windowWidth < 1024 && (
+            <MovieDetails imdbResults={imdbResults} results={results} />
+          )}
 
-        {results.networks ? <Networks networks={results.networks} /> : null}
+          <div className="padding">
+            <MovieInfo results={results} imdbResults={imdbResults} />
+          </div>
 
-        {reviews ? (
-          <div className="movie-margin">
-            <MovieReviews reviews={reviews.slice(0, 3)} />
-            {reviews.length >= 3 ? (
+          {results.seasons && (
+            <div className="movie-margin padding">
+              <Seasons seasons={results.seasons} title={title} id={id} />
+            </div>
+          )}
+
+          {results.last_episode_to_air && (
+            <div className="movie-margin padding">
+              <TrendingTexts title="Last Episode To Air" />
+              <SeasonsCard seasonArray={results.last_episode_to_air} />
+            </div>
+          )}
+
+          {cast.length && (
+            <div className="movie-margin">
+              <div className="padding">
+                <TrendingTexts title="Cast" />
+              </div>
+              <CategoryResults
+                apiKeyword="person"
+                feedback={cast.slice(0, 20)}
+              />
               <Link
-                to={`/${title}/all-reviews`}
-                state={{ allReviews: reviews, movieTitle: title }}
+                to={`/${title}/all-cast-and-crew`}
+                state={{ allCast: cast, movieTitle: title, allCrew: crew }}
               >
                 <motion.p
                   initial={{ scale: 0 }}
@@ -244,35 +227,67 @@ export default function SelectedMovie() {
                   }}
                   className="text-primary ml-6 md:ml-14 mt-4 font-medium inline-block"
                 >
-                  View All Reviews
+                  View All Cast and Crew
                 </motion.p>
               </Link>
-            ) : null}
-          </div>
-        ) : null}
-
-        {results && <MovieExtraLinks results={results} keywords={keywords} />}
-
-        {recommendations && (
-          <div className="margin">
-            <div className="padding">
-              <TrendingTexts title="you may also like" />
             </div>
-            <CategoryResults
-              setResultsLoad={setResultsLoad}
-              apiKeyword={keyword}
-              feedback={recommendations}
-            />
-          </div>
-        )}
+          )}
 
-        {overlay && (
-          <ImageOverlay
-            images={images.posters.slice(0, 20)}
-            setOverlay={setOverlay}
-          />
-        )}
-      </div>
+          {results.networks ? <Networks networks={results.networks} /> : null}
+
+          {reviews ? (
+            <div className="movie-margin">
+              <MovieReviews reviews={reviews.slice(0, 3)} />
+              {reviews.length >= 3 ? (
+                <Link
+                  to={`/${title}/all-reviews`}
+                  state={{ allReviews: reviews, movieTitle: title }}
+                >
+                  <motion.p
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                      bounce: 0.5,
+                    }}
+                    whileHover={{
+                      scale: 1.15,
+                    }}
+                    className="text-primary ml-6 md:ml-14 mt-4 font-medium inline-block"
+                  >
+                    View All Reviews
+                  </motion.p>
+                </Link>
+              ) : null}
+            </div>
+          ) : null}
+
+          {results && <MovieExtraLinks results={results} keywords={keywords} />}
+
+          {recommendations && (
+            <div className="margin">
+              <div className="padding">
+                <TrendingTexts title="you may also like" />
+              </div>
+              <CategoryResults
+                setResultsLoad={setResultsLoad}
+                apiKeyword={keyword}
+                feedback={recommendations}
+              />
+            </div>
+          )}
+
+          {overlay && (
+            <ImageOverlay
+              images={images.posters.slice(0, 20)}
+              setOverlay={setOverlay}
+            />
+          )}
+        </div>
+      ) : (
+        <Preloader />
+      )}
     </>
   );
 }

@@ -44,15 +44,17 @@ export default function KeywordPage() {
 
   return (
     <>
-      {!resultsLoad ? <Preloader /> : null}
+      {resultsLoad ? (
+        <div className="pt-[120px] margin">
+          <div className="padding">
+            <TrendingTexts title={name.toUpperCase() + " related"} />
+          </div>
 
-      <div className="pt-[120px] margin">
-        <div className="padding">
-          <TrendingTexts title={name.toUpperCase() + ' related'} />
+          <CategoryResults apiKeyword="movie" feedback={keywordData} />
         </div>
-
-        <CategoryResults apiKeyword="movie" feedback={keywordData} />
-      </div>
+      ) : (
+        <Preloader />
+      )}
     </>
   );
 }

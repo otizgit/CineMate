@@ -31,7 +31,9 @@ export default function CategoryResults(props) {
           keyword={props.apiKeyword}
           data={data}
         />
-        <div className="swiper-lazy-  preloader swiper-lazy-prelroader-white"></div>
+        {data.poster_path || data.profile_path || data.logo_path ? (
+          <div className="swiper-lazy-preloader swiper-lazy-prelroader-white"></div>
+        ) : null}
       </SwiperSlide>
     );
   });
@@ -45,6 +47,7 @@ export default function CategoryResults(props) {
             spaceBetween={30}
             modules={[Navigation]}
             navigation
+            lazy="true"
           >
             {renderedResults}
           </Swiper>

@@ -52,17 +52,19 @@ export default function CategoryPage() {
 
   return (
     <>
-      {!resultsLoad ? <Preloader /> : null}
-
-      <div className="padding-top md:pt-[10rem]">
-        <div className="padding">
-          <TrendingTexts title={title} />
+      {resultsLoad ? (
+        <div className="padding-top md:pt-[10rem]">
+          <div className="padding">
+            <TrendingTexts title={title} />
+          </div>
+          <div className="margin">
+            <CategoryResults apiKeyword={apiKeyword} feedback={feedback} />
+          </div>
+          <Explore />
         </div>
-        <div className="margin">
-          <CategoryResults apiKeyword={apiKeyword} feedback={feedback} />
-        </div>
-        <Explore />
-      </div>
+      ) : (
+        <Preloader />
+      )}
     </>
   );
 }

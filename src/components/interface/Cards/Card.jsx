@@ -75,6 +75,7 @@ export default function Card(props) {
         <div className="rounded-tr-xl rounded-tl-xl overflow-hidden">
           {props.data.poster_path && (
             <img
+              loading="lazy"
               className="group-hover:scale-110 display-img transition-all w-full"
               src={`https://image.tmdb.org/t/p/w780${photo}`}
               alt="Movie Poster"
@@ -82,6 +83,7 @@ export default function Card(props) {
           )}
           {props.data.logo_path && (
             <img
+              loading="lazy"
               className="display-img group-hover:scale-110 transition-all w-full"
               src={`https://image.tmdb.org/t/p/w780${photo}`}
               alt="logo image"
@@ -89,6 +91,7 @@ export default function Card(props) {
           )}
           {props.data.profile_path && (
             <img
+              loading="lazy"
               className="display-img group-hover:scale-110 h-[280px] w-full mx-auto object-cover transition-all"
               src={`https://image.tmdb.org/t/p/w780${photo}`}
               alt="Profile Image"

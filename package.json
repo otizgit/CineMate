@@ -15,7 +15,6 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@studio-freight/lenis": "^1.0.23",
     "@uidotdev/usehooks": "^2.3.1",
     "axios": "^1.5.0",
     "boxicons": "^2.1.4",

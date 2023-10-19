@@ -67,55 +67,60 @@ export default function PersonPage() {
 
   return (
     <>
-      {!resultsLoad ? <Preloader /> : null}
-      
-      <div className="pt-[120px] overflow-x-hidden">
-        <div className="padding lg:hidden">
-          <PersonPersonalInfo personData={personData} setOverlay={setOverlay} />
+      {resultsLoad ? (
+        <div className="pt-[120px] overflow-x-hidden">
+          <div className="padding lg:hidden">
+            <PersonPersonalInfo
+              personData={personData}
+              setOverlay={setOverlay}
+            />
+          </div>
+
+          <div className="px-6 hidden lg:block fixed w-[27%] top-[77px] bottom-0 pb-10 overflow-y-auto side-bar border-primary">
+            <PersonPersonalInfo
+              personData={personData}
+              setOverlay={setOverlay}
+            />
+          </div>
+
+          <div className="lg:w-[73%] lg:ml-auto">
+            {personData.biography ? (
+              <div className="text-center lg:text-left border-b-2 border-primary pb-10 mb-6 padding">
+                <motion.p
+                  variants={headingAnimation}
+                  initial="init"
+                  whileInView="animate"
+                  className="font-heading tracking-wider text-primary mb-2 text-[1.5rem]"
+                >
+                  Biography
+                </motion.p>
+                <motion.p
+                  variants={fadeAnimation}
+                  initial="init"
+                  whileInView="fade"
+                  custom={1}
+                  className="custom-fz text-priText-300 leading-7"
+                >
+                  {personData.biography}
+                </motion.p>
+              </div>
+            ) : null}
+
+            <PersonFeaturesFilter setCredit={setCredit} />
+
+            <PersonFeatures credits={personCredits} creditKeyword={credit} />
+          </div>
+
+          {overlay && (
+            <ImageOverlay
+              images={images.profiles.slice(0, 20)}
+              setOverlay={setOverlay}
+            />
+          )}
         </div>
-
-        <div className="px-6 hidden lg:block fixed w-[27%] top-[77px] bottom-0 pb-10 overflow-y-auto side-bar border-primary">
-          <PersonPersonalInfo personData={personData} setOverlay={setOverlay} />
-        </div>
-
-        <div className="lg:w-[73%] lg:ml-auto">
-          {personData.biography ? (
-            <div className="text-center lg:text-left border-b-2 border-primary pb-10 mb-6 padding">
-              <motion.p
-                variants={headingAnimation}
-                initial="init"
-                whileInView="animate"
-                viewport={{
-                  once: true,
-                }}
-                className="font-heading tracking-wider text-primary mb-2 text-[1.5rem]"
-              >
-                Biography
-              </motion.p>
-              <motion.p
-                variants={fadeAnimation}
-                initial="init"
-                whileInView="fade"
-                custom={1}
-                className="custom-fz text-priText-300 leading-7"
-              >
-                {personData.biography}
-              </motion.p>
-            </div>
-          ) : null}
-
-          <PersonFeaturesFilter setCredit={setCredit} />
-
-          <PersonFeatures credits={personCredits} creditKeyword={credit} />
-        </div>
-
-        {overlay && (
-          <ImageOverlay
-            images={images.profiles.slice(0, 20)}
-            setOverlay={setOverlay}
-          />
-        )}
-      </div>
+      ) : (
+        <Preloader />
+      )}
     </>
   );
 }

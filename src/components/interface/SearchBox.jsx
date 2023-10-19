@@ -52,7 +52,7 @@ export default function SearchBox(props) {
           onKeyDown={(e) => handleEnterClick(e)}
           autoFocus={props.isSearchOpen}
           ref={inputRef}
-          className="focus:outline-none font-sans font-medium h-[3rem] px-4 text-black custom-fz w-full rounded-l-lg"
+          className="focus:outline-none font-sans font-medium h-[3rem] px-4 text-black custom-fz w-full rounded-l-lg placeholder:text-[grey]"
           type="text"
           id="search-input"
           maxLength={35}
@@ -61,19 +61,22 @@ export default function SearchBox(props) {
         {props.isSearchOpen && (
           <button
             onClick={toggleSearch}
-            className="h-[3rem] w-16 md:w-14 bg-[white]"
+            className="h-[3rem] w-16 md:w-14 bg-[white] group"
           >
-            <FontAwesomeIcon icon={faXmark} className="text-[red] text-xl" />
+            <FontAwesomeIcon
+              icon={faXmark}
+              className="text-[red] text-xl group-hover:scale-[1.15] transition-all"
+            />
           </button>
         )}
         <button
           onClick={handleSubmitClick}
           ref={btnRef}
-          className="bg-primary h-[3rem] w-16 md:w-14 rounded-r-lg"
+          className="group bg-primary h-[3rem] w-16 md:w-14 rounded-r-lg"
         >
           <FontAwesomeIcon
             icon={faSearch}
-            className="text-white text-[1.2rem]"
+            className="text-white text-[1.2rem] group-hover:scale-[1.15] transition-all"
           />
         </button>
       </div>

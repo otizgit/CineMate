@@ -47,19 +47,21 @@ export default function SearchResultsPage() {
 
   return (
     <>
-      {!searchResultsLoad ? <Preloader /> : null}
-
-      <div className="padding-top text-white">
-        <ResultsFilter category={category} setCategory={setCategory} />
-        <div className="margin">
-          <CategoryResults
-            apiKeyword={category}
-            feedback={searchData}
-            searchWord={`${category}`}
-          />
+      {searchResultsLoad ? (
+        <div className="padding-top text-white">
+          <ResultsFilter category={category} setCategory={setCategory} />
+          <div className="margin">
+            <CategoryResults
+              apiKeyword={category}
+              feedback={searchData}
+              searchWord={`${category}`}
+            />
+          </div>
+          <Explore />
         </div>
-        <Explore />
-      </div>
+      ) : (
+        <Preloader />
+      )}
     </>
   );
 }
