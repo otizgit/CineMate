@@ -40,6 +40,9 @@ export default function ImageOverlay({ images, setOverlay }) {
         slidesPerView={1}
         navigation
         className="w-[90%] md:w-[70%] lg:w-[55%] absolute inset-0 m-auto z-[12000] h-[fit-content]"
+        style={{
+          '--swiper-navigation-color': '#29AB87',
+        }}
       >
         {images.map((imgs) => {
           return (

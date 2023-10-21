@@ -19,8 +19,6 @@ import { slideAnimation, fadeAnimation } from "../animations/Animations";
 import Preloader from "../components/interface/Preloader";
 import Videos from "../components/interface/Videos";
 import BelongsToCollection from "../components/interface/BelongsToCollection";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMaximize } from "@fortawesome/free-solid-svg-icons";
 
 export default function SelectedMovie() {
   const { keyword, title, id } = useParams();
