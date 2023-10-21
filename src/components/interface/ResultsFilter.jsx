@@ -33,7 +33,7 @@ export default function ResultsFilter(props) {
           className="border-2 w-full  bg-black rounded-xl border-primary py-3 px-4"
         >
           <div className="flex justify-between items-center">
-            <p className="tracking-wider text-[.85rem]">Select Category</p>
+            <p className="tracking-wider font-medium text-[.85rem]">Select Category</p>
             <FontAwesomeIcon
               icon={faCaretDown}
               className={`text-primary font ${
