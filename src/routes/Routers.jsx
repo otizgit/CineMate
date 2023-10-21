@@ -15,6 +15,7 @@ import EpisodePage from "../pages/EpisodePage";
 import KeywordPage from "../pages/KeywordPage";
 import AllVideos from "../pages/AllVideos";
 import HowToUse from "../pages/HowToUse";
+import Error from "../pages/Error";
 
 export default function Routers() {
   return (
@@ -36,6 +37,7 @@ export default function Routers() {
         <Route path="/keyword/:name/:id" element={<KeywordPage />} />
         <Route path="/:title/all-videos" element={<AllVideos />} />
         <Route path="/how-to-use" element={<HowToUse />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );
