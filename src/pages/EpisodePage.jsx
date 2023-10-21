@@ -64,7 +64,7 @@ export default function EpisodePage() {
     <>
       {resultsLoad ? (
         <div className="pt-[77px] margin">
-          <div className="flex flex-col gap-6 lg:flex-row border-b-2 lg:border-x-2 border-primary pb-10 lg:pb-0 mb-14 mx-6 md:mx-14 overflow-hidden">
+          <div className="flex flex-col gap-8 lg:flex-row border-b-2 lg:border-x-2 border-primary pb-10 lg:pb-0 mb-14 mx-6 md:mx-14 overflow-hidden">
             <motion.img
               variants={slideAnimation}
               initial="init"

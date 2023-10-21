@@ -32,22 +32,6 @@ export default function Hero() {
           {heroImageElement}
         </Swiper>
       </div>
-      <div className="top-[40%] absolute left-[50%] w-[80%] translate-x-[-50%] z-10 md:top-[55%]">
-        {/* <h1
-          style={{ textShadow: "1px 6px black" }}
-          className="font-comic mb-4 text-center leading-tight text-[3.2rem] text-gray-200 xl:text-6xl"
-        >
-          Explore The Movie World
-        </h1> */}
-        {/* <div className="flex flex-col items-center justify-center gap-3 xl:gap-12 md:flex-row md:gap-4">
-          <button className="button spacing bg-blue font w-[11rem] backdrop-blur">
-            <span>Explore</span>
-          </button>
-          <button className="button spacing font w-[11rem] backdrop-blur bg-blue">
-            <span>View Categories</span>
-          </button>
-        </div> */}
-      </div>
     </div>
   );
 }

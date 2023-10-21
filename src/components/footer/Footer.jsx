@@ -9,10 +9,11 @@ import {
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import { motion } from "framer-motion";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function Footer() {
   return (
-    <footer className="relative padding py-4 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-10">
+    <footer className="relative padding py-10 lg:py-8 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-10">
       <div>
         <Link to="/home">
           <motion.img
@@ -31,7 +32,7 @@ export default function Footer() {
         </Link>
       </div>
 
-      <div>
+      <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-14">
         <div className="flex flex-wrap justify-center gap-4">
           <motion.a
             transition={{
@@ -106,6 +107,25 @@ export default function Footer() {
             />
           </motion.a>
         </div>
+        <Link to="/how-to-use">
+          <motion.div
+            transition={{
+              type: "spring",
+              bounce: 0.5,
+              stiffness: 500,
+            }}
+            whileHover={{
+              scale: 1.1,
+            }}
+            className="flex items-center gap-2 justify-center border-2 py-2 px-4 border-primary rounded-lg"
+          >
+            <FontAwesomeIcon icon={faQuestionCircle} className="text-primary" />
+            <p className="text-priText-300 font-bold tracking-wide custom-fz">
+              How To Use
+            </p>
+            <FontAwesomeIcon icon={faQuestionCircle} className="text-primary" />
+          </motion.div>
+        </Link>
       </div>
     </footer>
   );

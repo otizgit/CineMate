@@ -20,6 +20,10 @@ export default {
           "Exo",
           "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
         ],
+        handWriting: [
+          'Sriracha',
+          "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+        ],
         heading: ["Bebas Neue", "Arial, Helvetica", "sans-serif"],
         cinzel: ["Cinzel", "Arial, Helvetica", "sans-serif"],
       },

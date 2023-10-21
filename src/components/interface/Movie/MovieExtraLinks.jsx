@@ -35,9 +35,9 @@ export default function MovieExtraLinks(props) {
                 >
                   <Link
                     to={`/company/${company.name}/${company.id}`}
-                    className="py-1 px-3 rounded-lg border-2 border-primary w-[fit-content] flex"
+                    className="py-1 px-3 rounded-lg border-2 border-primary bg-black w-[fit-content] flex"
                   >
-                    <p className="custom-fz text-white">{company.name}</p>
+                    <p className="custom-fz text-priText-300">{company.name}</p>
                   </Link>
                 </motion.div>
               );
@@ -71,9 +71,9 @@ export default function MovieExtraLinks(props) {
                 >
                   <Link
                     to={`/keyword/${movieKeyword.name}/${movieKeyword.id}`}
-                    className="py-1 px-3 rounded-lg border-2 border-primary w-[fit-content] flex"
+                    className="py-1 px-3 rounded-lg border-2 border-primary bg-black w-[fit-content] flex"
                   >
-                    <p className="custom-fz text-white">{movieKeyword.name}</p>
+                    <p className="custom-fz text-priText-300">{movieKeyword.name}</p>
                   </Link>
                 </motion.div>
               );

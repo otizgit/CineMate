@@ -22,7 +22,7 @@ export default function ImageOverlay({ images, setOverlay }) {
       animate="bop"
       className="fixed inset-0 w-full h-full z-[10000] padding overflow-y-auto pb-10"
     >
-      <div className="padding absolute z-[12000] pt-7 w-full right-0 flex justify-end">
+      <div className="padding absolute z-[14000] pt-7 w-full right-0 flex justify-end">
         <FontAwesomeIcon
           onClick={hideOverlay}
           icon={faX}
@@ -39,19 +39,21 @@ export default function ImageOverlay({ images, setOverlay }) {
         modules={[Navigation]}
         slidesPerView={1}
         navigation
-        className="w-[90%] md:w-[70%] lg:w-[55%] absolute inset-0 m-auto z-[12000]"
+        className="w-[90%] md:w-[70%] lg:w-[55%] absolute inset-0 m-auto z-[12000] h-[fit-content]"
       >
         {images.map((imgs) => {
           return (
             <SwiperSlide
               key={nanoid()}
               className="grid place-items-center z-[12000]"
+              lazy="true"
             >
               <img
                 className="w-full object-cover rounded-xl md:w-[250px] lg:w-[300px]"
                 src={`https://image.tmdb.org/t/p/w780${imgs.file_path}`}
                 alt="movie images"
               />
+              <div className="swiper-lazy-preloader"></div>
             </SwiperSlide>
           );
         })}

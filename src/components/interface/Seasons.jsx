@@ -3,6 +3,7 @@ import SeasonsCard from "./Cards/SeasonsCard";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import TrendingTexts from "../TrendingTexts";
+import { fadeAnimation } from "../../animations/Animations";
 
 export default function Seasons(props) {
   const seasonOne = props.seasons.filter((season) => {
@@ -27,8 +28,12 @@ export default function Seasons(props) {
           state={{ seasons: props.seasons }}
         >
           <motion.p
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
+            variants={fadeAnimation}
+            initial="init"
+            whileInView="fade"
+            viewport={{
+              once: true
+            }}
             transition={{
               type: "spring",
               stiffness: 500,

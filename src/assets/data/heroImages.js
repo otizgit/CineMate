@@ -4,6 +4,7 @@ const images = [
       "https://ik.imagekit.io/zusxqcpbw/tr:w-1200/john-wick.jpg?updatedAt=1695051543391",
     mobileUrl:
       "https://ik.imagekit.io/zusxqcpbw/tr:w-600/john-wick-mobile.jpg?updatedAt=1695051541460",
+
   },
   {
     desktopUrl:

@@ -7,6 +7,7 @@ import ImageOverlay from "../components/interface/ImageOverlay";
 import { motion } from "framer-motion";
 import { headingAnimation, slideAnimation } from "../animations/Animations";
 import Preloader from "../components/interface/Preloader";
+import TrendingTexts from "../components/TrendingTexts";
 
 export default function SelectedSeason() {
   const { season, title, id } = useParams();
@@ -61,7 +62,7 @@ export default function SelectedSeason() {
     <>
       {resultsLoad ? (
         <div className="lg:pt-[77px] overflow-x-hidden">
-          <div className="flex flex-col gap-6 lg:flex-row border-b-2 lg:border-x-2 border-primary pb-10 lg:pb-0 mb-14 mx-6 md:mx-14 overflow-hidden">
+          <div className="flex flex-col gap-8 lg:flex-row border-b-2 lg:border-x-2 border-primary pb-10 lg:pb-0 mb-14 mx-6 md:mx-14 overflow-hidden">
             <motion.img
               variants={slideAnimation}
               initial="init"
@@ -107,9 +108,9 @@ export default function SelectedSeason() {
 
           {seasonData.episodes ? (
             <div>
-              <h2 className="text-[1.7rem] font-heading tracking-wider text-primary mb-6 padding">
-                Episodes{" "}
-              </h2>
+              <div className="padding">
+                <TrendingTexts title="Episodes" />
+              </div>
               <div className="padding flex flex-col gap-14 margin">
                 {seasonData.episodes
                   ? seasonData.episodes.map((episode, index) => {

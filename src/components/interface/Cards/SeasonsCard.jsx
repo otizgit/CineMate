@@ -26,7 +26,7 @@ export default function SeasonsCard({ seasonArray, index }) {
         to={`/seasons/${seasonArray.season_number}/${
           seasonArray.episode_number ? seasonArray.episode_number : "season"
         }/${title}/${id}`}
-        className="group border-2 rounded-xl custom-shadow overflow-hidden border-primary flex flex-col md:gap-0 md:flex-row md:w-[fit-content]"
+        className="group border-2 rounded-xl bg-black custom-shadow overflow-hidden border-primary flex flex-col md:gap-0 md:flex-row md:w-[fit-content]"
       >
         {seasonArray.poster_path ? (
           <img
@@ -62,7 +62,7 @@ export default function SeasonsCard({ seasonArray, index }) {
 
           {seasonArray.still_path ? (
             <div className="mb-4">
-              <p className="custom-fz text-primary font-medium  inline-block mr-1 font-semisemibold">
+              <p className="custom-fz text-primary font-medium inline-block mr-1 font-semisemibold">
                 {seasonArray.season_number
                   ? "Season" + seasonArray.season_number + "-"
                   : "Specials,"}

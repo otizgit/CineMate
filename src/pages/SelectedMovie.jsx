@@ -15,20 +15,17 @@ import SeasonsCard from "../components/interface/Cards/SeasonsCard";
 import ImageOverlay from "../components/interface/ImageOverlay";
 import TrendingTexts from "../components/TrendingTexts";
 import { motion } from "framer-motion";
-import { slideAnimation } from "../animations/Animations";
+import { slideAnimation, fadeAnimation } from "../animations/Animations";
 import Preloader from "../components/interface/Preloader";
+import Videos from "../components/interface/Videos";
+import BelongsToCollection from "../components/interface/BelongsToCollection";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMaximize } from "@fortawesome/free-solid-svg-icons";
 
 export default function SelectedMovie() {
   const { keyword, title, id } = useParams();
   const [results, setResults] = useState([]);
   const [imdbResults, setImdbResults] = useState([]);
-  const [cast, setCast] = useState([]);
-  const [crew, setCrew] = useState([]);
-  const [keywords, setKeywords] = useState([]);
-  const [reviews, setReviews] = useState([]);
-  const [recommendations, setRecommendations] = useState([]);
-  const [images, setImages] = useState([]);
-  const [videos, setVideos] = useState([]);
 
   const [overlay, setOverlay] = useState(false);
 
@@ -46,59 +43,19 @@ export default function SelectedMovie() {
 
   const fetchData = () => {
     const getResults = axios.get(
-      `https://api.themoviedb.org/3/${keyword}/${id}?api_key=${apiKey}`
+      `https://api.themoviedb.org/3/${keyword}/${id}?api_key=${apiKey}&append_to_response=videos,images,credits,keywords,reviews,recommendations`
     );
 
     const getImdbResults = axios.get(
       `http://www.omdbapi.com/?t=${title}&y=${releaseYear}&apikey=25c51d62`
     );
 
-    const getCredits = axios.get(
-      `https://api.themoviedb.org/3/${keyword}/${id}/credits?api_key=${apiKey}`
-    );
-
-    const getKeywords = axios.get(
-      `https://api.themoviedb.org/3/${keyword}/${id}/keywords?api_key=${apiKey}`
-    );
-
-    const getReviews = axios.get(`
-    https://api.themoviedb.org/3/${keyword}/${id}/reviews?api_key=${apiKey}`);
-
-    const getRecommendations = axios.get(
-      `https://api.themoviedb.org/3/${keyword}/${id}/recommendations?api_key=${apiKey}`
-    );
-
-    const getImages = axios.get(
-      `https://api.themoviedb.org/3/${keyword}/${id}/images?api_key=${apiKey}`
-    );
-
-    const getVideos = axios.get(
-      `https://api.themoviedb.org/3/${keyword}/${id}/videos?api_key=${apiKey}`
-    );
-
     axios
-      .all([
-        getResults,
-        getImdbResults,
-        getCredits,
-        getKeywords,
-        getReviews,
-        getRecommendations,
-        getImages,
-        getVideos,
-      ])
+      .all([getResults, getImdbResults])
       .then(
         axios.spread((...allData) => {
           setResults(allData[0].data);
           setImdbResults(allData[1].data);
-          setCast(allData[2].data.cast);
-          setCrew(allData[2].data.crew);
-          setKeywords(allData[3].data.keywords);
-          setReviews(allData[4].data.results);
-          setRecommendations(allData[5].data.results);
-          setImages(allData[6].data);
-          setVideos(allData[7].data);
-
           setResultsLoad(true);
         })
       )
@@ -117,8 +74,6 @@ export default function SelectedMovie() {
   useEffect(() => {
     setResultsLoad(false);
     fetchData();
-
-    console.log(videos);
   }, [id]);
 
   function toggleImageOverlay() {
@@ -176,12 +131,20 @@ export default function SelectedMovie() {
                 />
               )}
               {windowWidth > 1023 && (
-                <MovieDetails imdbResults={imdbResults} results={results} />
+                <MovieDetails
+                  imdbResults={imdbResults}
+                  videos={results.videos.results}
+                  results={results}
+                />
               )}
             </div>
           </div>
           {windowWidth < 1024 && (
-            <MovieDetails imdbResults={imdbResults} results={results} />
+            <MovieDetails
+              imdbResults={imdbResults}
+              videos={results.videos.results}
+              results={results}
+            />
           )}
 
           <div className="padding">
@@ -201,22 +164,30 @@ export default function SelectedMovie() {
             </div>
           )}
 
-          {cast.length && (
+          {results.credits.cast.length && (
             <div className="movie-margin">
               <div className="padding">
                 <TrendingTexts title="Cast" />
               </div>
               <CategoryResults
                 apiKeyword="person"
-                feedback={cast.slice(0, 20)}
+                feedback={results.credits.cast.slice(0, 20)}
               />
               <Link
                 to={`/${title}/all-cast-and-crew`}
-                state={{ allCast: cast, movieTitle: title, allCrew: crew }}
+                state={{
+                  allCast: results.credits.cast,
+                  movieTitle: title,
+                  allCrew: results.credits.crew,
+                }}
               >
                 <motion.p
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
+                  variants={fadeAnimation}
+                  initial="init"
+                  whileInView="fade"
+                  viewport={{
+                    once: true,
+                  }}
                   transition={{
                     type: "spring",
                     stiffness: 500,
@@ -235,17 +206,24 @@ export default function SelectedMovie() {
 
           {results.networks ? <Networks networks={results.networks} /> : null}
 
-          {reviews ? (
+          {results.reviews.results ? (
             <div className="movie-margin">
-              <MovieReviews reviews={reviews.slice(0, 3)} />
-              {reviews.length >= 3 ? (
+              <MovieReviews reviews={results.reviews.results.slice(0, 3)} />
+              {results.reviews.results.length >= 3 ? (
                 <Link
                   to={`/${title}/all-reviews`}
-                  state={{ allReviews: reviews, movieTitle: title }}
+                  state={{
+                    allReviews: results.reviews.results,
+                    movieTitle: title,
+                  }}
                 >
                   <motion.p
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
+                    variants={fadeAnimation}
+                    initial="init"
+                    whileInView="fade"
+                    viewport={{
+                      once: true,
+                    }}
                     transition={{
                       type: "spring",
                       stiffness: 500,
@@ -263,9 +241,26 @@ export default function SelectedMovie() {
             </div>
           ) : null}
 
-          {results && <MovieExtraLinks results={results} keywords={keywords} />}
+          {results.videos.results ? (
+            <div className="movie-margin">
+              <Videos videos={results.videos.results} title={title} />
+            </div>
+          ) : null}
 
-          {recommendations && (
+          {results.belongs_to_collection ? (
+            <div className="movie-margin padding">
+              <BelongsToCollection collection={results.belongs_to_collection} />
+            </div>
+          ) : null}
+
+          {results && (
+            <MovieExtraLinks
+              results={results}
+              keywords={results.keywords.keywords}
+            />
+          )}
+
+          {results.recommendations.results && (
             <div className="margin">
               <div className="padding">
                 <TrendingTexts title="you may also like" />
@@ -273,14 +268,14 @@ export default function SelectedMovie() {
               <CategoryResults
                 setResultsLoad={setResultsLoad}
                 apiKeyword={keyword}
-                feedback={recommendations}
+                feedback={results.recommendations.results}
               />
             </div>
           )}
 
           {overlay && (
             <ImageOverlay
-              images={images.posters.slice(0, 20)}
+              images={results.images.posters.slice(0, 20)}
               setOverlay={setOverlay}
             />
           )}

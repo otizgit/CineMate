@@ -53,7 +53,6 @@ export default function CollectionPage() {
 
   useEffect(() => {
     fetchData();
-    console.log(collectionImages)
   }, []);
 
   function toggleImageOverlay() {

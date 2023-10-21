@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Card from "./Cards/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -10,6 +10,7 @@ import { useWindowSize } from "@uidotdev/usehooks";
 export default function CategoryResults(props) {
   const [innerWidth, setInnerWidth] = useState(null);
   const windowWidthSize = useWindowSize().width;
+  const swiperRef = useRef(null);
 
   useEffect(() => {
     if (windowWidthSize < 600) {
@@ -23,6 +24,12 @@ export default function CategoryResults(props) {
     }
   }, [windowWidthSize]);
 
+  useEffect(() => {
+    if (props.feedback.length) {
+      swiperRef.current.swiper.slideTo(0);
+    }
+  });
+
   const renderedResults = props.feedback.map((data) => {
     return (
       <SwiperSlide key={nanoid()}>
@@ -32,7 +39,7 @@ export default function CategoryResults(props) {
           data={data}
         />
         {data.poster_path || data.profile_path || data.logo_path ? (
-          <div className="swiper-lazy-preloader swiper-lazy-prelroader-white"></div>
+          <div className="swiper-lazy-preloader"></div>
         ) : null}
       </SwiperSlide>
     );
@@ -48,6 +55,7 @@ export default function CategoryResults(props) {
             modules={[Navigation]}
             navigation
             lazy="true"
+            ref={swiperRef}
           >
             {renderedResults}
           </Swiper>

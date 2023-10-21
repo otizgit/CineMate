@@ -13,6 +13,8 @@ import CollectionPage from "../pages/CollectionPage";
 import SelectedSeason from "../pages/SelectedSeason";
 import EpisodePage from "../pages/EpisodePage";
 import KeywordPage from "../pages/KeywordPage";
+import AllVideos from "../pages/AllVideos";
+import HowToUse from "../pages/HowToUse";
 
 export default function Routers() {
   return (
@@ -32,6 +34,8 @@ export default function Routers() {
         <Route path="/seasons/:season/season/:title/:id" element={<SelectedSeason />} />
         <Route path="/seasons/:season/:episode/:title/:id" element={<EpisodePage />} />
         <Route path="/keyword/:name/:id" element={<KeywordPage />} />
+        <Route path="/:title/all-videos" element={<AllVideos />} />
+        <Route path="/how-to-use" element={<HowToUse />} />
       </Routes>
     </div>
   );

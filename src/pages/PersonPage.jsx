@@ -15,7 +15,6 @@ export default function PersonPage() {
   const [personData, setPersonData] = useState([]);
   const [personCredits, setPersonCredits] = useState([]);
   const [credit, setCredit] = useState("movie");
-  const [images, setImages] = useState([]);
   const [overlay, setOverlay] = useState(false);
   const [resultsLoad, setResultsLoad] = useState(false);
 
@@ -27,22 +26,18 @@ export default function PersonPage() {
 
   const fetchPersonData = () => {
     const getPersonData = axios.get(
-      `https://api.themoviedb.org/3/person/${id}?api_key=${apiKey}`
+      `https://api.themoviedb.org/3/person/${id}?api_key=${apiKey}&append_to_response=images`
     );
     const getPersonCredits = axios.get(
       `https://api.themoviedb.org/3/person/${id}/${credit}_credits?api_key=${apiKey}`
     );
-    const getImages = axios.get(
-      `https://api.themoviedb.org/3/person/${id}/images?api_key=${apiKey}`
-    );
 
     axios
-      .all([getPersonData, getPersonCredits, getImages])
+      .all([getPersonData, getPersonCredits])
       .then(
         axios.spread((...allData) => {
           setPersonData(allData[0].data);
           setPersonCredits(allData[1].data);
-          setImages(allData[2].data);
           setResultsLoad(true);
         })
       )
@@ -113,7 +108,7 @@ export default function PersonPage() {
 
           {overlay && (
             <ImageOverlay
-              images={images.profiles.slice(0, 20)}
+              images={personData.images.profiles.slice(0, 20)}
               setOverlay={setOverlay}
             />
           )}

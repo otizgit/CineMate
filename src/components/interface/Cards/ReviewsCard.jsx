@@ -19,7 +19,7 @@ export default function ReviewsCard(props) {
         type: 'spring',
         stiffness: 200,
       }}
-      className="border-2 border-primary px-4 lg:px-9 py-6 rounded-xl custom-shadow"
+      className="border-2 border-primary bg-black px-4 lg:px-9 py-6 rounded-xl custom-shadow"
     >
       <div className="flex mb-5 items-center gap-4">
         {props.review.author_details.avatar_path ? (

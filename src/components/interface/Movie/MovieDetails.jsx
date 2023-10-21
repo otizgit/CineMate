@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faStar } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { fadeAnimation } from "../../../animations/Animations";
+import TrailerOverlay from "../TrailerOverlay";
 
 export default function MovieDetails(props) {
+  const trailerVideo = props.videos.filter((video) => {
+    return video.name === "Official Trailer";
+  });
+
+  const [trailerOverlay, setTrailerOverlay] = useState(false);
+
+  function toggleTrialerOverlay() {
+    document.body.style.overflow = "hidden";
+    setTrailerOverlay(true);
+  }
+
   return (
     <div className="padding text-white mb-5 lg:mb-0">
       <div className="flex items-center mb-2 lg:mb-1 flex-wrap gap-2">
@@ -236,40 +248,64 @@ export default function MovieDetails(props) {
         ) : null}
       </div>
 
-      <div className="lg:flex gap-10 border-primary border-b-2 lg:border-none lg:pb-0 pb-5">
-        {props.imdbResults.Writer !== "N/A" && props.imdbResults.Writer ? (
-          <motion.div
+      <div className="border-primary border-b-2 lg:border-none lg:pb-0 pb-5">
+        <div className="lg:flex gap-10 mb-4 lg:mb-0">
+          {props.imdbResults.Writer !== "N/A" && props.imdbResults.Writer ? (
+            <motion.div
+              variants={fadeAnimation}
+              initial="init"
+              whileInView="fade"
+              custom={6}
+              viewport={{
+                once: true,
+              }}
+              className="mb-5"
+            >
+              <p className="custom-fz font-semibold">
+                {props.imdbResults.Writer}
+              </p>
+              <p className="custom-fz text-primary font-medium">Writer(s)</p>
+            </motion.div>
+          ) : null}
+          {props.imdbResults.Director !== "N/A" && props.imdbResults.Writer ? (
+            <motion.div
+              variants={fadeAnimation}
+              initial="init"
+              whileInView="fade"
+              custom={7}
+              viewport={{
+                once: true,
+              }}
+            >
+              <p className="custom-fz font-semibold">
+                {props.imdbResults.Director}
+              </p>
+              <p className="custom-fz text-primary font-medium">Director</p>
+            </motion.div>
+          ) : null}
+        </div>
+        {trailerVideo.length ? (
+          <motion.button
+            onClick={toggleTrialerOverlay}
             variants={fadeAnimation}
             initial="init"
             whileInView="fade"
-            custom={6}
+            custom={8}
             viewport={{
               once: true,
             }}
-            className="mb-5"
-          >
-            <p className="custom-fz font-semibold">
-              {props.imdbResults.Writer}
-            </p>
-            <p className="custom-fz text-primary font-medium">Writer(s)</p>
-          </motion.div>
-        ) : null}
-        {props.imdbResults.Director !== "N/A" && props.imdbResults.Writer ? (
-          <motion.div
-            variants={fadeAnimation}
-            initial="init"
-            whileInView="fade"
-            custom={7}
-            viewport={{
-              once: true,
+            whileHover={{
+              scale: 1.1,
             }}
+            className="text-primary inline font-bold custom-fz"
           >
-            <p className="custom-fz font-semibold">
-              {props.imdbResults.Director}
-            </p>
-            <p className="custom-fz text-primary font-medium">Director</p>
-          </motion.div>
+            <span>
+              <FontAwesomeIcon icon={faPlay} className="custom-fz mr-2" />
+            </span>
+            Watch Trailer
+          </motion.button>
         ) : null}
+        {trailerOverlay && <TrailerOverlay setTrailerOverlay={setTrailerOverlay} trailerVideo={trailerVideo} />}
       </div>
     </div>
   );

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import searchLinks from "../../assets/data/searchLinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+import { headingAnimation } from "../../animations/Animations";
 
 export default function ResultsFilter(props) {
   const [isCategoryOpen, setCategoryOpen] = useState(false);
@@ -17,9 +19,14 @@ export default function ResultsFilter(props) {
 
   return (
     <div className="padding lg:flex justify-between items-center mb-10">
-      <p className="text-[1.7rem] font-heading tracking-wider text-primary">
+      <motion.h1
+        variants={headingAnimation}
+        initial="init"
+        whileInView="animate"
+        className="text-[1.7rem] mb-2 lg:mb-0 font-heading tracking-wider text-primary text-center md:text-left"
+      >
         Search Results
-      </p>
+      </motion.h1>
       <div className="relative lg:w-[20rem]">
         <button
           onClick={toggleCategoryView}
@@ -48,9 +55,7 @@ export default function ResultsFilter(props) {
                     <button
                       onClick={() => handleFilterClick(links.keyword)}
                       className={`${
-                        props.category === links.keyword
-                          ? "bg-primary"
-                          : ""
+                        props.category === links.keyword ? "bg-primary" : ""
                       } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
                     >
                       {links.link}
