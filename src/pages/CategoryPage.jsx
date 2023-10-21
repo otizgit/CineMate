@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import apiKey from "../assets/data/key";
@@ -28,7 +28,7 @@ export default function CategoryPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Cinemate | Categories";
-  }, []);
+  });
 
   const fetchMovies = () => {
     axios

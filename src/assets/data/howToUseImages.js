@@ -71,9 +71,9 @@ const howToUseImages = [
       "https://ik.imagekit.io/zusxqcpbw/mobile-step7.png?updatedAt=1697843793205",
 
     desktopContent:
-      "You have come this far! Feel free to check me out on my accounts and reach out to me as well.😉🤞",
+      "You have come this far! Feel free to check me out, have fun!😉🤞",
     mobileContent:
-      "You have come this far! Feel free to check me out on my accounts and reach out to me as well.😉🤞",
+      "You have come this far! Feel free to check me out, have fun!😉🤞",
   },
 ];
 

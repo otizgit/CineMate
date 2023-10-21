@@ -47,7 +47,7 @@ export default function SelectedMovie() {
     );
 
     const getImdbResults = axios.get(
-      `http://www.omdbapi.com/?t=${title}&y=${releaseYear}&apikey=25c51d62`
+      `https://www.omdbapi.com/?t=${title}&y=${releaseYear}&apikey=25c51d62`
     );
 
     axios
