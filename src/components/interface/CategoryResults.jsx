@@ -39,7 +39,7 @@ export default function CategoryResults(props) {
           data={data}
         />
         {data.poster_path || data.profile_path || data.logo_path ? (
-          <div className="swiper-lazy-preloader"></div>
+          <div className="swiper-lazy-preloader swiper-lazy-preloader-teal"></div>
         ) : null}
       </SwiperSlide>
     );
@@ -56,6 +56,9 @@ export default function CategoryResults(props) {
             navigation
             lazy="true"
             ref={swiperRef}
+            style={{
+              '--swiper-navigation-color': '#29AB87',
+            }}
           >
             {renderedResults}
           </Swiper>

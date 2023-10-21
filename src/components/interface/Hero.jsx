@@ -28,6 +28,10 @@ export default function Hero() {
           modules={[Autoplay, Pagination]}
           pagination={true} 
           autoplay={{ delay: 8000 }}
+          style={{
+            '--swiper-navigation-color': '#29AB87',
+            '--swiper-pagination-color': '#29AB87',
+          }}
         >
           {heroImageElement}
         </Swiper>
