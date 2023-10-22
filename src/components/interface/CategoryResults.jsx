@@ -30,10 +30,6 @@ export default function CategoryResults(props) {
     }
   });
 
-  useEffect(() => {
-    swiperRef.current.swiper.shouldSwiperUpdate = false;
-  }, [])
-
   const renderedResults = props.feedback.map((data) => {
     return (
       <SwiperSlide key={nanoid()}>
