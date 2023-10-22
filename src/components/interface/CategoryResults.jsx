@@ -28,7 +28,7 @@ export default function CategoryResults(props) {
     if (props.feedback.length) {
       swiperRef.current.swiper.slideTo(0);
     }
-  }, []);
+  }, [innerWidth]);
 
   const renderedResults = props.feedback.map((data) => {
     return (
