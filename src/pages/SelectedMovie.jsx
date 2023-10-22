@@ -75,7 +75,7 @@ export default function SelectedMovie() {
   }, [id]);
 
   function toggleImageOverlay() {
-    document.body.style.overflow = "hidden";
+    document.body.style.overflowY = "hidden";
     setOverlay(true);
   }
 
@@ -104,7 +104,7 @@ export default function SelectedMovie() {
   return (
     <>
       {resultsLoad ? (
-        <div className="pt-[76px] overflow-x-hidden">
+        <div className="pt-[76px] overflow-x-hidden movie-wrapper">
           <div
             className="h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16"
             style={results.backdrop_path ? backdropStyle : backdropStyleTwo}
@@ -239,7 +239,7 @@ export default function SelectedMovie() {
             </div>
           ) : null}
 
-          {results.videos.results ? (
+          {results.videos.results.length ? (
             <div className="movie-margin">
               <Videos videos={results.videos.results} title={title} />
             </div>

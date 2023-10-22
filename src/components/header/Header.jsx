@@ -23,24 +23,23 @@ export default function Header() {
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > lastScrollTop) {
-        setScrollingDown(true);
-      } else {
-        setScrollingDown(false);
-      }
-      setLastScrollTop(scrollTop);
-    };
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   });
+
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY;
+
+    if (currentScrollPos > lastScrollTop) {
+      setScrollingDown(true);
+    } else {
+      setScrollingDown(false);
+    }
+    setLastScrollTop(currentScrollPos);
+  };
 
   function toggleNavClick(index) {
     if (clickedNav === index && windowWidthSize < 1024) {
@@ -73,17 +72,12 @@ export default function Header() {
         onClick={handleNavStateChange}
         className="z-10 cursor-pointer lg:hidden"
       >
-        {navState ? (
-          <FontAwesomeIcon
-            icon={faXmark}
-            className="text-primary text-[1.7rem]"
-          />
-        ) : (
+        <div className="flex items-center">
           <FontAwesomeIcon
             icon={faBars}
             className="text-primary text-[1.7rem]"
           />
-        )}
+        </div>
       </div>
       <Link to="/home">
         <motion.img

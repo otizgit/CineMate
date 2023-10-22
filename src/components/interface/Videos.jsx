@@ -25,10 +25,10 @@ export default function Videos({ videos, title }) {
             width: "100%",
             height: 350,
           }}
-          videoId={validVideos[0].key}
+          videoId={validVideos.length ? validVideos[0].key : null}
         />
       </div>
-      {validVideos.length >= 1 ? (
+      {validVideos.length >= 2 ? (
         <Link
           to={`/${title}/all-videos`}
           state={{

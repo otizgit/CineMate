@@ -24,11 +24,11 @@ export default function CategoryResults(props) {
     }
   }, [windowWidthSize]);
 
-  useEffect(() => {
-    if (props.feedback.length) {
-      swiperRef.current.swiper.slideTo(0);
-    }
-  });
+  // useEffect(() => {
+  //   if (props.feedback.length) {
+  //     swiperRef.current.swiper.slideTo(0);
+  //   }
+  // });
 
   const renderedResults = props.feedback.map((data) => {
     return (
