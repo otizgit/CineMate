@@ -29,7 +29,7 @@ export default function AllVideos() {
   });
   return (
     <div className="padding pt-[120px] margin">
-      <TrendingTexts title={`${movieTitle} videos`} />
+      <TrendingTexts title={`videos of ${movieTitle}`} />
       <div className="flex flex-col gap-16">
         {renderedVideos}
       </div>

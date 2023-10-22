@@ -7,7 +7,6 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import {
   faMagnifyingGlass,
   faBars,
-  faXmark,
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 import SearchBox from "../interface/SearchBox";
@@ -19,27 +18,6 @@ export default function Header() {
   const [apiState, setApiState] = useState(false);
   const windowWidthSize = useWindowSize().width;
   const [isSearchOpen, setSearchOpen] = useState(false);
-  const [scrollingDown, setScrollingDown] = useState(false);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
-
-  const handleScroll = () => {
-    const currentScrollPos = window.scrollY;
-
-    if (currentScrollPos > lastScrollTop) {
-      setScrollingDown(true);
-    } else {
-      setScrollingDown(false);
-    }
-    setLastScrollTop(currentScrollPos);
-  };
 
   function toggleNavClick(index) {
     if (clickedNav === index && windowWidthSize < 1024) {
@@ -64,9 +42,7 @@ export default function Header() {
 
   return (
     <header
-      className={`padding flex justify-between items-center fixed ${
-        scrollingDown ? "top-[-77px]" : "top-0"
-      } h-[77px] right-0 left-0 z-20 transition-all header-style`}
+      className={`padding flex justify-between items-center fixed top-0 h-[77px] right-0 left-0 z-20 transition-all header-style`}
     >
       <div
         onClick={handleNavStateChange}

@@ -38,9 +38,9 @@ export default function CategoryResults(props) {
           keyword={props.apiKeyword}
           data={data}
         />
-        {data.poster_path || data.profile_path || data.logo_path ? (
+        {/* {data.poster_path || data.profile_path || data.logo_path ? (
           <div className="swiper-lazy-preloader swiper-lazy-preloader-teal"></div>
-        ) : null}
+        ) : null} */}
       </SwiperSlide>
     );
   });
