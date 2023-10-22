@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 
 export default function HowToUse() {
   useEffect(() => {
-    document.title = `Cinemate | How To Use`;
+    document.title = `CineMate | How To Use`;
     window.scrollTo(0, 0);
   });
 

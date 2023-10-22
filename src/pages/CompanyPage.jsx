@@ -32,7 +32,7 @@ export default function CompanyPage() {
   };
 
   useEffect(() => {
-    document.title = `Cinemate | ${name.toUpperCase()}`;
+    document.title = `CineMate | ${name.toUpperCase()}`;
     window.scrollTo(0, 0);
   }, []);
 

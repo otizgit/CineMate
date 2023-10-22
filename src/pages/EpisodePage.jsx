@@ -67,7 +67,7 @@ export default function EpisodePage() {
       {resultsLoad ? (
         <div className="pt-[77px] margin">
           <div className="flex flex-col gap-8 lg:flex-row border-b-2 lg:border-x-2 border-primary pb-10 lg:pb-0 mb-14 mx-6 md:mx-14 overflow-hidden">
-            {episodeData.still_path ?
+            {episodeData.still_path ? (
               <motion.img
                 variants={slideAnimation}
                 initial="init"
@@ -84,17 +84,17 @@ export default function EpisodePage() {
                 src={`https://image.tmdb.org/t/p/w780${episodeData.still_path}`}
                 alt="season poster"
               />
-            :
-            <div className="padding h-[15rem] lg:h-[10rem] md:h-[10rem] xl:h-[10rem] grid place-items-center">
-            <FontAwesomeIcon
-              icon={faClapperboard}
-              className="text-primary text-[5rem]"
-            />
-            <p className="text-[red] text-[.85rem] font-semibold">
-              No Image Found
-            </p>
-          </div>
-            }
+            ) : (
+              <div className="padding h-[15rem] lg:h-[10rem] md:h-[10rem] xl:h-[10rem] grid place-items-center">
+                <FontAwesomeIcon
+                  icon={faClapperboard}
+                  className="text-primary text-[5rem]"
+                />
+                <p className="text-[red] text-[.85rem] font-semibold">
+                  No Image Found
+                </p>
+              </div>
+            )}
 
             <motion.div
               variants={headingAnimation}

@@ -1,9 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { motion } from "framer-motion";
 import { fadeAnimation } from "../animations/Animations";
 import { Link } from "react-router-dom";
 
 export default function Error() {
+  useEffect(() => {
+    document.title = 'Error';
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="padding absolute inset-0 z-[15000] bg-black grid place-items-center text-center">
       <div>

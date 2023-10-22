@@ -49,8 +49,13 @@ html::-webkit-scrollbar-track,
 }
 
 .header-style {
-  background-color: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+@supports (backdrop-filter: blur(8px)) {
+  .header-style {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+  }
 }
 
 .custom-shadow {
@@ -116,7 +121,7 @@ html::-webkit-scrollbar-track,
     @apply text-white border-primary border-solid py-1 hover:scale-105 transition border-2 rounded-md;
   }
   .padding {
-    @apply px-6 md:px-14;
+    @apply px-6 md:px-10 lg:px-14;
   }
   .margin {
     @apply mb-24;

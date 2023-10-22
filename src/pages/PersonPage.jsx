@@ -53,7 +53,7 @@ export default function PersonPage() {
   }, []);
 
   useEffect(() => {
-    document.title = `Cinemate | ${personData.name}`;
+    document.title = `CineMate | ${personData.name}`;
   });
 
   useEffect(() => {

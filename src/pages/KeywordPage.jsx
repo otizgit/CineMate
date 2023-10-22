@@ -39,7 +39,7 @@ export default function KeywordPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `Cinemate | "${name}"`;
+    document.title = `CineMate | "${name}"`;
   }, []);
 
   return (

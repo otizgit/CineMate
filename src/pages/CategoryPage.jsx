@@ -27,7 +27,7 @@ export default function CategoryPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Cinemate | Categories";
+    document.title = "CineMate | Categories";
   });
 
   const fetchMovies = () => {

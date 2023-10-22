@@ -48,7 +48,7 @@ export default function CollectionPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `Cinemate | ${name}`;
+    document.title = `CineMate | ${name}`;
   }, []);
 
   useEffect(() => {

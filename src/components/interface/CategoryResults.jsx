@@ -12,23 +12,27 @@ export default function CategoryResults(props) {
   const windowWidthSize = useWindowSize().width;
   const swiperRef = useRef(null);
 
-  useEffect(() => {
-    if (windowWidthSize < 600) {
-      setInnerWidth(1);
-    } else if (windowWidthSize >= 600 && windowWidthSize < 1000) {
-      setInnerWidth(2);
-    } else if (windowWidthSize > 1000 && windowWidthSize < 1280) {
-      setInnerWidth(3);
-    } else {
-      setInnerWidth(5);
-    }
-  }, [windowWidthSize]);
+  // useEffect(() => {
+  //   if (windowWidthSize < 600) {
+  //     setInnerWidth(1);
+  //   } else if (windowWidthSize >= 600 && windowWidthSize < 1000) {
+  //     setInnerWidth(2);
+  //   } else if (windowWidthSize > 1000 && windowWidthSize < 1280) {
+  //     setInnerWidth(3);
+  //   } else {
+  //     setInnerWidth(5);
+  //   }
+  // }, [windowWidthSize]);
 
   useEffect(() => {
     if (props.feedback.length) {
       swiperRef.current.swiper.slideTo(0);
     }
   });
+
+  useEffect(() => {
+    swiperRef.current.swiper.shouldSwiperUpdate = false;
+  }, [])
 
   const renderedResults = props.feedback.map((data) => {
     return (
@@ -50,7 +54,7 @@ export default function CategoryResults(props) {
       {props.feedback.length ? (
         <div className="padding">
           <Swiper
-            slidesPerView={innerWidth}
+            slidesPerView={4}
             spaceBetween={30}
             modules={[Navigation]}
             navigation

@@ -67,7 +67,7 @@ export default function SelectedMovie() {
   useEffect(() => {
     document.title = `Cinemate | ${title}`;
     window.scrollTo(0, 0);
-  });
+  }, [id]);
 
   useEffect(() => {
     setResultsLoad(false);
