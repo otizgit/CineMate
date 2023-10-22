@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 import { headingAnimation, slideAnimation } from "../animations/Animations";
 import TrendingTexts from "../components/TrendingTexts";
 import Preloader from "../components/interface/Preloader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClapperboard } from "@fortawesome/free-solid-svg-icons";
 
 export default function EpisodePage() {
   const { season, episode, title, id } = useParams();
@@ -65,22 +67,34 @@ export default function EpisodePage() {
       {resultsLoad ? (
         <div className="pt-[77px] margin">
           <div className="flex flex-col gap-8 lg:flex-row border-b-2 lg:border-x-2 border-primary pb-10 lg:pb-0 mb-14 mx-6 md:mx-14 overflow-hidden">
-            <motion.img
-              variants={slideAnimation}
-              initial="init"
-              animate="slide"
-              transition={{
-                type: "spring",
-                stiffness: 500,
-              }}
-              whileHover={{
-                scale: 1.07,
-              }}
-              onClick={toggleImageOverlay}
-              className="w-full lg:w-[19rem] object-cover cursor-pointer"
-              src={`https://image.tmdb.org/t/p/w780${episodeData.still_path}`}
-              alt="season poster"
+            {episodeData.still_path ?
+              <motion.img
+                variants={slideAnimation}
+                initial="init"
+                animate="slide"
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                }}
+                whileHover={{
+                  scale: 1.07,
+                }}
+                onClick={toggleImageOverlay}
+                className="w-full lg:w-[19rem] object-cover cursor-pointer"
+                src={`https://image.tmdb.org/t/p/w780${episodeData.still_path}`}
+                alt="season poster"
+              />
+            :
+            <div className="padding h-[15rem] lg:h-[10rem] md:h-[10rem] xl:h-[10rem] grid place-items-center">
+            <FontAwesomeIcon
+              icon={faClapperboard}
+              className="text-primary text-[5rem]"
             />
+            <p className="text-[red] text-[.85rem] font-semibold">
+              No Image Found
+            </p>
+          </div>
+            }
 
             <motion.div
               variants={headingAnimation}
