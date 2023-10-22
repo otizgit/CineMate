@@ -42,7 +42,6 @@ export default function Trending(props) {
         <CategoryResults
           apiKeyword={props.apiWord}
           feedback={feedback}
-          searchWord={props.searchWord}
         />
       )}
     </div>
