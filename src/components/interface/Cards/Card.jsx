@@ -117,7 +117,7 @@ export default function Card(props) {
                 width: `${ratingPercentage}%`,
                 background: percentageColor,
               }}
-              className="h-full"
+              className="h-full text-[.4rem] text-white font-extrabold text-center"
             ></div>
           </div>
         )}
