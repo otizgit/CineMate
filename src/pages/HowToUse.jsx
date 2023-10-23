@@ -57,7 +57,9 @@ export default function HowToUse() {
           shadowOffset: 20,
           shadowScale: 0.94,
         }}
-        pagination={true}
+        pagination={{
+          clickable: true,
+        }}
         autoplay={{ delay: 5000 }}
         modules={[EffectCube, Pagination, Autoplay]}
         lazy="true"

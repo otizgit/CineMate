@@ -50,6 +50,9 @@ html::-webkit-scrollbar-track,
 .slick-slider .slick-slide {
   padding: 0 15px;
 }
+.slick-track {
+  float:left;
+}
 
 .header-style {
   background-color: rgba(0, 0, 0, 0.9);
