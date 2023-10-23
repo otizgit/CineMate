@@ -54,7 +54,6 @@ export default function SearchResultsPage() {
             <CategoryResults
               apiKeyword={category}
               feedback={searchData}
-              searchWord={`${category}`}
             />
           </div>
           <Explore />
