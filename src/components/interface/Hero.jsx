@@ -26,7 +26,9 @@ export default function Hero() {
           grabCursor={false}
           slidesPerView={1}
           modules={[Autoplay, Pagination]}
-          pagination={true} 
+          pagination={{
+            clickable: true,
+          }}
           autoplay={{ delay: 8000 }}
           style={{
             '--swiper-navigation-color': '#29AB87',

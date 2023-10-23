@@ -1,38 +1,54 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import Card from "./Cards/Card";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { nanoid } from "nanoid";
-import { useWindowSize } from "@uidotdev/usehooks";
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function CategoryResults(props) {
-  const [innerWidth, setInnerWidth] = useState(null);
-  const windowWidthSize = useWindowSize().width;
-  const swiperRef = useRef(null);
-
-  useEffect(() => {
-    if (windowWidthSize < 600) {
-      setInnerWidth(1);
-    } else if (windowWidthSize >= 600 && windowWidthSize < 1000) {
-      setInnerWidth(2);
-    } else if (windowWidthSize > 1000 && windowWidthSize < 1280) {
-      setInnerWidth(3);
-    } else {
-      setInnerWidth(5);
-    }
-  }, [windowWidthSize]);
-
-  useEffect(() => {
-    if (props.feedback.length) {
-      swiperRef.current.swiper.slideTo(0);
-    }
-  }, [innerWidth]);
+  const settings = {
+    dots: false,
+    infinite: false,
+    lazyLoad: true,
+    speed: 300,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 0,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 0,
+        },
+      },
+    ],
+  };
 
   const renderedResults = props.feedback.map((data) => {
     return (
-      <SwiperSlide key={nanoid()}>
+      <div key={nanoid()}>
         <Card
           setResultsLoad={props.setResultsLoad}
           keyword={props.apiKeyword}
@@ -41,27 +57,15 @@ export default function CategoryResults(props) {
         {data.poster_path || data.profile_path || data.logo_path ? (
           <div className="swiper-lazy-preloader swiper-lazy-preloader-teal"></div>
         ) : null}
-      </SwiperSlide>
+      </div>
     );
   });
 
   return (
     <div>
       {props.feedback.length ? (
-        <div className="padding">
-          <Swiper
-            slidesPerView={innerWidth}
-            spaceBetween={30}
-            modules={[Navigation]}
-            navigation
-            lazy="true"
-            ref={swiperRef}
-            style={{
-              '--swiper-navigation-color': '#29AB87',
-            }}
-          >
-            {renderedResults}
-          </Swiper>
+        <div className="padding w-[90%] lg:w-[100%] mx-auto">
+          <Slider {...settings}>{renderedResults}</Slider>
         </div>
       ) : (
         <div className="margin">
