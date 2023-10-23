@@ -7,6 +7,7 @@ import { headingAnimation } from "../../animations/Animations";
 
 export default function ResultsFilter(props) {
   const [isCategoryOpen, setCategoryOpen] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState('Movies')
 
   function toggleCategoryView() {
     setCategoryOpen((prevCategory) => !prevCategory);
@@ -33,7 +34,7 @@ export default function ResultsFilter(props) {
           className="border-2 w-full  bg-black rounded-xl border-primary py-3 px-4"
         >
           <div className="flex justify-between items-center">
-            <p className="tracking-wider font-medium text-[.85rem]">Select Category</p>
+            <p className="tracking-wider font-medium text-[.85rem]">{currentCategory}</p>
             <FontAwesomeIcon
               icon={faCaretDown}
               className={`text-primary font ${
@@ -53,7 +54,10 @@ export default function ResultsFilter(props) {
                 <div key={links.id}>
                   <div>
                     <button
-                      onClick={() => handleFilterClick(links.keyword)}
+                      onClick={() => {
+                        handleFilterClick(links.keyword)
+                        setCurrentCategory(links.link)
+                      }}
                       className={`${
                         props.category === links.keyword ? "bg-primary" : ""
                       } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
