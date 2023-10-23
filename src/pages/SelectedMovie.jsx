@@ -258,7 +258,7 @@ export default function SelectedMovie() {
             />
           )}
 
-          {results.recommendations.results && (
+          {results.recommendations.results.length && (
             <div className="margin">
               <div className="padding">
                 <TrendingTexts title="you may also like" />
