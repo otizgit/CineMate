@@ -54,9 +54,6 @@ export default function CategoryResults(props) {
           keyword={props.apiKeyword}
           data={data}
         />
-        {data.poster_path || data.profile_path || data.logo_path ? (
-          <div className="swiper-lazy-preloader swiper-lazy-preloader-teal"></div>
-        ) : null}
       </div>
     );
   });
@@ -65,7 +62,7 @@ export default function CategoryResults(props) {
     <div>
       {props.feedback.length ? (
         <div className="padding w-[90%] lg:w-[100%] mx-auto">
-          <Slider {...settings}>{renderedResults}</Slider>
+          <Slider key={nanoid()} {...settings}>{renderedResults}</Slider>
         </div>
       ) : (
         <div className="margin">
