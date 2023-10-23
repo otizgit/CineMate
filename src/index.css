@@ -53,6 +53,9 @@ html::-webkit-scrollbar-track,
 .slick-track {
   float:left;
 }
+.slick-dots li.slick-active button:before {
+  color: #29ab87;
+ }
 
 .header-style {
   background-color: rgba(0, 0, 0, 0.9);

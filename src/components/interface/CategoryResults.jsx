@@ -17,6 +17,7 @@ export default function CategoryResults(props) {
     slidesToShow: 5,
     slidesToScroll: 1,
     initialSlide: 0,
+    dots: true,
     responsive: [
       {
         breakpoint: 1025,
@@ -41,6 +42,7 @@ export default function CategoryResults(props) {
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 0,
+          dots: false,
         },
       },
     ],
