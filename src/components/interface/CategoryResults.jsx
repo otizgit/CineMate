@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function CategoryResults(props) {
+const CategoryResults = React.memo((props) => {
   const settings = {
     dots: false,
     infinite: false,
@@ -64,7 +64,9 @@ export default function CategoryResults(props) {
     <div>
       {props.feedback.length ? (
         <div className="padding w-[90%] lg:w-[100%] mx-auto">
-          <Slider key={nanoid()} {...settings}>{renderedResults}</Slider>
+          <Slider key={nanoid()} {...settings}>
+            {renderedResults}
+          </Slider>
         </div>
       ) : (
         <div className="margin">
@@ -75,4 +77,6 @@ export default function CategoryResults(props) {
       )}
     </div>
   );
-}
+});
+
+export default CategoryResults;

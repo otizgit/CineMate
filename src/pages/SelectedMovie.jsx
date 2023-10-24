@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import bgImage from "../assets/images/bg.avif";
 import apiKey from "../assets/data/key";
 import MovieDetails from "../components/interface/Movie/MovieDetails";
-import { useWindowSize } from "@uidotdev/usehooks";
 import CategoryResults from "../components/interface/CategoryResults";
 import MovieInfo from "../components/interface/Movie/MovieInfo";
 import MovieExtraLinks from "../components/interface/Movie/MovieExtraLinks";
@@ -26,8 +25,6 @@ export default function SelectedMovie() {
   const [imdbResults, setImdbResults] = useState([]);
 
   const [overlay, setOverlay] = useState(false);
-
-  const windowWidth = useWindowSize().width;
 
   const location = useLocation();
   const { releaseYear } = location.state;
@@ -65,13 +62,11 @@ export default function SelectedMovie() {
   };
 
   useEffect(() => {
-    document.title = `Cinemate | ${title}`;
-    window.scrollTo(0, 0);
-  }, [id]);
-
-  useEffect(() => {
     setResultsLoad(false);
     fetchData();
+
+    document.title = `Cinemate | ${title}`;
+    window.scrollTo(0, 0);
   }, [id]);
 
   function toggleImageOverlay() {
@@ -80,22 +75,14 @@ export default function SelectedMovie() {
   }
 
   const backdropStyle = {
-    backgroundImage: `${
-      windowWidth < 1024
-        ? "linear-gradient(to right, rgba(0, 0, 0, .8), transparent)"
-        : "linear-gradient(to right, #000000cf 70%, #0000009d)"
-    } ,url(https://image.tmdb.org/t/p/w1280${results.backdrop_path})`,
+    backgroundImage: `linear-gradient(to right, #000000c8, #000000c1),url(https://image.tmdb.org/t/p/w1280${results.backdrop_path})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
   };
 
   const backdropStyleTwo = {
-    backgroundImage: `${
-      windowWidth < 1024
-        ? "linear-gradient(to right, rgba(0, 0, 0, 0.932), #00000090)"
-        : "linear-gradient(to right, #000000cf 70%, #000000d1)"
-    } ,url(${bgImage})`,
+    backgroundImage: `linear-gradient(to right, #000000cf 70%, #000000ab),url(${bgImage})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -128,22 +115,22 @@ export default function SelectedMovie() {
                   alt="Movie Poster"
                 />
               )}
-              {windowWidth > 1023 && (
+              <div className="hidden lg:block">
                 <MovieDetails
                   imdbResults={imdbResults}
                   videos={results.videos.results}
                   results={results}
                 />
-              )}
+              </div>
             </div>
           </div>
-          {windowWidth < 1024 && (
+          <div className="lg:hidden">
             <MovieDetails
               imdbResults={imdbResults}
               videos={results.videos.results}
               results={results}
             />
-          )}
+          </div>
 
           <div className="padding">
             <MovieInfo results={results} imdbResults={imdbResults} />
