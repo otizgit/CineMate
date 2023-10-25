@@ -75,7 +75,7 @@ export default function SelectedMovie() {
   }
 
   const backdropStyle = {
-    backgroundImage: `linear-gradient(240deg, rgba(0,0,0,0.7455357142857143) 7%, rgba(0,0,0,0.8547794117647058) 22%, rgba(0,0,0,0.8715861344537815) 70%, rgba(0,0,0,0.7343312324929971) 88%),url(https://image.tmdb.org/t/p/w1280${results.backdrop_path})`,
+    backgroundImage: `linear-gradient(240deg, rgba(0,0,0,0.6530987394957983) 15%, rgba(0,0,0,0.865983893557423) 28%, rgba(0,0,0,0.8799894957983193) 71%, rgba(0,0,0,0.5718662464985995) 100%),url(https://image.tmdb.org/t/p/w1280${results.backdrop_path})`,
   };
   const backdropStyleTwo = {
     backgroundImage: `linear-gradient(to right, #000000e2 70%, #000000e6),url(${bgImage})`,
