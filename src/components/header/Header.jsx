@@ -214,11 +214,13 @@ export default function Header() {
         }`}
       ></div>
 
-      <SearchBox
-        searchWord={"Movies, TV Shows, Cast, Crew, Collection..."}
-        isSearchOpen={isSearchOpen}
-        setSearchOpen={setSearchOpen}
-      />
+      {isSearchOpen && (
+        <SearchBox
+          searchWord={"Movies, TV Shows, Cast, Crew, Collection..."}
+          isSearchOpen={isSearchOpen}
+          setSearchOpen={setSearchOpen}
+        />
+      )}
     </header>
   );
 }

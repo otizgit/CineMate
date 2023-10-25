@@ -43,9 +43,7 @@ export default function SearchBox(props) {
 
   return (
     <div
-      className={`fixed top-[90px] w-full left-0 z-[5] padding ${
-        props.isSearchOpen ? "scale-y-100" : "scale-y-0"
-      } transition-all origin-top`}
+      className="fixed top-[90px] w-full left-0 z-[5] padding transition-all"
     >
       <div className=" w-full flex items-center custom-shadow">
         <input
