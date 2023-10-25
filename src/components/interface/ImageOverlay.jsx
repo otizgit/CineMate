@@ -15,6 +15,14 @@ export default function ImageOverlay({ images, setOverlay }) {
     setOverlay(false);
   }
 
+  function EscKeyEvent(event) {
+    let key = event.keyCode;
+    if (key == 27) {
+      setOverlay(false)
+    }
+  }
+  document.addEventListener("keydown", EscKeyEvent);
+
   return (
     <motion.div
       variants={bopAnimation}

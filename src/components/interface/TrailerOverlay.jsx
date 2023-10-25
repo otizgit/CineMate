@@ -11,6 +11,14 @@ export default function TrailerOverlay({ trailerVideo, setTrailerOverlay }) {
     document.body.style.overflowY = "scroll";
   }
 
+  function EscKeyEvent(event) {
+    let key = event.keyCode;
+    if (key == 27) {
+      setTrailerOverlay(false)
+    }
+  }
+  document.addEventListener("keydown", EscKeyEvent);
+
   return (
     <motion.div
       variants={bopAnimation}
