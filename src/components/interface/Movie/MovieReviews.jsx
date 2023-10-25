@@ -4,7 +4,7 @@ import TrendingTexts from "../../TrendingTexts";
 
 export default function MovieReviews(props) {
   return props.reviews.length ? (
-    <div className="padding">
+    <>
       <TrendingTexts
         title={"Review(s)"}
         subTitle={"Real reviews from users of TMDB"}
@@ -14,6 +14,6 @@ export default function MovieReviews(props) {
           return <ReviewsCard key={review.id} index={index} review={review} />;
         })}
       </div>
-    </div>
+    </>
   ) : null;
 }

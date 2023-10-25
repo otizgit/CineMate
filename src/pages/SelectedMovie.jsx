@@ -174,7 +174,7 @@ export default function SelectedMovie() {
                   whileHover={{
                     scale: 1.15,
                   }}
-                  className="text-primary ml-6 md:ml-14 mt-4 font-medium inline-block"
+                  className="text-primary lg:ml-14 mt-4 font-medium text-center lg:inline-block"
                 >
                   View All Cast and Crew
                 </motion.p>
@@ -185,7 +185,7 @@ export default function SelectedMovie() {
           {results.networks ? <Networks networks={results.networks} /> : null}
 
           {results.reviews.results ? (
-            <div className="movie-margin">
+            <div className="movie-margin padding">
               <MovieReviews reviews={results.reviews.results.slice(0, 3)} />
               {results.reviews.results.length >= 3 ? (
                 <Link
@@ -210,7 +210,7 @@ export default function SelectedMovie() {
                     whileHover={{
                       scale: 1.15,
                     }}
-                    className="text-primary ml-6 md:ml-14 mt-4 font-medium inline-block"
+                    className="text-primary mt-4 font-medium text-center lg:inline-block"
                   >
                     View All Reviews
                   </motion.p>

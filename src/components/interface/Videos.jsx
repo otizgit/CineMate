@@ -51,7 +51,7 @@ export default function Videos({ videos, title }) {
             whileHover={{
               scale: 1.15,
             }}
-            className="text-primary mt-4 font-medium inline-block"
+            className="text-primary mt-4 font-medium text-center lg:inline-block"
           >
             View All Videos
           </motion.p>
