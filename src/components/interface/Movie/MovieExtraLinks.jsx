@@ -7,7 +7,8 @@ import { fadeAnimation } from "../../../animations/Animations";
 export default function MovieExtraLinks(props) {
   return props.results.production_companies || props.keywords ? (
     <div className="flex gap-12 lg:flex-row flex-col movie-margin padding">
-      {props.results.production_companies ? (
+      {props.results.production_companies &&
+      props.results.production_companies.length ? (
         <div className="flex-1">
           {props.results.production_companies.length ? (
             <TrendingTexts title="Production companies" />
@@ -45,7 +46,7 @@ export default function MovieExtraLinks(props) {
           </div>
         </div>
       ) : null}
-      {props.keywords ? (
+      {props.keywords && props.keywords.length ? (
         <div className="flex-1">
           {props.keywords.length ? <TrendingTexts title="Keywords" /> : null}
           <div className="flex gap-4 flex-wrap">
@@ -73,7 +74,9 @@ export default function MovieExtraLinks(props) {
                     to={`/keyword/${movieKeyword.name}/${movieKeyword.id}`}
                     className="py-1 px-3 rounded-lg border-2 border-primary bg-black w-[fit-content] flex"
                   >
-                    <p className="custom-fz text-priText-300">{movieKeyword.name}</p>
+                    <p className="custom-fz text-priText-300">
+                      {movieKeyword.name}
+                    </p>
                   </Link>
                 </motion.div>
               );

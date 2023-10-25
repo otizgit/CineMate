@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function BelongsToCollection({ collection }) {
   const collectionStyle = {
-    backgroundImage: `linear-gradient(to right, #000000e1, rgba(0, 0, 0, .8)), url(https://image.tmdb.org/t/p/w1280${collection.backdrop_path})`,
+    backgroundImage: `linear-gradient(to right, #000000bc, rgba(0, 0, 0, 0.315)), url(https://image.tmdb.org/t/p/w1280${collection.backdrop_path})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",

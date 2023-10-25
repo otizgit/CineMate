@@ -75,17 +75,10 @@ export default function SelectedMovie() {
   }
 
   const backdropStyle = {
-    backgroundImage: `linear-gradient(to right, #000000c8, #000000c1),url(https://image.tmdb.org/t/p/w1280${results.backdrop_path})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    backgroundImage: `linear-gradient(240deg, rgba(0,0,0,0.7455357142857143) 7%, rgba(0,0,0,0.8547794117647058) 22%, rgba(0,0,0,0.8715861344537815) 70%, rgba(0,0,0,0.7343312324929971) 88%),url(https://image.tmdb.org/t/p/w1280${results.backdrop_path})`,
   };
-
   const backdropStyleTwo = {
-    backgroundImage: `linear-gradient(to right, #000000cf 70%, #000000ab),url(${bgImage})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    backgroundImage: `linear-gradient(to right, #000000e2 70%, #000000e6),url(${bgImage})`,
   };
 
   return (
@@ -93,7 +86,7 @@ export default function SelectedMovie() {
       {resultsLoad ? (
         <div className="pt-[76px] overflow-x-hidden movie-wrapper">
           <div
-            className="h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16"
+            className={`h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16 bg-no-repeat bg-cover bg-center`}
             style={results.backdrop_path ? backdropStyle : backdropStyleTwo}
           >
             <div className="lg:flex lg:py-[5rem] lg:items-center">

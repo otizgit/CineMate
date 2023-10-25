@@ -7,13 +7,24 @@ import { slideAnimation, fadeAnimation } from "../../animations/Animations";
 
 export default function PersonPersonalInfo({ personData, setOverlay }) {
   function calculateAge(birthdate) {
-    const today = new Date();
+    let olderDate;
+    let olderMonth;
+    let olderDay;
+    if (personData.deathday) {
+      olderDate = parseInt(personData.deathday.slice(0,4))
+      olderMonth = parseInt(personData.deathday.slice(5,7))
+      olderDay = parseInt(personData.deathday.slice(-2))
+    } else {
+      olderDate = new Date().getFullYear()
+      olderMonth = new Date().getMonth()
+      olderDay = new Date().getDate()
+    }
     const birthDate = new Date(birthdate);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
+    let age = olderDate - birthDate.getFullYear();
+    const monthDiff = olderMonth - birthDate.getMonth();
     if (
       monthDiff < 0 ||
-      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+      (monthDiff === 0 && olderDay < birthDate.getDate())
     ) {
       age--;
     }
