@@ -4,7 +4,7 @@ export default function CollectionDetails(props) {
   return (
     <div className="padding movie-margin lg:mb-0 lg:border-none lg:pb-0 border-b-2 pb-5 border-primary">
       {props.collectionData.name && (
-        <p className="text-[2.1rem] mb-4 lg:mb-0 font-heading tracking-wider text-white">
+        <p className="text-[2.1rem] mb-4 lg:mb-0 font-heading tracking-wider text-primary">
           {`${props.collectionData.name}`}
         </p>
       )}

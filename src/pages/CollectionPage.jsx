@@ -3,7 +3,6 @@ import axios, { all } from "axios";
 import { useParams } from "react-router-dom";
 import apiKey from "../assets/data/key";
 import bgImage from "../assets/images/bg.avif";
-import { useWindowSize } from "@uidotdev/usehooks";
 import CollectionDetails from "../components/interface/CollectionDetails";
 import CategoryResults from "../components/interface/CategoryResults";
 import Preloader from "../components/interface/Preloader";
@@ -17,8 +16,6 @@ export default function CollectionPage() {
   const [collectionData, setCollectionData] = useState([]);
   const [collectionImages, setCollectionImages] = useState([]);
   const [overlay, setOverlay] = useState(false);
-
-  const windowWidth = useWindowSize().width;
 
   const [resultsLoad, setResultsLoad] = useState(false);
 
@@ -49,9 +46,6 @@ export default function CollectionPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = `CineMate | ${name}`;
-  }, []);
-
-  useEffect(() => {
     fetchData();
   }, []);
 
@@ -61,33 +55,19 @@ export default function CollectionPage() {
   }
 
   const backdropStyle = {
-    backgroundImage: `${
-      windowWidth < 1024
-        ? "linear-gradient(to right, rgba(0, 0, 0, .8), #00808086)"
-        : "linear-gradient(to right, #000000cf 70%, #0000009d)"
-    } ,url(https://image.tmdb.org/t/p/w1280${collectionData.backdrop_path})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    backgroundImage: `linear-gradient(240deg, rgba(0,0,0,0.6530987394957983) 15%, rgba(0,0,0,0.865983893557423) 28%, rgba(0,0,0,0.8799894957983193) 71%, rgba(0,0,0,0.5718662464985995) 100%),url(https://image.tmdb.org/t/p/w1280${collectionData.backdrop_path})`,
   };
 
   const backdropStyleTwo = {
-    backgroundImage: `${
-      windowWidth < 1024
-        ? "linear-gradient(to right, rgba(0, 0, 0, 0.932), #00000090)"
-        : "linear-gradient(to right, #000000cf 70%, #000000d1)"
-    } ,url(${bgImage})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.932), #00000090),url(${bgImage})`,
   };
 
   return (
     <>
       {resultsLoad ? (
-        <div className="pt-[80px]">
+        <div className="pt-[76px]">
           <div
-            className="h-[350px] lg:h-[600px] padding relative mb-5 lg:mb-16"
+            className="h-[350px] lg:h-[600px] padding relative mb-5 lg:mb-16 bg-no-repeat bg-cover bg-center"
             style={
               collectionData.backdrop_path ? backdropStyle : backdropStyleTwo
             }
@@ -111,16 +91,14 @@ export default function CollectionPage() {
                   alt="Movie Poster"
                 />
               )}
-              {windowWidth > 1023 && (
-                <div>
-                  <CollectionDetails collectionData={collectionData} />
-                </div>
-              )}
+              <div className="hidden lg:block">
+                <CollectionDetails collectionData={collectionData} />
+              </div>
             </div>
           </div>
-          {windowWidth < 1024 && (
-            <CollectionDetails collectionData={collectionData} />
-          )}
+            <div className="lg:hidden">
+              <CollectionDetails collectionData={collectionData} />
+            </div>
 
           {collectionData.parts ? (
             <div className="margin">
