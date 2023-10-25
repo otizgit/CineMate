@@ -15,7 +15,7 @@ export default function CategoryResults(props) {
     lazyLoad: true,
     speed: 300,
     slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToScroll: 5,
     initialSlide: 0,
     dots: true,
     responsive: [
