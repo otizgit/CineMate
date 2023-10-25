@@ -14,7 +14,8 @@ export default function TrailerOverlay({ trailerVideo, setTrailerOverlay }) {
   function EscKeyEvent(event) {
     let key = event.keyCode;
     if (key == 27) {
-      setTrailerOverlay(false)
+      setTrailerOverlay(false);
+      document.body.style.overflowY = "scroll";
     }
   }
   document.addEventListener("keydown", EscKeyEvent);
@@ -43,7 +44,7 @@ export default function TrailerOverlay({ trailerVideo, setTrailerOverlay }) {
         <YouTube
           videoId={trailerVideo[0].key}
           opts={{
-            width: '100%',
+            width: "100%",
             playerVars: {
               autoplay: 1,
             },

@@ -18,7 +18,8 @@ export default function ImageOverlay({ images, setOverlay }) {
   function EscKeyEvent(event) {
     let key = event.keyCode;
     if (key == 27) {
-      setOverlay(false)
+      setOverlay(false);
+      document.body.style.overflowY = "scroll";
     }
   }
   document.addEventListener("keydown", EscKeyEvent);
