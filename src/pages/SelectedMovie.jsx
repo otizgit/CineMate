@@ -65,7 +65,7 @@ export default function SelectedMovie() {
     setResultsLoad(false);
     fetchData();
 
-    document.title = `Cinemate | ${title}`;
+    document.title = `CineMate | ${title}`;
     window.scrollTo(0, 0);
   }, [id]);
 

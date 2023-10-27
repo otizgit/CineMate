@@ -30,7 +30,7 @@ export default function SeasonsCard({ seasonArray, index }) {
       >
         {seasonArray.poster_path ? (
           <img
-            className="md:w-[13rem] group-hover:scale-110 transition-all object-cover"
+            className="md:w-[13rem] h-[16rem] md:h-[unset] group-hover:scale-110 transition-all object-cover"
             src={`https://image.tmdb.org/t/p/w780${seasonArray.poster_path}`}
             alt="season poster"
           />

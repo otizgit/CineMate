@@ -78,7 +78,7 @@ export default function PersonPersonalInfo({ personData, setOverlay }) {
         <motion.h2
           variants={fadeAnimation}
           initial="init"
-          whileInView="fade"
+          animate="fade"
           custom={1}
           className="font-heading tracking-wider text-white text-[1.7rem] mb-2"
         >
@@ -87,7 +87,7 @@ export default function PersonPersonalInfo({ personData, setOverlay }) {
         <motion.p
           variants={fadeAnimation}
           initial="init"
-          whileInView="fade"
+          animate="fade"
           custom={2}
           className="custom-fz font-semibold text-primary mb-4"
         >
@@ -99,7 +99,7 @@ export default function PersonPersonalInfo({ personData, setOverlay }) {
         <motion.p
           variants={fadeAnimation}
           initial="init"
-          whileInView="fade"
+          animate="fade"
           custom={3}
           className="custom-fz font-semibold text-primary mb-4"
         >
@@ -112,7 +112,7 @@ export default function PersonPersonalInfo({ personData, setOverlay }) {
           <motion.p
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={1}
             className="custom-fz font-semibold text-primary mb-4"
           >
@@ -126,7 +126,7 @@ export default function PersonPersonalInfo({ personData, setOverlay }) {
           <motion.p
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={1}
             className="custom-fz font-semibold text-primary mb-4"
           >
