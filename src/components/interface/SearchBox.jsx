@@ -25,7 +25,7 @@ export default function SearchBox(props) {
       props.setSearchOpen(false);
       inputRef.current.value = "";
       setTrigger((prevTrigger) => !prevTrigger);
-      navigate(`/results/${value}`, { state: { trigger: triggerSearch } });
+      navigate(`/results/${value}`);
     }
   }
 

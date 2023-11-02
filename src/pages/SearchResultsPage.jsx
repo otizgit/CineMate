@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import apiKey from "../assets/data/key";
 import ResultsFilter from "../components/interface/ResultsFilter";
 import Explore from "../components/interface/Explore";
@@ -11,8 +11,6 @@ export default function SearchResultsPage() {
   const [searchData, setSearchData] = useState([]);
   let { id } = useParams();
   const encodedTitle = encodeURIComponent(id);
-  const location = useLocation();
-  const { trigger } = location.state;
   const [category, setCategory] = useState("movie");
   const [searchResultsLoad, setSearchResultsLoad] = useState(false);
 
@@ -38,12 +36,12 @@ export default function SearchResultsPage() {
 
   useEffect(() => {
     fetchData();
-  }, [category, trigger]);
+  }, [category, id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = `CineMate | "${id}" Search Results`;
-  }, []);
+  }, [id]);
 
   return (
     <>
