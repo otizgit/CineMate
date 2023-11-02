@@ -25,20 +25,22 @@ export default function Home() {
 
       <div className="relative">
         <Hero />
-        <Trending
-          title="Trending Movies"
-          subTitle="Explore the latest and popular movies"
-          apiWord="movie"
-          searchWord="movie"
-          setMovieLoad={setMovieLoad}
-        />
-        <Trending
-          title="Trending TV Shows"
-          subTitle="Explore the latest and popular TV Shows"
-          apiWord="tv"
-          searchWord="TV Show"
-          setTvShowLoad={setTvShowLoad}
-        />
+        <section id="section">
+          <Trending
+            title="Trending Movies"
+            subTitle="Explore the latest and popular movies"
+            apiWord="movie"
+            searchWord="movie"
+            setMovieLoad={setMovieLoad}
+          />
+          <Trending
+            title="Trending TV Shows"
+            subTitle="Explore the latest and popular TV Shows"
+            apiWord="tv"
+            searchWord="TV Show"
+            setTvShowLoad={setTvShowLoad}
+          />
+        </section>
         <Explore />
       </div>
     </>
