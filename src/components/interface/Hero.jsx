@@ -40,7 +40,7 @@ export default function Hero() {
         </Swiper>
       </div>
       <a href="#section">
-        <div className="absolute bottom-[3rem] z-20 w-[35px] h-[60px] left-1/2 translate-x-[-50%] rounded-3xl border-2 border-primary flex justify-center items-start p-2 bg-black">
+        <div className="absolute bottom-[3rem] z-10 w-[35px] h-[60px] left-1/2 translate-x-[-50%] rounded-3xl border-2 border-primary flex justify-center items-start p-2 bg-black">
           <motion.div
             animate={{
               y: [0, 24, 0],
