@@ -8,7 +8,6 @@ export default function SearchBox(props) {
   const inputRef = useRef(null);
   const btnRef = useRef(null);
   const navigate = useNavigate();
-  const [triggerSearch, setTrigger] = useState(false);
 
   function handleSubmitClick() {
     const value = inputRef.current.value.trim();
@@ -24,7 +23,6 @@ export default function SearchBox(props) {
     } else {
       props.setSearchOpen(false);
       inputRef.current.value = "";
-      setTrigger((prevTrigger) => !prevTrigger);
       navigate(`/results/${value}`);
     }
   }
