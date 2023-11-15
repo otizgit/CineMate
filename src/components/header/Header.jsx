@@ -62,7 +62,12 @@ export default function Header() {
   }
 
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        delay: 0.3,
+      }}
       className={`padding flex justify-between items-center fixed ${
         scrollingDown ? "top-[-77px]" : "top-0"
       } h-[77px] right-0 left-0 z-20 transition-all header-style`}
@@ -85,7 +90,8 @@ export default function Header() {
           transition={{
             type: "spring",
             bounce: 0.5,
-            stiffness: 500,
+            stiffness: 200,
+            delay: 0.5,
           }}
           whileHover={{
             scale: 1.15,
@@ -107,8 +113,9 @@ export default function Header() {
               animate={{ scale: 1 }}
               transition={{
                 type: "spring",
-                stiffness: 500,
+                stiffness: 200,
                 bounce: 0.5,
+                delay: 0.7
               }}
               whileHover={{
                 scale: 1.15,
@@ -126,8 +133,8 @@ export default function Header() {
                   animate={{ scale: 1 }}
                   transition={{
                     type: "spring",
-                    stiffness: 500,
-                    delay: 0.1 * index + 0.2,
+                    stiffness: 300,
+                    delay: 0.2 * index + 0.7,
                     bounce: 0.5,
                   }}
                   onClick={() => toggleNavClick(index)}
@@ -221,6 +228,6 @@ export default function Header() {
           setSearchOpen={setSearchOpen}
         />
       )}
-    </header>
+    </motion.header>
   );
 }

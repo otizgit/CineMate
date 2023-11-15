@@ -13,7 +13,14 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function Footer() {
   return (
-    <footer className="relative padding py-10 lg:py-8 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-10">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        delay: 1,
+      }}
+      className="relative padding py-10 lg:py-8 flex flex-col xl:flex-row xl:justify-between items-center xl:items-start bg-black justify-center gap-10"
+    >
       <div>
         <Link to="/home">
           <motion.img
@@ -127,6 +134,6 @@ export default function Footer() {
           </motion.div>
         </Link>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
