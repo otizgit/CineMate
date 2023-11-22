@@ -30,8 +30,8 @@ export default function CategoryPage() {
     document.title = "CineMate | Categories";
   });
 
-  const fetchMovies = () => {
-    axios
+  const fetchMovies = async () => {
+    await axios
       .get(
         `https://api.themoviedb.org/3/${apiKeyword}/${keyword}?api_key=${apiKey}`
       )

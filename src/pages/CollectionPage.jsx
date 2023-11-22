@@ -19,15 +19,15 @@ export default function CollectionPage() {
 
   const [resultsLoad, setResultsLoad] = useState(false);
 
-  const fetchData = () => {
-    const getCollectionData = axios.get(
+  const fetchData = async () => {
+    const getCollectionData = await axios.get(
       `https://api.themoviedb.org/3/collection/${id}?api_key=${apiKey}`
     );
-    const getCollectionImages = axios.get(
+    const getCollectionImages = await axios.get(
       `https://api.themoviedb.org/3/collection/${id}/images?api_key=${apiKey}`
     );
 
-    axios
+    await axios
       .all([getCollectionData, getCollectionImages])
       .then(
         axios.spread((...allData) => {

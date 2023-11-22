@@ -20,8 +20,8 @@ export default function SearchResultsPage() {
     document.body.style.overflowY = "scroll";
   }
 
-  const fetchData = () => {
-    axios
+  const fetchData = async () => {
+    await axios
       .get(
         `https://api.themoviedb.org/3/search/${category}?api_key=${apiKey}&query=${encodedTitle}`
       )

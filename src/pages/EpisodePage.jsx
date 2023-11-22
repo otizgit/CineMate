@@ -24,15 +24,15 @@ export default function EpisodePage() {
     document.body.style.overflowY = "scroll";
   }
 
-  const fetchData = () => {
-    const fetchEpisodeData = axios.get(
+  const fetchData = async () => {
+    const fetchEpisodeData = await axios.get(
       `https://api.themoviedb.org/3/tv/${id}/season/${season}/episode/${episode}?api_key=${apiKey}`
     );
-    const fetchEpisodeImages = axios.get(
+    const fetchEpisodeImages = await axios.get(
       `https://api.themoviedb.org/3/tv/${id}/season/${season}/episode/${episode}/images?api_key=${apiKey}`
     );
 
-    axios
+    await axios
       .all([fetchEpisodeData, fetchEpisodeImages])
       .then(
         axios.spread((...allData) => {

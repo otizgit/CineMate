@@ -152,21 +152,23 @@ export default function MovieDetails(props) {
             viewport={{
               once: true,
             }}
-            className="flex"
+            className="flex items-center"
           >
             <span className="md:hidden custom-fz text-primary font-medium tracking-wide mr-1">
               Country:
             </span>{" "}
-            {props.results.production_countries.map((country, index) => {
-              return (
-                <p
-                  key={index}
-                  className="list-style custom-fz text-white-300 font-medium"
-                >
-                  {country.name}
-                </p>
-              );
-            })}
+            <div className="flex flex-wrap gap-1 lg:gap-0">
+              {props.results.production_countries.map((country, index) => {
+                return (
+                  <p
+                    key={index}
+                    className="list-style custom-fz text-white-300 font-medium"
+                  >
+                    {country.name}
+                  </p>
+                );
+              })}
+            </div>
           </motion.div>
         ) : null}
       </div>
@@ -248,7 +250,7 @@ export default function MovieDetails(props) {
         ) : null}
       </div>
 
-      <div className="border-primary border-b-2 lg:border-none lg:pb-0 pb-5">
+      <div className={`border-primary border-b-2 lg:border-none lg:pb-0 ${trailerVideo.length ? 'pb-5' : 'pb-0'}`}>
         <div className="lg:flex gap-10 mb-4 lg:mb-0">
           {props.imdbResults.Writer !== "N/A" && props.imdbResults.Writer ? (
             <motion.div
@@ -305,7 +307,12 @@ export default function MovieDetails(props) {
             Watch Trailer
           </motion.button>
         ) : null}
-        {trailerOverlay && <TrailerOverlay setTrailerOverlay={setTrailerOverlay} trailerVideo={trailerVideo} />}
+        {trailerOverlay && (
+          <TrailerOverlay
+            setTrailerOverlay={setTrailerOverlay}
+            trailerVideo={trailerVideo}
+          />
+        )}
       </div>
     </div>
   );

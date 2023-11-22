@@ -36,16 +36,16 @@ export default function SelectedMovie() {
     document.body.style.overflowY = "scroll";
   }
 
-  const fetchData = () => {
-    const getResults = axios.get(
+  const fetchData = async () => {
+    const getResults = await axios.get(
       `https://api.themoviedb.org/3/${keyword}/${id}?api_key=${apiKey}&append_to_response=videos,images,credits,keywords,reviews,recommendations`
     );
 
-    const getImdbResults = axios.get(
+    const getImdbResults = await axios.get(
       `https://www.omdbapi.com/?t=${title}&y=${releaseYear}&apikey=25c51d62`
     );
 
-    axios
+    await axios
       .all([getResults, getImdbResults])
       .then(
         axios.spread((...allData) => {

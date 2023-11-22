@@ -17,8 +17,8 @@ export default function KeywordPage() {
     document.body.style.overflowY = "scroll";
   }
 
-  const fetchKeywordData = () => {
-    axios
+  const fetchKeywordData = async () => {
+    await axios
       .get(
         `https://api.themoviedb.org/3/keyword/${id}/movies?api_key=${apiKey}`
       )

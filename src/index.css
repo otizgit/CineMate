@@ -29,7 +29,7 @@ body {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem
+  scroll-padding-top: 5rem;
 }
 html,
 .side-bar {
@@ -55,11 +55,11 @@ html::-webkit-scrollbar-track,
   padding: 0 15px;
 }
 .slick-track {
-  float:left;
+  float: left;
 }
 .slick-dots li.slick-active button:before {
   color: #29ab87;
- }
+}
 
 .header-style {
   background-color: rgba(0, 0, 0, 0.9);

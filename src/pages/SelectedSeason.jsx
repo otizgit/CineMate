@@ -24,15 +24,15 @@ export default function SelectedSeason() {
     document.body.style.overflowY = "scroll";
   }
 
-  const fetchData = () => {
-    const fetchSeasonData = axios.get(
+  const fetchData = async () => {
+    const fetchSeasonData = await axios.get(
       `https://api.themoviedb.org/3/tv/${id}/season/${season}?api_key=${apiKey}`
     );
-    const fetchSeasonImages = axios.get(
+    const fetchSeasonImages = await axios.get(
       `https://api.themoviedb.org/3/tv/${id}/season/${season}/images?api_key=${apiKey}`
     );
 
-    axios
+    await axios
       .all([fetchSeasonData, fetchSeasonImages])
       .then(
         axios.spread((...allData) => {

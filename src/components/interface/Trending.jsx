@@ -8,8 +8,8 @@ import TrendingTexts from "../TrendingTexts";
 export default function Trending(props) {
   const [feedback, setFeedback] = useState([]);
 
-  const fetchMovies = () => {
-    axios
+  const fetchMovies = async () => {
+    await axios
       .get(
         `https://api.themoviedb.org/3/discover/${props.apiWord}?api_key=${apiKey}`
       )

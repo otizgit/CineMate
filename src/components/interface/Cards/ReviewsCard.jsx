@@ -14,9 +14,12 @@ export default function ReviewsCard(props) {
         opacity: 1,
         translateX: 0,
       }}
+      viewport={{
+        once: true,
+      }}
       transition={{
         duration: 0.5,
-        type: 'spring',
+        type: "spring",
         stiffness: 200,
       }}
       className="border-2 border-primary bg-black px-4 lg:px-9 py-6 rounded-xl custom-shadow"

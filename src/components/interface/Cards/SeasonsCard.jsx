@@ -16,6 +16,9 @@ export default function SeasonsCard({ seasonArray, index }) {
         opacity: 1,
         x: 0,
       }}
+      viewport={{
+        once: true,
+      }}
       transition={{
         type: 'spring',
         stiffness: 200,

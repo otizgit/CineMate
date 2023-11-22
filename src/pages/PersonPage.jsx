@@ -24,15 +24,15 @@ export default function PersonPage() {
     document.body.style.overflowY = "scroll";
   }
 
-  const fetchPersonData = () => {
-    const getPersonData = axios.get(
+  const fetchPersonData = async () => {
+    const getPersonData = await axios.get(
       `https://api.themoviedb.org/3/person/${id}?api_key=${apiKey}&append_to_response=images`
     );
-    const getPersonCredits = axios.get(
+    const getPersonCredits = await axios.get(
       `https://api.themoviedb.org/3/person/${id}/${credit}_credits?api_key=${apiKey}`
     );
 
-    axios
+    await axios
       .all([getPersonData, getPersonCredits])
       .then(
         axios.spread((...allData) => {

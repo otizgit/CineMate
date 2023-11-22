@@ -17,8 +17,8 @@ export default function CompanyPage() {
     document.body.style.overflowY = "scroll";
   }
 
-  const fetchCompanyData = () => {
-    axios
+  const fetchCompanyData = async () => {
+    await axios
       .get(`https://api.themoviedb.org/3/company/${id}?api_key=${apiKey}`)
       .then((res) => {
         setCompanyDetails(res.data);
