@@ -12,7 +12,7 @@ export default function Hero() {
   const heroImageElement = heroImages.map((image) => {
     return (
       <SwiperSlide key={image.desktopUrl}>
-        <picture className="brightness-50 h-[100dvh]">
+        <picture className="brightness-50 h-[100svh]">
           <source media="(max-width: 600px)" srcSet={image.mobileUrl} />
           <img className="image" src={image.desktopUrl} alt="hero image" />
         </picture>
