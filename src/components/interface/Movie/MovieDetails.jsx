@@ -24,7 +24,7 @@ export default function MovieDetails(props) {
           <motion.p
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={0}
             viewport={{
               once: true,
@@ -38,7 +38,7 @@ export default function MovieDetails(props) {
           <motion.p
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={0}
             viewport={{
               once: true,
@@ -52,7 +52,7 @@ export default function MovieDetails(props) {
           <motion.p
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={0}
             viewport={{
               once: true,
@@ -67,7 +67,7 @@ export default function MovieDetails(props) {
           <motion.div
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={1}
             viewport={{
               once: true,
@@ -81,7 +81,7 @@ export default function MovieDetails(props) {
           <motion.div
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={1}
             viewport={{
               once: true,
@@ -100,7 +100,7 @@ export default function MovieDetails(props) {
           <motion.div
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={1}
             viewport={{
               once: true,
@@ -128,7 +128,7 @@ export default function MovieDetails(props) {
           <motion.div
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={1}
             viewport={{
               once: true,
@@ -147,7 +147,7 @@ export default function MovieDetails(props) {
           <motion.div
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={1}
             viewport={{
               once: true,
@@ -185,7 +185,7 @@ export default function MovieDetails(props) {
               <motion.div
                 variants={fadeAnimation}
                 initial="init"
-                whileInView="fade"
+                animate="fade"
                 custom={index + 2}
                 viewport={{
                   once: true,
@@ -220,7 +220,7 @@ export default function MovieDetails(props) {
         <motion.div
           variants={fadeAnimation}
           initial="init"
-          whileInView="fade"
+          animate="fade"
           custom={4}
           viewport={{
             once: true,
@@ -238,7 +238,7 @@ export default function MovieDetails(props) {
           <motion.p
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={5}
             viewport={{
               once: true,
@@ -256,7 +256,7 @@ export default function MovieDetails(props) {
             <motion.div
               variants={fadeAnimation}
               initial="init"
-              whileInView="fade"
+              animate="fade"
               custom={6}
               viewport={{
                 once: true,
@@ -273,7 +273,7 @@ export default function MovieDetails(props) {
             <motion.div
               variants={fadeAnimation}
               initial="init"
-              whileInView="fade"
+              animate="fade"
               custom={7}
               viewport={{
                 once: true,
@@ -291,7 +291,7 @@ export default function MovieDetails(props) {
             onClick={toggleTrialerOverlay}
             variants={fadeAnimation}
             initial="init"
-            whileInView="fade"
+            animate="fade"
             custom={8}
             viewport={{
               once: true,

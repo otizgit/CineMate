@@ -18,6 +18,8 @@ import { slideAnimation, fadeAnimation } from "../animations/Animations";
 import Preloader from "../components/interface/Preloader";
 import Videos from "../components/interface/Videos";
 import BelongsToCollection from "../components/interface/BelongsToCollection";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClapperboard } from "@fortawesome/free-solid-svg-icons";
 
 export default function SelectedMovie() {
   const { keyword, title, id } = useParams();
@@ -74,11 +76,34 @@ export default function SelectedMovie() {
     setOverlay(true);
   }
 
-  const backdropStyle = {
-    backgroundImage: `linear-gradient(240deg, rgba(0,0,0,0.6530987394957983) 15%, rgba(0,0,0,0.865983893557423) 28%, rgba(0,0,0,0.8799894957983193) 71%, rgba(0,0,0,0.5718662464985995) 100%),url(https://image.tmdb.org/t/p/w1280${results.backdrop_path})`,
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
   };
-  const backdropStyleTwo = {
-    backgroundImage: `linear-gradient(to right, #000000e2 70%, #000000e6),url(${bgImage})`,
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
+  const isNotWideScreen = windowWidth < 1024;
+
+  const backdropStyles = {
+    container: {
+      backgroundImage: isNotWideScreen
+        ? `url(https://image.tmdb.org/t/p/w1280${results.backdrop_path})`
+        : `linear-gradient(240deg, rgba(0,0,0,0.6530987394957983) 15%, rgba(0,0,0,0.865983893557423) 28%, rgba(0,0,0,0.8799894957983193) 71%, 
+        rgba(0,0,0,0.5718662464985995) 100%),url(https://image.tmdb.org/t/p/w1280${results.backdrop_path})`,
+    },
+  };
+  const backdropStylesTwo = {
+    container: {
+      backgroundImage: isNotWideScreen
+        ? `url(${bgImage})`
+        : `linear-gradient(to right, #000000e2 70%, #000000e6),url(${bgImage})`,
+    },
   };
 
   return (
@@ -87,10 +112,14 @@ export default function SelectedMovie() {
         <div className="pt-[76px] overflow-x-hidden movie-wrapper">
           <div
             className={`h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16 bg-no-repeat bg-cover bg-center`}
-            style={results.backdrop_path ? backdropStyle : backdropStyleTwo}
+            style={
+              results.backdrop_path
+                ? backdropStyles.container
+                : backdropStylesTwo.container
+            }
           >
             <div className="lg:flex lg:py-[5rem] lg:items-center">
-              {results.poster_path && (
+              {results.poster_path ? (
                 <motion.img
                   variants={slideAnimation}
                   initial="init"
@@ -107,6 +136,13 @@ export default function SelectedMovie() {
                   src={`https://image.tmdb.org/t/p/w780${results.poster_path}`}
                   alt="Movie Poster"
                 />
+              ) : (
+                <div className="hidden lg:grid place-items-center w-[150px] md:w-[200px] lg:w-[300px] lg:h-[450px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow backdrop-blur-sm bg-[#00000070]">
+                  <FontAwesomeIcon
+                    icon={faClapperboard}
+                    className="text-[5rem] text-primary"
+                  />
+                </div>
               )}
               <div className="hidden lg:block">
                 <MovieDetails
@@ -129,20 +165,20 @@ export default function SelectedMovie() {
             <MovieInfo results={results} imdbResults={imdbResults} />
           </div>
 
-          {results.seasons && (
+          {results.seasons ? (
             <div className="movie-margin padding">
               <Seasons seasons={results.seasons} title={title} id={id} />
             </div>
-          )}
+          ) : null}
 
-          {results.last_episode_to_air && (
+          {results.last_episode_to_air ? (
             <div className="movie-margin padding">
               <TrendingTexts title="Last Episode To Air" />
               <SeasonsCard seasonArray={results.last_episode_to_air} />
             </div>
-          )}
+          ) : null}
 
-          {results.credits.cast.length && (
+          {results.credits.cast.length ? (
             <div className="movie-margin">
               <div className="padding">
                 <TrendingTexts title="Cast" />
@@ -180,7 +216,7 @@ export default function SelectedMovie() {
                 </motion.p>
               </Link>
             </div>
-          )}
+          ) : null}
 
           {results.networks ? <Networks networks={results.networks} /> : null}
 

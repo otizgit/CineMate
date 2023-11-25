@@ -8,6 +8,9 @@ export default function MovieInfo(props) {
       variants={fadeAnimation}
       initial="init"
       whileInView="fade"
+      viewport={{
+        once: true,
+      }}
       custom={0}
       className="border-primary border-b-2 lg:border-0 pb-5 custom-fz flex flex-wrap lg:gap-y-7 mb-10 gap-x-10 gap-y-4"
     >

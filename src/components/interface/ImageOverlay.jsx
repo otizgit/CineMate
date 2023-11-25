@@ -48,7 +48,7 @@ export default function ImageOverlay({ images, setOverlay }) {
         modules={[Navigation]}
         slidesPerView={1}
         navigation
-        className="w-[90%] md:w-[70%] lg:w-[55%] absolute inset-0 m-auto z-[12000] h-[fit-content] padding"
+        className="w-[90%] md:w-[70%] lg:w-[45%] absolute inset-0 m-auto z-[12000] h-[fit-content] padding"
         style={{
           "--swiper-navigation-color": "#29AB87",
         }}
