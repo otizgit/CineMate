@@ -100,9 +100,7 @@ export default function SelectedMovie() {
   };
   const backdropStylesTwo = {
     container: {
-      backgroundImage: isNotWideScreen
-        ? `url(${bgImage})`
-        : `linear-gradient(to right, #000000e2 70%, #000000e6),url(${bgImage})`,
+      backgroundImage: isNotWideScreen ? `url(${bgImage})` : `linear-gradient(to right, #000000e2 70%, #000000e6),url(${bgImage})`,
     },
   };
 
