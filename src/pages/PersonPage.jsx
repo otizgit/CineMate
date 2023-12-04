@@ -71,7 +71,7 @@ export default function PersonPage() {
             />
           </div>
 
-          <div className="px-6 hidden lg:block fixed w-[27%] top-[77px] bottom-0 pb-10 overflow-y-auto side-bar border-primary">
+          <div className="px-6 hidden lg:block fixed w-[27%] top-0 pt-[77px] bottom-0 pb-10 overflow-y-auto side-bar border-primary">
             <PersonPersonalInfo
               personData={personData}
               setOverlay={setOverlay}

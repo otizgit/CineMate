@@ -7,7 +7,7 @@ import { headingAnimation } from "../../animations/Animations";
 
 export default function ResultsFilter(props) {
   const [isCategoryOpen, setCategoryOpen] = useState(false);
-  const [currentCategory, setCurrentCategory] = useState('Movies')
+  const [currentCategory, setCurrentCategory] = useState("Movies");
 
   function toggleCategoryView() {
     setCategoryOpen((prevCategory) => !prevCategory);
@@ -18,8 +18,18 @@ export default function ResultsFilter(props) {
     props.setCategory(link);
   }
 
+  window.addEventListener("keydown", (e) => {
+    if (e.keyCode === 27) {
+      setCategoryOpen(false);
+    }
+  });
+
   return (
     <div className="padding lg:flex justify-between items-center mb-10">
+      <div
+        onClick={() => setCategoryOpen(false)}
+        className={`fixed inset-0 z-10 ${isCategoryOpen ? "block" : "hidden"}`}
+      ></div>
       <motion.h1
         variants={headingAnimation}
         initial="init"
@@ -28,13 +38,15 @@ export default function ResultsFilter(props) {
       >
         Search Results
       </motion.h1>
-      <div className="relative lg:w-[20rem]">
+      <div className="relative z-10 lg:w-[20rem]">
         <button
           onClick={toggleCategoryView}
           className="border-2 w-full  bg-black rounded-xl border-primary py-3 px-4"
         >
           <div className="flex justify-between items-center">
-            <p className="tracking-wider font-medium text-[.85rem]">{currentCategory}</p>
+            <p className="tracking-wider font-medium text-[.85rem]">
+              {currentCategory}
+            </p>
             <FontAwesomeIcon
               icon={faCaretDown}
               className={`text-primary font ${
@@ -55,8 +67,8 @@ export default function ResultsFilter(props) {
                   <div>
                     <button
                       onClick={() => {
-                        handleFilterClick(links.keyword)
-                        setCurrentCategory(links.link)
+                        handleFilterClick(links.keyword);
+                        setCurrentCategory(links.link);
                       }}
                       className={`${
                         props.category === links.keyword ? "bg-primary" : ""
