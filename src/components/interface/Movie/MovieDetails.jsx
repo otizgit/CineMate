@@ -328,7 +328,9 @@ export default function MovieDetails(props) {
             whileHover={{
               scale: 1.1,
             }}
-            className="flex items-center gap-1"
+            className={`flex items-center gap-1 ${
+              trailerVideo.length ? "" : "mb-5"
+            }`}
           >
             <FontAwesomeIcon
               icon={faStar}
