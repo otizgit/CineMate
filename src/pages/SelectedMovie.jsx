@@ -130,7 +130,7 @@ export default function SelectedMovie() {
                     scale: 1.07,
                   }}
                   onClick={toggleImageOverlay}
-                  className="w-[150px] md:w-[200px] lg:w-[300px] rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-pointer"
+                  className="w-[150px] md:w-[200px] lg:w-[300px] border-2 border-primary rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-pointer"
                   src={`https://image.tmdb.org/t/p/w780${results.poster_path}`}
                   alt="Movie Poster"
                 />
