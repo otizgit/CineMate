@@ -25,7 +25,7 @@ export default function ResultsFilter(props) {
   });
 
   return (
-    <div className="padding lg:flex justify-between items-center mb-10">
+    <div className="paddingX max-width lg:flex justify-between items-center mb-10">
       <div
         onClick={() => setCategoryOpen(false)}
         className={`fixed inset-0 z-10 ${isCategoryOpen ? "block" : "hidden"}`}

@@ -46,7 +46,7 @@ export default function SearchResultsPage() {
   return (
     <>
       {searchResultsLoad ? (
-        <div className="padding-top text-white">
+        <div className="padding-top text-white max-width">
           <ResultsFilter category={category} setCategory={setCategory} />
           <div className="margin">
             <CategoryResults

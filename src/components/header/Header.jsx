@@ -153,7 +153,7 @@ export default function Header() {
                 <div
                   className={`static ${
                     clickedNav === index ? "block" : "hidden"
-                  } lg:absolute lg:hidden lg:group-hover:block lg:top-[2rem] lg:w-[9rem] lg:left-[50%] lg:translate-x-[-50%] lg:text-center lg:bg-black lg:border-2 lg:border-primary lg:py-2 lg:rounded-lg z-10`}
+                  } lg:absolute lg:hidden lg:group-hover:block lg:top-[1.8rem] lg:w-[9rem] lg:left-[50%] lg:translate-x-[-50%] lg:text-center lg:bg-black lg:border-2 lg:border-primary lg:py-2 lg:rounded-lg z-10`}
                 >
                   {navLink.extraLinks.map((extraLink) => {
                     return (

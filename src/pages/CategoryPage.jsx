@@ -53,8 +53,8 @@ export default function CategoryPage() {
   return (
     <>
       {resultsLoad ? (
-        <div className="padding-top md:pt-[10rem]">
-          <div className="padding">
+        <div className="padding-top max-width md:pt-[10rem]">
+          <div className="paddingX">
             <TrendingTexts title={title} />
           </div>
           <div className="margin">
