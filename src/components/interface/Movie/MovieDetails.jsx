@@ -329,7 +329,7 @@ export default function MovieDetails(props) {
               scale: 1.1,
             }}
             className={`flex items-center gap-1 ${
-              trailerVideo.length ? "" : "mb-5"
+              trailerVideo.length ? "" : "mb-5 lg:mb-0"
             }`}
           >
             <FontAwesomeIcon
