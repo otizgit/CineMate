@@ -68,9 +68,9 @@ export default function Header() {
       transition={{
         delay: 0.3,
       }}
-      className={`padding flex justify-between items-center fixed ${
+      className={`paddingX flex justify-between items-center fixed ${
         scrollingDown ? "top-[-77px]" : "top-0"
-      } h-[77px] right-0 left-0 z-20 transition-all header-style`}
+      } h-[89px] right-0 left-0 z-20 transition-all header-style`}
     >
       <div
         onClick={handleNavStateChange}

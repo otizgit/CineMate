@@ -34,8 +34,8 @@ export default function Trending(props) {
   }, []);
 
   return (
-    <div className="margin">
-      <div className="padding">
+    <div className="margin max-width">
+      <div className="paddingX">
         <TrendingTexts title={props.title} subTitle={props.subTitle} />
       </div>
       {feedback && (

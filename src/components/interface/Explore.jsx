@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export default function Explore() {
   return (
-    <div className="background-style h-[35rem] md:h-[33rem] relative">
+    <div className="background-style h-[35rem] md:h-[33rem] relative max-width">
       <motion.div
         whileInView={{
           x: 0,
@@ -25,7 +25,7 @@ export default function Explore() {
         viewport={{
           once: true,
         }}
-        className="padding pt-14 lg:absolute lg:top-[30%] lg:translate-y-[-50%] lg:pt-0"
+        className="paddingX pt-14 lg:absolute lg:top-[30%] lg:translate-y-[-50%] lg:pt-0"
       >
         <h1 className="text-white text-center lg:text-left font-bold font-heading md:text-[4rem] tracking-wide text-[2.3rem] leading-[1.3]">
           Explore Your <br /> Favorite
