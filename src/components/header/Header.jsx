@@ -115,7 +115,7 @@ export default function Header() {
                 type: "spring",
                 stiffness: 200,
                 bounce: 0.5,
-                delay: 0.7
+                delay: 0.7,
               }}
               whileHover={{
                 scale: 1.15,
@@ -188,6 +188,24 @@ export default function Header() {
               </div>
             );
           })}
+          <NavLink onClick={handleLinkClick} to="/wishlist">
+            <motion.li
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                bounce: 0.5,
+                delay: 0.7,
+              }}
+              whileHover={{
+                scale: 1.15,
+              }}
+              className="font-heading font tracking-widest"
+            >
+              Wishlist
+            </motion.li>
+          </NavLink>
         </ul>
         <button
           onClick={handleSearchClick}

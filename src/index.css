@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nosifer&display=swap");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   font-family:
     "Exo",
@@ -118,13 +122,6 @@ html::-webkit-scrollbar-track,
       url("./assets//images/watching-tv-mobile.jpg");
   }
 }
-
-.scroll-section {
-}
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer components {
   .image {

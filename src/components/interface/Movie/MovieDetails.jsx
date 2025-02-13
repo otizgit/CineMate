@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlay,
+  faStar as faStarSolid,
+} from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { motion } from "framer-motion";
 import { fadeAnimation } from "../../../animations/Animations";
 import TrailerOverlay from "../TrailerOverlay";
@@ -203,7 +207,7 @@ export default function MovieDetails(props) {
                 )}
                 <div className="flex justify-center items-center gap-1">
                   <FontAwesomeIcon
-                    icon={faStar}
+                    icon={faStarSolid}
                     className="text-[gold] custom-fz pb-1"
                   />
                   <p className="custom-fz text-primary font-bold">
@@ -250,7 +254,11 @@ export default function MovieDetails(props) {
         ) : null}
       </div>
 
-      <div className={`border-primary border-b-2 lg:border-none lg:pb-0 ${trailerVideo.length ? 'pb-5' : 'pb-0'}`}>
+      <div
+        className={`border-primary border-b-2 lg:border-none lg:pb-0 ${
+          trailerVideo.length ? "pb-5" : "pb-0"
+        }`}
+      >
         <div className="lg:flex gap-10 mb-4 lg:mb-0">
           {props.imdbResults.Writer !== "N/A" && props.imdbResults.Writer ? (
             <motion.div
@@ -286,27 +294,49 @@ export default function MovieDetails(props) {
             </motion.div>
           ) : null}
         </div>
-        {trailerVideo.length ? (
+        <div className="flex flex-wrap gap-x-8 gap-y-3">
+          {trailerVideo.length ? (
+            <motion.button
+              onClick={toggleTrialerOverlay}
+              variants={fadeAnimation}
+              initial="init"
+              animate="fade"
+              custom={8}
+              viewport={{
+                once: true,
+              }}
+              whileHover={{
+                scale: 1.1,
+              }}
+              className="text-primary inline font-bold custom-fz"
+            >
+              <span>
+                <FontAwesomeIcon icon={faPlay} className="custom-fz mr-1" />
+              </span>
+              Watch Trailer
+            </motion.button>
+          ) : null}
           <motion.button
             onClick={toggleTrialerOverlay}
             variants={fadeAnimation}
             initial="init"
             animate="fade"
-            custom={8}
+            custom={9}
             viewport={{
               once: true,
             }}
             whileHover={{
               scale: 1.1,
             }}
-            className="text-primary inline font-bold custom-fz"
+            className="flex items-center gap-1"
           >
-            <span>
-              <FontAwesomeIcon icon={faPlay} className="custom-fz mr-2" />
-            </span>
-            Watch Trailer
+            <FontAwesomeIcon
+              icon={faStar}
+              className="custom-fz text-[gold] pb-1"
+            />
+            <p className="custom-fz text-primary font-bold">Add to wishlist</p>
           </motion.button>
-        ) : null}
+        </div>
         {trailerOverlay && (
           <TrailerOverlay
             setTrailerOverlay={setTrailerOverlay}
