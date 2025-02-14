@@ -68,12 +68,12 @@ export default function Header() {
       transition={{
         delay: 0.3,
       }}
-      className="header-style"
+      className={`header-style fixed ${
+        scrollingDown ? "top-[-89px]" : "top-0"
+      } right-0 left-0 z-20 transition-all`}
       >
       <div 
-      className={`paddingX max-width flex justify-between items-center fixed ${
-        scrollingDown ? "top-[-77px]" : "top-0"
-      } h-[89px] right-0 left-0 z-20 transition-all`}
+      className={`paddingX max-width flex justify-between items-center h-[89px] right-0 left-0 z-20 transition-all`}
       >
         <div
           onClick={handleNavStateChange}

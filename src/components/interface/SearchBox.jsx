@@ -48,7 +48,7 @@ export default function SearchBox(props) {
   document.addEventListener("keydown", EscKeyEvent);
 
   return (
-    <div className="fixed top-[90px] w-full left-0 z-[5] padding transition-all">
+    <div className="fixed top-[100px] w-full left-0 z-[5] padding transition-all">
       <div className=" w-full flex items-center custom-shadow">
         <input
           onKeyDown={(e) => handleEnterClick(e)}
