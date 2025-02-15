@@ -49,12 +49,12 @@ export default function SearchBox(props) {
 
   return (
     <div className="fixed top-[100px] w-full left-0 z-[5] transition-all">
-      <div className=" w-full flex items-center custom-shadow paddingX max-width">
+      <div className=" w-full flex items-center paddingX max-width">
         <input
           onKeyDown={(e) => handleEnterClick(e)}
           autoFocus={props.isSearchOpen}
           ref={inputRef}
-          className="focus:outline-none font-sans font-medium h-[3rem] px-4 text-black custom-fz w-full rounded-l-lg placeholder:text-[grey]"
+          className="focus:outline-none custom-shadow font-sans font-medium h-[3rem] px-4 text-black custom-fz w-full rounded-l-lg placeholder:text-[grey]"
           type="text"
           id="search-input"
           maxLength={35}
