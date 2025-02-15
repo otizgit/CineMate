@@ -22,7 +22,7 @@ export default function MovieDetails(props) {
   }
 
   return (
-    <div className="padding text-white mb-5 lg:mb-0">
+    <div className="paddingX text-white mb-5 lg:mb-0">
       <div className="flex items-center mb-2 lg:mb-1 flex-wrap gap-2">
         {props.results.title && (
           <motion.p
@@ -310,9 +310,6 @@ export default function MovieDetails(props) {
               }}
               className="text-primary inline font-bold custom-fz"
             >
-              <span>
-                <FontAwesomeIcon icon={faPlay} className="custom-fz mr-1" />
-              </span>
               Watch Trailer
             </motion.button>
           ) : null}
@@ -328,14 +325,10 @@ export default function MovieDetails(props) {
             whileHover={{
               scale: 1.1,
             }}
-            className={`flex items-center gap-1 ${
+            className={`${
               trailerVideo.length ? "" : "mb-5 lg:mb-0"
             }`}
           >
-            <FontAwesomeIcon
-              icon={faStar}
-              className="custom-fz text-[gold] pb-1"
-            />
             <p className="custom-fz text-primary font-bold">Add to wishlist</p>
           </motion.button>
         </div>

@@ -125,7 +125,7 @@ html::-webkit-scrollbar-track,
 
 @layer components {
   .paddingX {
-    @apply px-[1.3rem] sm:px-[4rem] lg:px-[5rem];
+    @apply px-[1.3rem] sm:px-[4rem] lg:px-[4rem];
   }
   .max-width {
     @apply xl:max-w-[100rem] xl:mx-auto;

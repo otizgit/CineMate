@@ -100,7 +100,9 @@ export default function SelectedMovie() {
   };
   const backdropStylesTwo = {
     container: {
-      backgroundImage: isNotWideScreen ? `url(${bgImage})` : `linear-gradient(to right, #000000e2 70%, #000000e6),url(${bgImage})`,
+      backgroundImage: isNotWideScreen
+        ? `url(${bgImage})`
+        : `linear-gradient(to right, #000000e2 70%, #000000e6),url(${bgImage})`,
     },
   };
 
@@ -109,7 +111,7 @@ export default function SelectedMovie() {
       {resultsLoad ? (
         <div className="pt-[76px] overflow-x-hidden movie-wrapper">
           <div
-            className={`h-[350px] lg:h-[100vh] xl:h-[600px] padding relative mb-5 lg:mb-16 bg-no-repeat bg-cover bg-center`}
+            className={`h-[350px] lg:h-[100vh] xl:h-[600px] paddingX max-width relative mb-5 lg:mb-16 bg-no-repeat bg-cover bg-center`}
             style={
               results.backdrop_path
                 ? backdropStyles.container
@@ -130,7 +132,7 @@ export default function SelectedMovie() {
                     scale: 1.07,
                   }}
                   onClick={toggleImageOverlay}
-                  className="w-[150px] md:w-[200px] lg:w-[300px] border-2 border-primary rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-pointer"
+                  className="w-[150px] md:w-[200px] lg:w-[280px] border-2 border-primary rounded-2xl lg:static absolute bottom-[20px] custom-shadow cursor-pointer"
                   src={`https://image.tmdb.org/t/p/w780${results.poster_path}`}
                   alt="Movie Poster"
                 />
@@ -159,18 +161,18 @@ export default function SelectedMovie() {
             />
           </div>
 
-          <div className="padding">
+          <div className="paddingX max-width">
             <MovieInfo results={results} imdbResults={imdbResults} />
           </div>
 
           {results.seasons ? (
-            <div className="movie-margin padding">
+            <div className="movie-margin paddingX max-width">
               <Seasons seasons={results.seasons} title={title} id={id} />
             </div>
           ) : null}
 
           {results.last_episode_to_air ? (
-            <div className="movie-margin padding">
+            <div className="movie-margin paddingX max-width">
               <TrendingTexts title="Last Episode To Air" />
               <SeasonsCard seasonArray={results.last_episode_to_air} />
             </div>
@@ -178,41 +180,43 @@ export default function SelectedMovie() {
 
           {results.credits.cast.length ? (
             <div className="movie-margin">
-              <div className="padding">
+              <div className="paddingX max-width">
                 <TrendingTexts title="Cast" />
               </div>
               <CategoryResults
                 apiKeyword="person"
                 feedback={results.credits.cast.slice(0, 20)}
               />
-              <Link
-                to={`/${title}/all-cast-and-crew`}
-                state={{
-                  allCast: results.credits.cast,
-                  movieTitle: title,
-                  allCrew: results.credits.crew,
-                }}
-              >
-                <motion.p
-                  variants={fadeAnimation}
-                  initial="init"
-                  whileInView="fade"
-                  viewport={{
-                    once: true,
+              <div className="max-width paddingX">
+                <Link
+                  to={`/${title}/all-cast-and-crew`}
+                  state={{
+                    allCast: results.credits.cast,
+                    movieTitle: title,
+                    allCrew: results.credits.crew,
                   }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 500,
-                    bounce: 0.5,
-                  }}
-                  whileHover={{
-                    scale: 1.15,
-                  }}
-                  className="text-primary lg:ml-14 mt-4 font-medium text-center lg:inline-block"
                 >
-                  View All Cast and Crew
-                </motion.p>
-              </Link>
+                  <motion.p
+                    variants={fadeAnimation}
+                    initial="init"
+                    whileInView="fade"
+                    viewport={{
+                      once: true,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                      bounce: 0.5,
+                    }}
+                    whileHover={{
+                      scale: 1.15,
+                    }}
+                    className="text-primary lg:ml-3 mt-6 font-medium text-center lg:inline-block"
+                  >
+                    View All Cast and Crew
+                  </motion.p>
+                </Link>
+              </div>
             </div>
           ) : null}
 

@@ -5,7 +5,7 @@ import { fadeAnimation } from "../../animations/Animations";
 
 export default function Networks(props) {
   return (
-    <div className="padding movie-margin">
+    <div className="paddingX max-width movie-margin">
       <TrendingTexts title="Networks" />
       <div className="flex gap-12 items-center flex-wrap">
         {props.networks.map((network, index) => {
@@ -22,7 +22,7 @@ export default function Networks(props) {
             >
               {network.logo_path ? (
                 <img
-                  className="w-[120px]"
+                  className="w-[80px]"
                   src={`https://image.tmdb.org/t/p/w200${network.logo_path}`}
                   alt="network image"
                 />
