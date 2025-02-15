@@ -17,7 +17,7 @@ export default function AllReviews() {
   }, []);
 
   return (
-    <div className="pt-[120px] padding margin overflow-x-hidden">
+    <div className="pt-[120px] paddingX max-width margin overflow-x-hidden">
       <TrendingTexts title={`Reviews of ${movieTitle}`} />
       <div className="flex flex-col gap-14">{reviewsEl}</div>
     </div>

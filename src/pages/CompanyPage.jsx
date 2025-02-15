@@ -43,7 +43,7 @@ export default function CompanyPage() {
   return (
     <>
       {resultsLoad ? (
-        <div className="padding pt-[120px] margin flex gap-16 flex-col items-center">
+        <div className="paddingX pt-[120px] margin flex gap-16 flex-col items-center">
           {companyDetails.logo_path ? (
             <motion.img
               variants={headingAnimation}
