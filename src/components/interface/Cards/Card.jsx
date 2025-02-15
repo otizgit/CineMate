@@ -122,7 +122,7 @@ export default function Card(props) {
           </div>
         )}
       </div>
-      <p className="text-white text-[1.2rem] md:text-[1rem] font-medium text-center">
+      <p className="text-white text-[1rem] md:text-[0.9rem] font-medium text-center">
         {cardTitle}
       </p>
       <p className="custom-fz lg:text-[.8rem] text-primary font-semibold text-center">
