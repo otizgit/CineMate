@@ -63,8 +63,8 @@ export default function SelectedSeason() {
   return (
     <>
       {resultsLoad ? (
-        <div className="lg:pt-[77px] overflow-x-hidden">
-          <div className="flex flex-col gap-8 lg:flex-row border-b-2 lg:border-x-2 border-primary pb-10 lg:pb-0 mb-14 mx-6 md:mx-14 overflow-hidden">
+        <div className="lg:pt-[77px] overflow-x-hidden paddingX max-width">
+          <div className="flex flex-col gap-8 lg:flex-row border-b-2 lg:border-x-2 border-primary rounded-bl-xl rounded-br-xl pb-10 lg:pb-0 mb-14 overflow-hidden">
             {seasonData.poster_path ? (
               <motion.img
                 variants={slideAnimation}
@@ -83,7 +83,7 @@ export default function SelectedSeason() {
                 alt="season poster"
               />
             ) : (
-              <div className="padding h-[15rem] lg:h-[10rem] md:h-[10rem] xl:h-[10rem] grid place-items-center">
+              <div className="h-[15rem] lg:h-[10rem] md:h-[10rem] xl:h-[10rem] grid place-items-center">
                 <FontAwesomeIcon
                   icon={faClapperboard}
                   className="text-primary text-[5rem]"
@@ -103,7 +103,7 @@ export default function SelectedSeason() {
               className="text-center lg:text-left lg:pt-10"
             >
               {seasonData.name ? (
-                <div className="flex flex-wrap padding lg:p-0 mb-4 items-center gap-2 justify-center">
+                <div className="flex flex-wrap paddingX mb-4 items-center gap-2 justify-start">
                   <h2 className="text-[1.7rem] font-heading tracking-wider text-primary">
                     {seasonData.name}
                   </h2>
@@ -113,7 +113,7 @@ export default function SelectedSeason() {
                 </div>
               ) : null}
               {seasonData.overview ? (
-                <p className="custom-fz padding text-priText-300 lg:pb-10">
+                <p className="custom-fz paddingX text-priText-300 lg:pb-10">
                   {seasonData.overview}
                 </p>
               ) : null}
@@ -122,10 +122,10 @@ export default function SelectedSeason() {
 
           {seasonData.episodes ? (
             <div>
-              <div className="padding">
+              <div>
                 <TrendingTexts title="Episodes" />
               </div>
-              <div className="padding flex flex-col gap-14 margin">
+              <div className="flex flex-col gap-14 margin">
                 {seasonData.episodes
                   ? seasonData.episodes.map((episode, index) => {
                       return (

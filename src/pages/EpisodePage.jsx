@@ -65,8 +65,8 @@ export default function EpisodePage() {
   return (
     <>
       {resultsLoad ? (
-        <div className="pt-[77px] margin">
-          <div className="flex flex-col gap-8 lg:flex-row border-b-2 lg:border-x-2 border-primary pb-10 lg:pb-0 mb-14 mx-6 md:mx-14 overflow-hidden">
+        <div className="pt-[77px] margin paddingX max-width">
+          <div className="flex flex-col gap-8 lg:flex-row border-b-2 lg:border-x-2 border-primary pb-10 lg:pb-0 mb-14 overflow-hidden">
             {episodeData.still_path ? (
               <motion.img
                 variants={slideAnimation}
@@ -85,7 +85,7 @@ export default function EpisodePage() {
                 alt="season poster"
               />
             ) : (
-              <div className="padding h-[15rem] lg:h-[10rem] md:h-[10rem] xl:h-[10rem] grid place-items-center">
+              <div className="h-[15rem] lg:h-[10rem] md:h-[10rem] xl:h-[10rem] grid place-items-center">
                 <FontAwesomeIcon
                   icon={faClapperboard}
                   className="text-primary text-[5rem]"
@@ -104,7 +104,7 @@ export default function EpisodePage() {
                 once: true,
               }}
             >
-              <div className="padding lg:px-0 text-center lg:text-left lg:pt-10 lg:mb-6">
+              <div className="lg:px-0 text-center lg:text-left lg:pt-10 lg:mb-6">
                 {episodeData.name ? (
                   <div className="flex flex-wrap mb-4 lg:mb-0 items-center gap-2 justify-center">
                     <h2 className="text-[1.7rem] font-heading tracking-wider text-primary">
@@ -116,13 +116,13 @@ export default function EpisodePage() {
                   </div>
                 ) : null}
                 {episodeData.overview ? (
-                  <p className="custom-fz padding text-priText-300 mb-4">
+                  <p className="custom-fz text-priText-300 mb-4">
                     {episodeData.overview}
                   </p>
                 ) : null}
               </div>
 
-              <div className="padding flex flex-col lg:flex-row lg:justify-center lg:gap-6 items-center gap-3 lg:pb-10">
+              <div className="flex flex-col lg:flex-row lg:justify-center lg:gap-6 items-center gap-3 lg:pb-10">
                 {episodeData.air_date ? (
                   <p className="text-primary custom-fz font-medium">
                     Air Date:{" "}
@@ -173,7 +173,7 @@ export default function EpisodePage() {
 
           {episodeData.guest_stars && episodeData.guest_stars.length ? (
             <div className="movie-margin">
-              <div className="padding">
+              <div>
                 <TrendingTexts title="guest stars" />
               </div>
               <div>
@@ -186,7 +186,7 @@ export default function EpisodePage() {
           ) : null}
 
           <div>
-            <div className="padding">
+            <div>
               <TrendingTexts title="crew" />
             </div>
             {episodeData.crew ? (
