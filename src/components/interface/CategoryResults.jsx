@@ -63,7 +63,7 @@ export default function CategoryResults(props) {
   return (
     <div>
       {props.feedback.length ? (
-        <div className="paddingX max-width mx-auto">
+        <div className="paddingX w-[90%] lg:w-[100%] mx-auto">
           <Slider key={nanoid()} {...settings}>{renderedResults}</Slider>
         </div>
       ) : (

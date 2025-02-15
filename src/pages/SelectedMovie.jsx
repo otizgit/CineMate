@@ -183,10 +183,12 @@ export default function SelectedMovie() {
               <div className="paddingX max-width">
                 <TrendingTexts title="Cast" />
               </div>
-              <CategoryResults
-                apiKeyword="person"
-                feedback={results.credits.cast.slice(0, 20)}
-              />
+              <div className="max-width">
+                <CategoryResults
+                  apiKeyword="person"
+                  feedback={results.credits.cast.slice(0, 20)}
+                />
+              </div>
               <div className="max-width paddingX">
                 <Link
                   to={`/${title}/all-cast-and-crew`}
@@ -223,7 +225,7 @@ export default function SelectedMovie() {
           {results.networks ? <Networks networks={results.networks} /> : null}
 
           {results.reviews.results ? (
-            <div className="movie-margin padding">
+            <div className="movie-margin paddingX max-width">
               <MovieReviews reviews={results.reviews.results.slice(0, 3)} />
               {results.reviews.results.length >= 3 ? (
                 <Link
@@ -264,7 +266,7 @@ export default function SelectedMovie() {
           ) : null}
 
           {results.belongs_to_collection ? (
-            <div className="movie-margin padding">
+            <div className="movie-margin paddingX max-width">
               <BelongsToCollection collection={results.belongs_to_collection} />
             </div>
           ) : null}
@@ -278,14 +280,16 @@ export default function SelectedMovie() {
 
           {results.recommendations.results.length && (
             <div className="margin">
-              <div className="padding">
+              <div className="paddingX max-width">
                 <TrendingTexts title="you may also like" />
               </div>
-              <CategoryResults
-                setResultsLoad={setResultsLoad}
-                apiKeyword={keyword}
-                feedback={results.recommendations.results}
-              />
+              <div className="max-width">
+                <CategoryResults
+                  setResultsLoad={setResultsLoad}
+                  apiKeyword={keyword}
+                  feedback={results.recommendations.results}
+                />
+              </div>
             </div>
           )}
 

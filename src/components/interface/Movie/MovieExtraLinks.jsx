@@ -6,7 +6,7 @@ import { fadeAnimation } from "../../../animations/Animations";
 
 export default function MovieExtraLinks(props) {
   return props.results.production_companies || props.keywords ? (
-    <div className="flex gap-12 lg:flex-row flex-col movie-margin padding">
+    <div className="flex gap-12 lg:flex-row flex-col movie-margin paddingX max-width">
       {props.results.production_companies &&
       props.results.production_companies.length ? (
         <div className="flex-1">

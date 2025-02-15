@@ -16,7 +16,7 @@ export default function Videos({ videos, title }) {
   });
 
   return (
-    <div className="padding">
+    <div className="paddingX max-width">
       <TrendingTexts title="Related video(s)" />
       <div>
         <YouTube

@@ -152,7 +152,7 @@ html::-webkit-scrollbar-track,
     @apply tracking-wider;
   }
   .custom-fz {
-    @apply text-[.95rem];
+    @apply text-[.88rem];
   }
   .movie-margin {
     @apply mb-16 lg:mb-20;
