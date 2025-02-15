@@ -10,7 +10,7 @@ export default function Error() {
   }, []);
 
   return (
-    <div className="padding absolute inset-0 z-[15000] bg-black grid place-items-center text-center">
+    <div className="paddingX absolute inset-0 z-[15000] bg-black grid place-items-center text-center">
       <div>
         <motion.h1
           variants={fadeAnimation}

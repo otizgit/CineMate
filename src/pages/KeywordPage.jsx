@@ -46,7 +46,7 @@ export default function KeywordPage() {
     <>
       {resultsLoad ? (
         <div className="pt-[120px] margin">
-          <div className="padding">
+          <div className="paddingX">
             <TrendingTexts title={name.toUpperCase() + " related"} />
           </div>
 

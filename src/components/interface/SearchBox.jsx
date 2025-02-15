@@ -48,8 +48,8 @@ export default function SearchBox(props) {
   document.addEventListener("keydown", EscKeyEvent);
 
   return (
-    <div className="fixed top-[100px] w-full left-0 z-[5] padding transition-all">
-      <div className=" w-full flex items-center custom-shadow">
+    <div className="fixed top-[100px] w-full left-0 z-[5] transition-all">
+      <div className=" w-full flex items-center custom-shadow paddingX max-width">
         <input
           onKeyDown={(e) => handleEnterClick(e)}
           autoFocus={props.isSearchOpen}
