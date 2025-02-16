@@ -106,8 +106,6 @@ export default function SelectedMovie() {
     },
   };
 
-  console.log(results);
-
   return (
     <>
       {resultsLoad ? (

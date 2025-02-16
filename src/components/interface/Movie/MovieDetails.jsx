@@ -16,6 +16,47 @@ export default function MovieDetails(props) {
 
   const [trailerOverlay, setTrailerOverlay] = useState(false);
 
+  const [wishList, setWishList] = useState(
+    JSON.parse(localStorage.getItem("wishlist"))
+  );
+
+  const [isProductInWishlist, setProductInWishlist] = useState(
+    wishList.some((movie) => {
+      return movie.title.includes(props.results.title);
+    })
+  );
+
+  const addMovieToWishlist = () => {
+    // setProductInWishlist((prev) => !prev);
+
+    if (isProductInWishlist) {
+      const indexOfWishListMovie = wishList.findIndex(
+        (movie) => movie === props.results.title
+      );
+      const slicedArray = wishList.splice(indexOfWishListMovie, 1);
+      setWishList(slicedArray);
+
+      localStorage.setItem("wishlist", JSON.stringify(wishList));
+
+      setWishList(JSON.parse(localStorage.getItem("wishlist")));
+      setProductInWishlist(false);
+    } else {
+      const prevWishListArray = [
+        ...JSON.parse(localStorage.getItem("wishlist")),
+        {
+          title: props.results.title,
+          poster: props.results.poster_path,
+          rating: props.results.vote_average,
+        },
+      ];
+
+      localStorage.setItem("wishlist", JSON.stringify(prevWishListArray));
+
+      setWishList(JSON.parse(localStorage.getItem("wishlist")));
+      setProductInWishlist(true);
+    }
+  };
+
   function toggleTrialerOverlay() {
     document.body.style.overflow = "hidden";
     setTrailerOverlay(true);
@@ -314,7 +355,7 @@ export default function MovieDetails(props) {
             </motion.button>
           ) : null}
           <motion.button
-            onClick={toggleTrialerOverlay}
+            onClick={addMovieToWishlist}
             variants={fadeAnimation}
             initial="init"
             animate="fade"
@@ -325,11 +366,11 @@ export default function MovieDetails(props) {
             whileHover={{
               scale: 1.1,
             }}
-            className={`${
-              trailerVideo.length ? "" : "mb-5 lg:mb-0"
-            }`}
+            className={`${trailerVideo.length ? "" : "mb-5 lg:mb-0"}`}
           >
-            <p className="custom-fz text-primary font-bold">Add to wishlist</p>
+            <p className="custom-fz text-primary font-bold">
+              {isProductInWishlist ? "Remove from wishlist" : "Add to wishlist"}
+            </p>
           </motion.button>
         </div>
         {trailerOverlay && (
