@@ -191,7 +191,7 @@ export default function Header() {
                 </div>
               );
             })}
-            <NavLink onClick={handleLinkClick} to="/wishlist/movie">
+            <NavLink onClick={handleLinkClick} to="/wishlist/movies">
               <motion.li
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}

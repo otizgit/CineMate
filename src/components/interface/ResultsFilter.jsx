@@ -41,7 +41,7 @@ export default function ResultsFilter(props) {
       <div className="relative z-10 lg:w-[20rem]">
         <button
           onClick={toggleCategoryView}
-          className="border-2 w-full  bg-black rounded-xl border-primary py-3 px-4"
+          className="border-2 w-full bg-black rounded-xl border-primary py-3 px-4"
         >
           <div className="flex justify-between items-center">
             <p className="tracking-wider font-medium text-[.85rem]">

@@ -4,7 +4,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { headingAnimation } from "../../../animations/Animations";
 
-export default function WishlistFilter() {
+export default function WishlistFilter({ keyword }) {
   const [category, setCategory] = useState("Movies");
   const [isCategoryOpen, setCategoryOpen] = useState(false);
   const [currentCategory, setCurrentCategory] = useState("Movies");
@@ -43,16 +43,16 @@ export default function WishlistFilter() {
         whileInView="animate"
         className="text-[1.7rem] mb-2 lg:mb-0 font-heading tracking-wider text-primary text-center md:text-left"
       >
-        Search Results
+        Wishlist
       </motion.h1>
       <div className="relative z-10 lg:w-[20rem]">
         <button
           onClick={toggleCategoryView}
-          className="border-2 w-full  bg-black rounded-xl border-primary py-3 px-4"
+          className="border-2 w-full bg-black rounded-xl border-primary py-3 px-4"
         >
           <div className="flex justify-between items-center">
             <p className="tracking-wider font-medium text-[.85rem]">
-              {currentCategory}
+              {keyword}
             </p>
             <FontAwesomeIcon
               icon={faCaretDown}
