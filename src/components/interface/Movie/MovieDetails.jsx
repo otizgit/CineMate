@@ -22,7 +22,7 @@ export default function MovieDetails(props) {
 
   const [isProductInWishlist, setProductInWishlist] = useState(
     wishList.some((movie) => {
-      return movie.title.includes(props.results.title);
+      return movie.title.includes(props.results.title || props.results.name);
     })
   );
 
@@ -44,9 +44,10 @@ export default function MovieDetails(props) {
       const prevWishListArray = [
         ...JSON.parse(localStorage.getItem("wishlist")),
         {
-          title: props.results.title,
+          title: props.results.title || props.results.name,
           poster: props.results.poster_path,
           rating: props.results.vote_average,
+          type: props.results.name ? "tv_show" : "movie",
         },
       ];
 
