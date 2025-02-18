@@ -3,22 +3,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { headingAnimation } from "../../../animations/Animations";
+import { Link } from "react-router-dom";
 
 export default function WishlistFilter({ keyword }) {
   const [category, setCategory] = useState("Movies");
   const [isCategoryOpen, setCategoryOpen] = useState(false);
-  const [currentCategory, setCurrentCategory] = useState("Movies");
+  //   const [currentCategory, setCurrentCategory] = useState("Movies");
 
-  const categories = ["Movies", "TV shows"];
+  const categories = [
+    {
+      name: "Movies",
+      param: "movies",
+      link: "/wishlist/movies",
+    },
+    {
+      name: "TV shows",
+      param: "tv_shows",
+      link: "/wishlist/tv_shows",
+    },
+  ];
 
-  function toggleCategoryView() {
-    setCategoryOpen((prevCategory) => !prevCategory);
-  }
-
-  function handleFilterClick(link) {
-    setCategoryOpen(false);
-    setCategory(link);
-  }
+  useEffect(() => {
+    const activeCategory = categories.filter((category) =>
+      category.param === keyword ? category.name : null
+    );
+    setCategory(activeCategory[0].name);
+  }, [keyword]);
 
   window.addEventListener("keydown", (e) => {
     if (e.keyCode === 27) {
@@ -32,7 +42,7 @@ export default function WishlistFilter({ keyword }) {
   }, []);
 
   return (
-    <div className="paddingX max-width lg:flex justify-between items-center mb-10">
+    <div className="lg:flex justify-between items-center mb-10">
       <div
         onClick={() => setCategoryOpen(false)}
         className={`fixed inset-0 z-10 ${isCategoryOpen ? "block" : "hidden"}`}
@@ -47,12 +57,12 @@ export default function WishlistFilter({ keyword }) {
       </motion.h1>
       <div className="relative z-10 lg:w-[20rem]">
         <button
-          onClick={toggleCategoryView}
+          onClick={() => setCategoryOpen((prevCategory) => !prevCategory)}
           className="border-2 w-full bg-black rounded-xl border-primary py-3 px-4"
         >
           <div className="flex justify-between items-center">
-            <p className="tracking-wider font-medium text-[.85rem]">
-              {keyword}
+            <p className="text-white tracking-wider font-medium text-[.85rem]">
+              {category}
             </p>
             <FontAwesomeIcon
               icon={faCaretDown}
@@ -68,21 +78,22 @@ export default function WishlistFilter({ keyword }) {
           } rounded-xl border-primary overflow-hidden block bg-black border-2 top-[110%] w-full left-0`}
         >
           {isCategoryOpen &&
-            searchLinks.map((links) => {
+            categories.map((category) => {
               return (
-                <div key={links.id}>
+                <div key={category.id}>
                   <div>
-                    <button
-                      onClick={() => {
-                        handleFilterClick(links.keyword);
-                        setCurrentCategory(links.link);
-                      }}
-                      className={`${
-                        props.category === links.keyword ? "bg-primary" : ""
-                      } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
+                    <Link
+                      onClick={() => setCategoryOpen(false)}
+                      to={category.link}
                     >
-                      {links.link}
-                    </button>
+                      <p
+                        className={`${
+                          category.param === keyword ? "bg-primary" : ""
+                        } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
+                      >
+                        {category.name}
+                      </p>
+                    </Link>
                   </div>
                 </div>
               );
