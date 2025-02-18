@@ -31,7 +31,7 @@ export default function MovieDetails(props) {
 
     if (isProductInWishlist) {
       const indexOfWishListMovie = wishList.findIndex(
-        (movie) => movie === props.results.title
+        (movie) => movie === props.results.title || props.results.name
       );
       const slicedArray = wishList.splice(indexOfWishListMovie, 1);
       setWishList(slicedArray);
@@ -107,7 +107,7 @@ export default function MovieDetails(props) {
         ) : null}
       </div>
 
-      <div className="flex flex-col md:flex-row mb-5 items-start md:justify-between lg:justify-start lg:w-[fit-content] flex-wrap gap-x-4 gap-y-4">
+      <div className="flex flex-col md:flex-row mb-5 items-start md:gap-x-10 lg:justify-start lg:w-[fit-content] flex-wrap gap-x-4 lg:gap-x-4 gap-y-4">
         {props.imdbResults.Rated !== "N/A" && props.imdbResults.Rated ? (
           <motion.div
             variants={fadeAnimation}
