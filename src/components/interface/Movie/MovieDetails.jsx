@@ -47,7 +47,7 @@ export default function MovieDetails(props) {
           title: props.results.title || props.results.name,
           poster: props.results.poster_path,
           rating: props.results.vote_average,
-          type: props.results.name ? "tv_show" : "movie",
+          type: props.results.name ? "TV shows" : "Movies",
         },
       ];
 

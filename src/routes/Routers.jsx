@@ -39,7 +39,7 @@ export default function Routers() {
         <Route path="/:title/all-videos" element={<AllVideos />} />
         <Route path="/how-to-use" element={<HowToUse />} />
         <Route path="*" element={<Error />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/wishlist/:id" element={<Wishlist />} />
       </Routes>
     </div>
   );
