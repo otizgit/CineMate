@@ -6,9 +6,8 @@ import { headingAnimation } from "../../../animations/Animations";
 import { Link } from "react-router-dom";
 
 export default function WishlistFilter({ keyword }) {
-  const [category, setCategory] = useState("Movies");
+  const [category, setCategory] = useState("");
   const [isCategoryOpen, setCategoryOpen] = useState(false);
-  //   const [currentCategory, setCurrentCategory] = useState("Movies");
 
   const categories = [
     {
@@ -55,10 +54,10 @@ export default function WishlistFilter({ keyword }) {
       >
         Wishlist
       </motion.h1>
-      <div className="relative z-10 lg:w-[20rem]">
+      <div className="relative z-10 lg:w-[20rem] group">
         <button
           onClick={() => setCategoryOpen((prevCategory) => !prevCategory)}
-          className="border-2 w-full bg-black rounded-xl border-primary py-3 px-4"
+          className="border-2 w-full bg-black rounded-tr-xl rounded-tl-xl border-primary py-3 px-4"
         >
           <div className="flex justify-between items-center">
             <p className="text-white tracking-wider font-medium text-[.85rem]">
@@ -73,31 +72,30 @@ export default function WishlistFilter({ keyword }) {
           </div>
         </button>
         <div
-          className={`absolute z-[2] ${
-            isCategoryOpen ? "block" : "hidden"
-          } rounded-xl border-primary overflow-hidden block bg-black border-2 top-[110%] w-full left-0`}
+          className={`absolute group-hover:block z-[2] rounded-br-xl rounded-bl-xl border-primary overflow-hidden hidden bg-black border-2 top-[100%] w-full left-0`}
         >
-          {isCategoryOpen &&
-            categories.map((category) => {
-              return (
-                <div key={category.id}>
-                  <div>
-                    <Link
-                      onClick={() => setCategoryOpen(false)}
-                      to={category.link}
+          {categories.map((category, index) => {
+            return (
+              <div key={category.id}>
+                <div>
+                  <Link
+                    onClick={() => setCategoryOpen(false)}
+                    to={category.link}
+                  >
+                    <p
+                      className={`${
+                        category.param === keyword ? "bg-primary" : ""
+                      } ${
+                        index === 0 ? "mb-[0.13rem]" : ""
+                      } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
                     >
-                      <p
-                        className={`${
-                          category.param === keyword ? "bg-primary" : ""
-                        } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
-                      >
-                        {category.name}
-                      </p>
-                    </Link>
-                  </div>
+                      {category.name}
+                    </p>
+                  </Link>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
