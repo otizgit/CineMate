@@ -5,10 +5,12 @@ import WishlistWrapper from "../components/interface/Wishlist/WishlistWrapper";
 
 export default function Wishlist() {
   const keyword = useParams().id;
-  const wishlist = JSON.parse(localStorage.getItem("wishlist"));
+  const [wishList, setWishList] = useState(
+    JSON.parse(localStorage.getItem("wishlist"))
+  );
   const [category, setCategory] = useState("");
   const [wishlistItems, setWishlistItems] = useState(
-    wishlist.filter((items) => items.link === keyword)
+    wishList.filter((items) => items.link === keyword)
   );
 
   useEffect(() => {
@@ -17,7 +19,7 @@ export default function Wishlist() {
     );
     setCategory(activeCategory[0].name);
 
-    const filtered = wishlist.filter((items) => items.link === keyword);
+    const filtered = wishList.filter((items) => items.link === keyword);
     setWishlistItems(filtered);
   }, [keyword]);
 
@@ -44,7 +46,8 @@ export default function Wishlist() {
       <WishlistWrapper
         wishlistItems={wishlistItems}
         category={category}
-        wishlist={wishlist}
+        wishList={wishList}
+        setWishList={setWishList}
       />
     </div>
   );

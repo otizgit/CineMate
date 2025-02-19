@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function WishlistCard({ wishListItem }) {
+export default function WishlistCard({ wishListItem, wishList, setWishList }) {
   const ratingPercentage = Math.ceil((wishListItem.rating / 10) * 100);
 
   let percentageColor;
@@ -14,6 +14,22 @@ export default function WishlistCard({ wishListItem }) {
   } else if (ratingPercentage < 40) {
     percentageColor = "red";
   }
+
+  const removeMovieFromWislist = () => {
+    const indexOfWishListMovie = wishList.findIndex(
+      (movie) => movie.id === wishListItem.id
+    );
+    console.log(indexOfWishListMovie);
+
+    const slicedArray = wishList.splice(indexOfWishListMovie, 1);
+
+    console.log(slicedArray);
+
+    setWishList(slicedArray);
+
+    localStorage.setItem("wishlist", JSON.stringify(wishList));
+    setWishList(JSON.parse(localStorage.getItem("wishlist")));
+  };
 
   return (
     <div className="relative rounded-tr-xl rounded-tl-xl overflow-hidden">
@@ -50,7 +66,10 @@ export default function WishlistCard({ wishListItem }) {
           {wishListItem.title}
         </p>
       </Link>
-      <button className="absolute top-0 right-0 p-3 bg-black rounded-bl-xl group">
+      <button
+        onClick={removeMovieFromWislist}
+        className="absolute top-0 right-0 p-3 bg-black rounded-bl-xl group"
+      >
         <FontAwesomeIcon
           className="text-primary text-[1.1rem] group-hover:scale-110"
           icon={faStar}

@@ -55,7 +55,7 @@ export default function WishlistFilter({ category, categories, keyword }) {
         >
           {categories.map((category, index) => {
             return (
-              <div key={category.id}>
+              <div key={index}>
                 <div>
                   <Link
                     onClick={() => setCategoryOpen(false)}

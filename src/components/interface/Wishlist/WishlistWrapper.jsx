@@ -4,7 +4,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function WishlistWrapper({ wishlistItems, category, wishlist }) {
+export default function WishlistWrapper({
+  wishlistItems,
+  category,
+  wishList,
+  setWishList,
+}) {
   const settings = {
     dots: false,
     infinite: false,
@@ -47,14 +52,18 @@ export default function WishlistWrapper({ wishlistItems, category, wishlist }) {
   const renderedResults = wishlistItems.map((items, index) => {
     return (
       <div key={index}>
-        <WishlistCard wishListItem={items} />
+        <WishlistCard
+          wishListItem={items}
+          wishList={wishList}
+          setWishList={setWishList}
+        />
       </div>
     );
   });
 
   return (
     <div className="margin">
-      {wishlist.length ? (
+      {wishList.length ? (
         <div>
           <Slider {...settings}>{renderedResults}</Slider>
         </div>
