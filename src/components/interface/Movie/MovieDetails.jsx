@@ -48,7 +48,7 @@ export default function MovieDetails(props) {
           poster: props.results.poster_path,
           rating: props.results.vote_average,
           type: props.results.name ? "TV shows" : "Movies",
-          link: props.results.name ? "tv_show" : "movies",
+          link: props.results.name ? "tv_shows" : "movies",
           id: props.results.id,
         },
       ];
@@ -64,8 +64,6 @@ export default function MovieDetails(props) {
     document.body.style.overflow = "hidden";
     setTrailerOverlay(true);
   }
-
-  console.log(props.results);
 
   return (
     <div className="paddingX text-white mb-4 lg:mb-0">
