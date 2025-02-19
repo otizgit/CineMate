@@ -5,29 +5,8 @@ import { motion } from "framer-motion";
 import { headingAnimation } from "../../../animations/Animations";
 import { Link } from "react-router-dom";
 
-export default function WishlistFilter({ keyword }) {
-  const [category, setCategory] = useState("");
+export default function WishlistFilter({ category, categories, keyword }) {
   const [isCategoryOpen, setCategoryOpen] = useState(false);
-
-  const categories = [
-    {
-      name: "Movies",
-      param: "movies",
-      link: "/wishlist/movies",
-    },
-    {
-      name: "TV shows",
-      param: "tv_shows",
-      link: "/wishlist/tv_shows",
-    },
-  ];
-
-  useEffect(() => {
-    const activeCategory = categories.filter((category) =>
-      category.param === keyword ? category.name : null
-    );
-    setCategory(activeCategory[0].name);
-  }, [keyword]);
 
   window.addEventListener("keydown", (e) => {
     if (e.keyCode === 27) {
