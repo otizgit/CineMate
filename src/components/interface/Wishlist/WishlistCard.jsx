@@ -17,8 +17,19 @@ export default function WishlistCard({ wishListItem }) {
 
   return (
     <div className="relative rounded-tr-xl rounded-tl-xl overflow-hidden">
-      <Link>
-        <div className="">
+      <Link
+        to={
+          wishListItem.link === "movies"
+            ? `/movie/${wishListItem.title}/${wishListItem.id}`
+            : `/tv/${wishListItem.title}/${wishListItem.id}`
+        }
+        state={{
+          releaseYear: wishListItem.release_year
+            ? wishListItem.relase_year
+            : null,
+        }}
+      >
+        <div>
           <img
             loading="lazy"
             className="group-hover:scale-110 display-img transition-all w-full"
@@ -40,7 +51,10 @@ export default function WishlistCard({ wishListItem }) {
         </p>
       </Link>
       <button className="absolute top-0 right-0 p-3 bg-black rounded-bl-xl group">
-        <FontAwesomeIcon className="text-primary text-[1.1rem] group-hover:scale-110" icon={faStar} />
+        <FontAwesomeIcon
+          className="text-primary text-[1.1rem] group-hover:scale-110"
+          icon={faStar}
+        />
       </button>
     </div>
   );

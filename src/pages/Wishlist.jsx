@@ -34,7 +34,6 @@ export default function Wishlist() {
     },
   ];
 
-  console.log(wishlist);
   return (
     <div className="padding-top paddingX max-width">
       <WishlistFilter
