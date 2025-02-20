@@ -5,7 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function WishlistCard({ wishListItem, wishList, setWishList }) {
+export default function WishlistCard({
+  wishListItem,
+  wishList,
+  setWishList,
+}) {
   const ratingPercentage = Math.ceil((wishListItem.rating / 10) * 100);
 
   let percentageColor;
@@ -28,14 +32,14 @@ export default function WishlistCard({ wishListItem, wishList, setWishList }) {
     setWishList(JSON.parse(localStorage.getItem("wishlist")));
 
     toast.success("Removed to Wishlist", {
-        position: "bottom-right",
-        style: {
-          color: "green",
-          fontWeight: 600,
-        },
-        autoClose: 2000,
-      });
-  };
+      position: "bottom-right",
+      style: {
+        color: "white",
+        fontWeight: 600,
+      },
+      autoClose: 2000,
+    });
+  };  
 
   return (
     <div className="relative rounded-tr-xl rounded-tl-xl overflow-hidden">
