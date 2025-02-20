@@ -44,9 +44,7 @@ export default function WishlistFilter({ category, categories, keyword }) {
             </p>
             <FontAwesomeIcon
               icon={faCaretDown}
-              className={`text-primary font ${
-                isCategoryOpen ? "rotate-180" : ""
-              } transition-all`}
+              className={`text-primary font group-hover:rotate-180 transition-all`}
             />
           </div>
         </button>

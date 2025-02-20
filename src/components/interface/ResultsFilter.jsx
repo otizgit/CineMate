@@ -38,10 +38,10 @@ export default function ResultsFilter(props) {
       >
         Search Results
       </motion.h1>
-      <div className="relative z-10 lg:w-[20rem]">
+      <div className="relative z-10 lg:w-[20rem] group">
         <button
           onClick={toggleCategoryView}
-          className="border-2 w-full bg-black rounded-xl border-primary py-3 px-4"
+          className="border-2 w-full bg-black rounded-tr-xl rounded-tl-xl border-primary py-3 px-4"
         >
           <div className="flex justify-between items-center">
             <p className="tracking-wider font-medium text-[.85rem]">
@@ -49,37 +49,36 @@ export default function ResultsFilter(props) {
             </p>
             <FontAwesomeIcon
               icon={faCaretDown}
-              className={`text-primary font ${
-                isCategoryOpen ? "rotate-180" : ""
-              } transition-all`}
+              className={`text-primary font group-hover:rotate-180 transition-all`}
             />
           </div>
         </button>
         <div
-          className={`absolute z-[2] ${
-            isCategoryOpen ? "block" : "hidden"
-          } rounded-xl border-primary overflow-hidden block bg-black border-2 top-[110%] w-full left-0`}
+          className={`absolute z-[2] hidden group-hover:block rounded-br-xl rounded-bl-xl border-primary overflow-hidden bg-black border-2 top-[10z0%] w-full left-0`}
         >
-          {isCategoryOpen &&
-            searchLinks.map((links) => {
-              return (
-                <div key={links.id}>
-                  <div>
-                    <button
-                      onClick={() => {
-                        handleFilterClick(links.keyword);
-                        setCurrentCategory(links.link);
-                      }}
-                      className={`${
-                        props.category === links.keyword ? "bg-primary" : ""
-                      } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
-                    >
-                      {links.link}
-                    </button>
-                  </div>
+          {searchLinks.map((links, index) => {
+            return (
+              <div key={links.id}>
+                <div>
+                  <button
+                    onClick={() => {
+                      handleFilterClick(links.keyword);
+                      setCurrentCategory(links.link);
+                    }}
+                    className={`${
+                      props.category === links.keyword ? "bg-primary" : ""
+                    } 
+                    ${
+                      props.category && index !== 0 ? "my-[0.07rem]" : "mb-[0.03rem]"
+                    }
+                      tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
+                  >
+                    {links.link}
+                  </button>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
