@@ -8,6 +8,8 @@ import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { motion } from "framer-motion";
 import { fadeAnimation } from "../../../animations/Animations";
 import TrailerOverlay from "../TrailerOverlay";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function MovieDetails(props) {
   const trailerVideo = props.videos.filter((video) => {
@@ -40,6 +42,15 @@ export default function MovieDetails(props) {
 
       setWishList(JSON.parse(localStorage.getItem("wishlist")));
       setProductInWishlist(false);
+
+      toast.success("Removed from Wishlist", {
+        position: "bottom-right",
+        style: {
+          color: "white",
+          fontWeight: 600,
+        },
+        autoClose: 2000,
+      });
     } else {
       const prevWishListArray = [
         ...JSON.parse(localStorage.getItem("wishlist")),
@@ -58,6 +69,15 @@ export default function MovieDetails(props) {
 
       setWishList(JSON.parse(localStorage.getItem("wishlist")));
       setProductInWishlist(true);
+
+      toast.success("Added to Wishlist", {
+        position: "bottom-right",
+        style: {
+          color: "white",
+          fontWeight: 600,
+        },
+        autoClose: 2000,
+      });
     }
   };
 
@@ -355,6 +375,7 @@ export default function MovieDetails(props) {
               }}
               className="text-primary inline font-bold custom-fz"
             >
+              <FontAwesomeIcon className="custom-fz mr-1" icon={faPlay} />
               Watch Trailer
             </motion.button>
           ) : null}
@@ -370,8 +391,14 @@ export default function MovieDetails(props) {
             whileHover={{
               scale: 1.1,
             }}
-            className={`${trailerVideo.length ? "" : "mb-5 lg:mb-0"}`}
+            className={`${
+              trailerVideo.length ? "" : "mb-5 lg:mb-0"
+            } flex items-center gap-1`}
           >
+            <FontAwesomeIcon
+              className="custom-fz text-primary mb-1"
+              icon={isProductInWishlist ? faStar : faStarSolid}
+            />
             <p className="custom-fz text-primary font-bold">
               {isProductInWishlist ? "Remove from wishlist" : "Add to wishlist"}
             </p>

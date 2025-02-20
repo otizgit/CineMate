@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function WishlistCard({ wishListItem, wishList, setWishList }) {
   const ratingPercentage = Math.ceil((wishListItem.rating / 10) * 100);
@@ -19,16 +21,20 @@ export default function WishlistCard({ wishListItem, wishList, setWishList }) {
     const indexOfWishListMovie = wishList.findIndex(
       (movie) => movie.id === wishListItem.id
     );
-    console.log(indexOfWishListMovie);
-
     const slicedArray = wishList.splice(indexOfWishListMovie, 1);
-
-    console.log(slicedArray);
-
     setWishList(slicedArray);
 
     localStorage.setItem("wishlist", JSON.stringify(wishList));
     setWishList(JSON.parse(localStorage.getItem("wishlist")));
+
+    toast.success("Removed to Wishlist", {
+        position: "bottom-right",
+        style: {
+          color: "green",
+          fontWeight: 600,
+        },
+        autoClose: 2000,
+      });
   };
 
   return (
