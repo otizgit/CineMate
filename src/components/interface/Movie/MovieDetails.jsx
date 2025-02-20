@@ -61,7 +61,9 @@ export default function MovieDetails(props) {
           type: props.results.name ? "TV shows" : "Movies",
           link: props.results.name ? "tv_shows" : "movies",
           id: props.results.id,
-          release_year: props.results.release_date.slice(0, 4),
+          release_year: props.results.releasr_date
+            ? props.results.release_date.slice(0, 4)
+            : null,
         },
       ];
 

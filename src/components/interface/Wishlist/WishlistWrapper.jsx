@@ -49,7 +49,7 @@ export default function WishlistWrapper({
     ],
   };
 
-  const renderedResults = wishList.map((items, index) => {
+  const renderedResults = wishlistItems.map((items, index) => {
     return (
       <div key={index}>
         <WishlistCard

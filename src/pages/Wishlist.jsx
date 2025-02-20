@@ -23,6 +23,10 @@ export default function Wishlist() {
     setWishlistItems(filtered);
   }, [keyword]);
 
+  useEffect(() => {
+    setWishlistItems(wishList.filter((items) => items.link === keyword));
+  }, [wishList]);
+
   const categories = [
     {
       name: "Movies",
