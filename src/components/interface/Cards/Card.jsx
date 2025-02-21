@@ -131,7 +131,7 @@ export default function Card(props) {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative rounded-tr-xl rounded-tl-xl overflow-hidden">
       <Link
         onClick={toggleSearchTrigger}
         to={`/${props.keyword}/${cardTitle}/${props.data.id}`}
