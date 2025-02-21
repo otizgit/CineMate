@@ -5,11 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function WishlistCard({
-  wishListItem,
-  wishList,
-  setWishList,
-}) {
+export default function WishlistCard({ wishListItem, wishList, setWishList }) {
   const ratingPercentage = Math.ceil((wishListItem.rating / 10) * 100);
 
   let percentageColor;
@@ -39,7 +35,7 @@ export default function WishlistCard({
       },
       autoClose: 2000,
     });
-  };  
+  };
 
   return (
     <div className="relative rounded-tr-xl rounded-tl-xl overflow-hidden">
@@ -56,12 +52,14 @@ export default function WishlistCard({
         }}
       >
         <div>
-          <img
-            loading="lazy"
-            className="group-hover:scale-110 display-img transition-all w-full"
-            src={`https://image.tmdb.org/t/p/w780${wishListItem.poster}`}
-            alt="Movie Poster"
-          />
+          <div className="group overflow-hidden">
+            <img
+              loading="lazy"
+              className="group-hover:scale-110 display-img transition-all w-full"
+              src={`https://image.tmdb.org/t/p/w780${wishListItem.poster}`}
+              alt="Movie Poster"
+            />
+          </div>
           <div className="h-1 bg-black mb-4">
             <div
               style={{

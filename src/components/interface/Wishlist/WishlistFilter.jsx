@@ -7,12 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function WishlistFilter({ category, categories, keyword }) {
   const [isCategoryOpen, setCategoryOpen] = useState(false);
-
-  window.addEventListener("keydown", (e) => {
-    if (e.keyCode === 27) {
-      setCategoryOpen(false);
-    }
-  });
+  const [isFilterOpen, setFilter] = useState(true);
 
   useEffect(() => {
     document.title = "CineMate | Wishlist";
@@ -33,7 +28,11 @@ export default function WishlistFilter({ category, categories, keyword }) {
       >
         Wishlist
       </motion.h1>
-      <div className="relative z-10 lg:w-[20rem] group">
+      <div
+        onMouseEnter={() => setFilter(true)}
+        onMouseLeave={() => setFilter(false)}
+        className="relative z-10 lg:w-[20rem] group"
+      >
         <button
           onClick={() => setCategoryOpen((prevCategory) => !prevCategory)}
           className="border-2 w-full bg-black rounded-tr-xl rounded-tl-xl border-primary py-3 px-4"
@@ -51,28 +50,27 @@ export default function WishlistFilter({ category, categories, keyword }) {
         <div
           className={`absolute group-hover:block z-[2] rounded-br-xl rounded-bl-xl border-primary overflow-hidden hidden bg-black border-2 top-[100%] w-full left-0`}
         >
-          {categories.map((category, index) => {
-            return (
-              <div key={index}>
-                <div>
-                  <Link
-                    onClick={() => setCategoryOpen(false)}
-                    to={category.link}
-                  >
-                    <p
-                      className={`${
-                        category.param === keyword ? "bg-primary" : ""
-                      } ${
-                        index === 0 ? "mb-[0.13rem]" : ""
-                      } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
-                    >
-                      {category.name}
-                    </p>
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+          {isFilterOpen
+            ? categories.map((category, index) => {
+                return (
+                  <div key={index}>
+                    <div>
+                      <Link onClick={() => setFilter(false)} to={category.link}>
+                        <p
+                          className={`${
+                            category.param === keyword ? "bg-primary" : ""
+                          } ${
+                            index === 0 ? "mb-[0.13rem]" : ""
+                          } tracking-wider w-[100%] hover:bg-primary hover:text-white text-[.8rem] text-white py-5 pl-4 text-left`}
+                        >
+                          {category.name}
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })
+            : null}
         </div>
       </div>
     </div>
