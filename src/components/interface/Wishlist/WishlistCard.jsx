@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faClapperboard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -53,12 +53,24 @@ export default function WishlistCard({ wishListItem, wishList, setWishList }) {
       >
         <div>
           <div className="group overflow-hidden">
-            <img
-              loading="lazy"
-              className="group-hover:scale-110 display-img transition-all w-full"
-              src={`https://image.tmdb.org/t/p/w780${wishListItem.poster}`}
-              alt="Movie Poster"
-            />
+            {wishListItem.poster === null ? (
+              <div className="h-[15rem] lg:h-[10rem] md:h-[10rem] xl:h-[15rem] grid place-items-center">
+                <FontAwesomeIcon
+                  icon={faClapperboard}
+                  className="text-primary text-[5rem]"
+                />
+                <p className="text-[red] text-[.85rem] font-semibold">
+                  No Image Found
+                </p>
+              </div>
+            ) : (
+              <img
+                loading="lazy"
+                className="group-hover:scale-110 display-img transition-all w-full"
+                src={`https://image.tmdb.org/t/p/w780${wishListItem.poster}`}
+                alt="Movie Poster"
+              />
+            )}
           </div>
           <div className="h-1 bg-black mb-4">
             <div

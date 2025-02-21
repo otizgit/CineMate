@@ -25,6 +25,7 @@ export default function WishlistWrapper({
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
+          initialSlide: 0,
           dots: true,
         },
       },
@@ -62,7 +63,7 @@ export default function WishlistWrapper({
   });
 
   return (
-    <div className="margin">
+    <div className="w-[90%] lg:w-[100%] mx-auto margin">
       {wishList.length ? (
         <div>
           <Slider {...settings}>{renderedResults}</Slider>

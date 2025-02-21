@@ -24,6 +24,7 @@ export default function CategoryResults(props) {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
+          initialSlide: 0,
           dots: true,
         },
       },
