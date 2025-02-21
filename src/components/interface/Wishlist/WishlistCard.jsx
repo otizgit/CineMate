@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { faStar, faClapperboard } from "@fortawesome/free-solid-svg-icons";
+import { faClapperboard } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,7 +18,7 @@ export default function WishlistCard({ wishListItem, wishList, setWishList }) {
     percentageColor = "red";
   }
 
-  const removeMovieFromWislist = () => {
+  const removeMovieFromWishlist = () => {
     const indexOfWishListMovie = wishList.findIndex(
       (movie) => movie.id === wishListItem.id
     );
@@ -87,7 +88,7 @@ export default function WishlistCard({ wishListItem, wishList, setWishList }) {
         </p>
       </Link>
       <button
-        onClick={removeMovieFromWislist}
+        onClick={removeMovieFromWishlist}
         className="absolute top-0 right-0 w-11 h-11 grid place-items-center bg-black rounded-bl-xl group"
       >
         <FontAwesomeIcon

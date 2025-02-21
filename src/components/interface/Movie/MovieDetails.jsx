@@ -22,16 +22,14 @@ export default function MovieDetails(props) {
     JSON.parse(localStorage.getItem("wishlist"))
   );
 
-  const [isProductInWishlist, setProductInWishlist] = useState(
+  const [isMovieInWishlist, setMovieInWishlist] = useState(
     wishList.some((movie) => {
       return movie.title.includes(props.results.title || props.results.name);
     })
   );
 
   const addMovieToWishlist = () => {
-    // setProductInWishlist((prev) => !prev);
-
-    if (isProductInWishlist) {
+    if (isMovieInWishlist) {
       const indexOfWishListMovie = wishList.findIndex(
         (movie) => movie === props.results.title || props.results.name
       );
@@ -41,7 +39,7 @@ export default function MovieDetails(props) {
       localStorage.setItem("wishlist", JSON.stringify(wishList));
 
       setWishList(JSON.parse(localStorage.getItem("wishlist")));
-      setProductInWishlist(false);
+      setMovieInWishlist(false);
 
       toast.success("Removed from Wishlist", {
         position: "bottom-right",
@@ -61,7 +59,7 @@ export default function MovieDetails(props) {
           type: props.results.name ? "TV shows" : "Movies",
           link: props.results.name ? "tv_shows" : "movies",
           id: props.results.id,
-          release_year: props.results.releasr_date
+          release_year: props.results.release_date
             ? props.results.release_date.slice(0, 4)
             : null,
         },
@@ -70,7 +68,7 @@ export default function MovieDetails(props) {
       localStorage.setItem("wishlist", JSON.stringify(prevWishListArray));
 
       setWishList(JSON.parse(localStorage.getItem("wishlist")));
-      setProductInWishlist(true);
+      setMovieInWishlist(true);
 
       toast.success("Added to Wishlist", {
         position: "bottom-right",
@@ -399,10 +397,10 @@ export default function MovieDetails(props) {
           >
             <FontAwesomeIcon
               className="custom-fz text-primary mb-1"
-              icon={isProductInWishlist ? faStar : faStarSolid}
+              icon={isMovieInWishlist ? faStarSolid : faStar}
             />
             <p className="custom-fz text-primary font-bold">
-              {isProductInWishlist ? "Remove from wishlist" : "Add to wishlist"}
+              {isMovieInWishlist ? "Remove from wishlist" : "Add to wishlist"}
             </p>
           </motion.button>
         </div>
