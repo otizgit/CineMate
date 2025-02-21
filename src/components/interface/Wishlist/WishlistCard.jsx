@@ -88,7 +88,7 @@ export default function WishlistCard({ wishListItem, wishList, setWishList }) {
       </Link>
       <button
         onClick={removeMovieFromWislist}
-        className="absolute top-0 right-0 p-3 bg-black rounded-bl-xl group"
+        className="absolute top-0 right-0 w-11 h-11 grid place-items-center bg-black rounded-bl-xl group"
       >
         <FontAwesomeIcon
           className="text-primary text-[1.1rem] group-hover:scale-110"
