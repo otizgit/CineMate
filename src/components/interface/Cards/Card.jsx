@@ -4,7 +4,7 @@ import {
   faClapperboard,
   faUser,
   faStar,
-  faHeart
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
@@ -27,8 +27,6 @@ export default function Card(props) {
   const [isMovieInWishlist, setMovieInWishList] = useState(
     wishList.some((movie) => movie.id === props.data.id)
   );
-
-  useEffect(() => {}, [wishList]);
 
   const toggleWishListButton = () => {
     if (isMovieInWishlist) {
@@ -132,7 +130,7 @@ export default function Card(props) {
   }, []);
 
   return (
-    <div className="relative rounded-tr-xl rounded-tl-xl overflow-hidden">
+    <div className="relative rounded-tr-xl rounded-tl-xl">
       <Link
         onClick={toggleSearchTrigger}
         to={`/${props.keyword}/${cardTitle}/${props.data.id}`}
@@ -222,6 +220,9 @@ export default function Card(props) {
             className="text-primary text-[1.25rem] group-hover:scale-110"
             icon={!isMovieInWishlist ? faHeartReg : faHeart}
           />
+          <span className={`hidden lg:hidden group-hover:block absolute ${isMovieInWishlist ? "-bottom-[4.5rem]" : "-bottom-[3.2rem]"} bg-white px-4 py-1 z-10 custom-fz font-semibold rounded-xl`}>
+            {isMovieInWishlist ? "Remove from wishlist" : "Add to wishlist"}
+          </span>
         </button>
       )}
     </div>
