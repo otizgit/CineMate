@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
   faStar as faStarSolid,
+  faHeart as faHeartSolid,
 } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { motion } from "framer-motion";
 import { fadeAnimation } from "../../../animations/Animations";
 import TrailerOverlay from "../TrailerOverlay";
@@ -375,7 +376,7 @@ export default function MovieDetails(props) {
               }}
               className="text-primary inline font-bold custom-fz"
             >
-              <FontAwesomeIcon className="custom-fz mr-1" icon={faPlay} />
+              <FontAwesomeIcon className="text-[1rem] mr-1" icon={faPlay} />
               Watch Trailer
             </motion.button>
           ) : null}
@@ -396,8 +397,8 @@ export default function MovieDetails(props) {
             } flex items-center gap-1`}
           >
             <FontAwesomeIcon
-              className="custom-fz text-primary mb-1"
-              icon={isMovieInWishlist ? faStarSolid : faStar}
+              className=" text-primary mb-[0.2rem]"
+              icon={isMovieInWishlist ? faHeartSolid : faHeart}
             />
             <p className="custom-fz text-primary font-bold">
               {isMovieInWishlist ? "Remove from wishlist" : "Add to wishlist"}

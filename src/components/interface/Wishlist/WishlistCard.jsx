@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { faClapperboard, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faClapperboard, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -92,7 +92,7 @@ export default function WishlistCard({ wishListItem, wishList, setWishList }) {
       >
         <FontAwesomeIcon
           className="text-primary text-[1.1rem] group-hover:scale-110"
-          icon={faStar}
+          icon={faHeart}
         />
       </button>
     </div>

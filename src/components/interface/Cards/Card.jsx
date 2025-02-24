@@ -4,8 +4,9 @@ import {
   faClapperboard,
   faUser,
   faStar,
+  faHeart
 } from "@fortawesome/free-solid-svg-icons";
-import { faStar as faStarReg } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -218,8 +219,8 @@ export default function Card(props) {
           className="absolute top-0 right-0 w-11 h-11 grid place-items-center bg-black rounded-bl-xl group"
         >
           <FontAwesomeIcon
-            className="text-primary text-[1.1rem] group-hover:scale-110"
-            icon={!isMovieInWishlist ? faStarReg : faStar}
+            className="text-primary text-[1.25rem] group-hover:scale-110"
+            icon={!isMovieInWishlist ? faHeartReg : faHeart}
           />
         </button>
       )}
