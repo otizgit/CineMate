@@ -212,15 +212,17 @@ export default function Card(props) {
           </p>
         )}
       </Link>
-      <button
-        onClick={toggleWishListButton}
-        className="absolute top-0 right-0 w-11 h-11 grid place-items-center bg-black rounded-bl-xl group"
-      >
-        <FontAwesomeIcon
-          className="text-primary text-[1.1rem] group-hover:scale-110"
-          icon={!isMovieInWishlist ? faStarReg : faStar}
-        />
-      </button>
+      {props.keyword === "person" ? null : (
+        <button
+          onClick={toggleWishListButton}
+          className="absolute top-0 right-0 w-11 h-11 grid place-items-center bg-black rounded-bl-xl group"
+        >
+          <FontAwesomeIcon
+            className="text-primary text-[1.1rem] group-hover:scale-110"
+            icon={!isMovieInWishlist ? faStarReg : faStar}
+          />
+        </button>
+      )}
     </div>
   );
 }
