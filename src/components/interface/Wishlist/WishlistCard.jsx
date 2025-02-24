@@ -38,7 +38,7 @@ export default function WishlistCard({ wishListItem, wishList, setWishList }) {
   };
 
   return (
-    <div className="relative rounded-tr-xl rounded-tl-xl overflow-hidden">
+    <div className="relative rounded-tr-xl rounded-tl-xl">
       <Link
         to={
           wishListItem.link === "movies"
@@ -94,6 +94,9 @@ export default function WishlistCard({ wishListItem, wishList, setWishList }) {
           className="text-primary text-[1.1rem] group-hover:scale-110"
           icon={faHeart}
         />
+        <span className="hidden lg:hidden group-hover:block absolute -bottom-[4.5rem] bg-white px-4 py-1 z-10 custom-fz font-semibold rounded-xl">
+          Remove from wishlist 
+        </span>
       </button>
     </div>
   );
