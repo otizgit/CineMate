@@ -53,7 +53,7 @@ export default function PersonPersonalInfo({ personData, setOverlay }) {
             scale: 1.07,
           }}
           onClick={toggleImageOverlay}
-          className="w-[13rem] lg:w-[16rem] mx-auto rounded-xl lg:rounded-tr-none lg:rounded-tl-none mb-6 cursor-pointer"
+          className="w-[13rem] lg:w-[16rem] mx-auto rounded-xl lg:rounded-tr-none mt-10 lg:rounded-tl-none mb-6 cursor-pointer"
           src={`https://image.tmdb.org/t/p/w500${personData.profile_path}`}
           alt={`${personData.name}'s image`}
         />
