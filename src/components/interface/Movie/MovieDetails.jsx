@@ -132,7 +132,7 @@ export default function MovieDetails(props) {
         ) : null}
       </div>
 
-      <div className="flex flex-col md:flex-row mb-6 items-start md:gap-x-10 lg:justify-start lg:w-[fit-content] flex-wrap gap-x-4 lg:gap-x-4 gap-y-4">
+      <div className="flex flex-col md:flex-row mb-4 items-start md:gap-x-10 lg:justify-start lg:w-[fit-content] flex-wrap gap-x-4 lg:gap-x-4 gap-y-4">
         {props.imdbResults.Rated !== "N/A" && props.imdbResults.Rated ? (
           <motion.div
             variants={fadeAnimation}
@@ -245,7 +245,7 @@ export default function MovieDetails(props) {
 
       {props.imdbResults.Ratings && (
         <div
-          className={`mb-6 flex flex-wrap ${
+          className={`mb-4 flex flex-wrap ${
             props.imdbResults.Ratings.length > 2 &&
             "justify-between lg:justify-start"
           } gap-7 lg:gap-10`}
@@ -303,7 +303,7 @@ export default function MovieDetails(props) {
         </motion.div>
       ) : null}
 
-      <div className="mb-6">
+      <div className="mb-4">
         {props.results.overview ? (
           <motion.p
             variants={fadeAnimation}
@@ -321,7 +321,7 @@ export default function MovieDetails(props) {
       </div>
 
       <div>
-        <div className="lg:flex gap-10 mb-6 lg:mb-0">
+        <div className="lg:flex gap-10 mb-4 lg:mb-0">
           {props.imdbResults.Writer !== "N/A" && props.imdbResults.Writer ? (
             <motion.div
               variants={fadeAnimation}
@@ -331,7 +331,7 @@ export default function MovieDetails(props) {
               viewport={{
                 once: true,
               }}
-              className="mb-6"
+              className="mb-4"
             >
               <p className="custom-fz font-semibold">
                 {props.imdbResults.Writer}
