@@ -12,7 +12,7 @@ export default function MovieInfo(props) {
         once: true,
       }}
       custom={0}
-      className="border-primary border-b-2 lg:border-0 pb-5 custom-fz flex flex-wrap lg:gap-y-7 mb-10 gap-x-10 gap-y-4"
+      className="border-primary border-y-2 lg:border-0 pt-8 lg:pt-0 pb-8 custom-fz flex flex-wrap lg:gap-y-7 mb-10 gap-x-10 gap-y-4"
     >
       {props.results.status ? (
         <div className="flex items-center">

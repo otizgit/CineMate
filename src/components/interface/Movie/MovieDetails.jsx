@@ -88,8 +88,8 @@ export default function MovieDetails(props) {
   }
 
   return (
-    <div className="paddingX text-white mb-4 lg:mb-0">
-      <div className="flex items-center mb-5 lg:mb-1 flex-wrap gap-2">
+    <div className="paddingX text-white mb-8 lg:mb-0 pt-5 lg:pt-0">
+      <div className="flex items-center mb-5 lg:mb-4 flex-wrap gap-2">
         {props.results.title && (
           <motion.p
             variants={fadeAnimation}
@@ -132,7 +132,7 @@ export default function MovieDetails(props) {
         ) : null}
       </div>
 
-      <div className="flex flex-col md:flex-row mb-5 items-start md:gap-x-10 lg:justify-start lg:w-[fit-content] flex-wrap gap-x-4 lg:gap-x-4 gap-y-4">
+      <div className="flex flex-col md:flex-row mb-6 items-start md:gap-x-10 lg:justify-start lg:w-[fit-content] flex-wrap gap-x-4 lg:gap-x-4 gap-y-4">
         {props.imdbResults.Rated !== "N/A" && props.imdbResults.Rated ? (
           <motion.div
             variants={fadeAnimation}
@@ -245,7 +245,7 @@ export default function MovieDetails(props) {
 
       {props.imdbResults.Ratings && (
         <div
-          className={`mb-5 flex flex-wrap ${
+          className={`mb-6 flex flex-wrap ${
             props.imdbResults.Ratings.length > 2 &&
             "justify-between lg:justify-start"
           } gap-7 lg:gap-10`}
@@ -295,7 +295,7 @@ export default function MovieDetails(props) {
           viewport={{
             once: true,
           }}
-          className="mb-2"
+          className="mb-3"
         >
           <p className="custom-fz italic custom-fz font-medium text-priText-300">
             {props.results.tagline}
@@ -303,7 +303,7 @@ export default function MovieDetails(props) {
         </motion.div>
       ) : null}
 
-      <div className="mb-5">
+      <div className="mb-6">
         {props.results.overview ? (
           <motion.p
             variants={fadeAnimation}
@@ -320,12 +320,8 @@ export default function MovieDetails(props) {
         ) : null}
       </div>
 
-      <div
-        className={`border-primary border-b-2 lg:border-none lg:pb-0 ${
-          trailerVideo.length ? "pb-5" : "pb-0"
-        }`}
-      >
-        <div className="lg:flex gap-10 mb-5 lg:mb-0">
+      <div>
+        <div className="lg:flex gap-10 mb-6 lg:mb-0">
           {props.imdbResults.Writer !== "N/A" && props.imdbResults.Writer ? (
             <motion.div
               variants={fadeAnimation}
@@ -335,7 +331,7 @@ export default function MovieDetails(props) {
               viewport={{
                 once: true,
               }}
-              className="mb-5"
+              className="mb-6"
             >
               <p className="custom-fz font-semibold">
                 {props.imdbResults.Writer}
@@ -360,7 +356,7 @@ export default function MovieDetails(props) {
             </motion.div>
           ) : null}
         </div>
-        <div className="flex flex-wrap gap-x-8 gap-y-3">
+        <div className="flex flex-wrap gap-x-8 gap-y-3 lg:pb-0">
           {trailerVideo.length ? (
             <motion.button
               onClick={toggleTrialerOverlay}
