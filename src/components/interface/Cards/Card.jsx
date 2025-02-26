@@ -220,7 +220,7 @@ export default function Card(props) {
             className="text-primary text-[1.25rem] group-hover:scale-110"
             icon={!isMovieInWishlist ? faHeartReg : faHeart}
           />
-          <span className={`hidden lg:hidden group-hover:block absolute ${isMovieInWishlist ? "-bottom-[4.5rem]" : "-bottom-[3.2rem]"} bg-white px-4 py-1 z-10 custom-fz font-semibold rounded-xl`}>
+          <span className={`hidden lg:group-hover:block absolute ${isMovieInWishlist ? "-bottom-[4.5rem]" : "-bottom-[3.2rem]"} bg-white px-4 py-1 z-10 custom-fz font-semibold rounded-xl`}>
             {isMovieInWishlist ? "Remove from wishlist" : "Add to wishlist"}
           </span>
         </button>
