@@ -140,7 +140,7 @@ export default function MovieInfo(props) {
           <div className="w-[8px] hidden md:block rounded-full mr-1 h-[8px] bg-primary"></div>
           <p className="text-primary font-semibold">
             Homepage:{" "}
-            <span className="text-priText-300 font-normal">
+            <span className="text-gray-200 font-normal">
               <a
                 href={props.results.homepage}
                 target="_blank"

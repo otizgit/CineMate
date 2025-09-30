@@ -59,7 +59,7 @@ export default function ReviewsCard(props) {
         </div>
       </div>
       {props.review.content && (
-        <p className="custom-fz mb-5 text-priText-300 leading-7 break-words">
+        <p className="custom-fz mb-5 text-gray-200 leading-7 break-words">
           <Markdown>{props.review.content}</Markdown>
         </p>
       )}
@@ -67,7 +67,7 @@ export default function ReviewsCard(props) {
         {props.review.created_at && (
           <div>
             <p className="custom-fz text-primary font-medium">Created at:</p>
-            <p className="custom-fz text-white">
+            <p className="custom-fz text-white text-[0.85rem]">
               {props.review.created_at.slice(0, 10)}
             </p>
           </div>
@@ -75,7 +75,7 @@ export default function ReviewsCard(props) {
         {props.review.updated_at && (
           <div>
             <p className="custom-fz text-primary font-medium">Updated at:</p>
-            <p className="custom-fz text-white">
+            <p className="custom-fz text-white text-[0.85rem]">
               {props.review.updated_at.slice(0, 10)}
             </p>
           </div>
