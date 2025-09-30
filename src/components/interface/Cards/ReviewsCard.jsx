@@ -1,7 +1,7 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import Markdown from "react-markdown";
 
 export default function ReviewsCard(props) {
   return (
@@ -59,10 +59,9 @@ export default function ReviewsCard(props) {
         </div>
       </div>
       {props.review.content && (
-        <p
-          className="custom-fz mb-5 text-priText-300 leading-7 break-words"
-          dangerouslySetInnerHTML={{ __html: props.review.content }}
-        />
+        <p className="custom-fz mb-5 text-priText-300 leading-7 break-words">
+          <Markdown>{props.review.content}</Markdown>
+        </p>
       )}
       <div className="flex justify-between">
         {props.review.created_at && (
